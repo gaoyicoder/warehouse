@@ -1,0 +1,64 @@
+@charset "utf-8";
+/* Header */
+#header,.headerT,.headerM,.headereal,.headerB{width:100%;min-width:1230px;}
+#header{background-color:#fff;}
+.headerT{height:30px;}
+.homebor{border-bottom:1px solid #E5E5E5;}
+.minwidth{width:1230px;margin:0 auto;}
+.headerTL{width:315px;height:30px;}
+.mar7{margin-top:7px;}
+.headnotice{height:30px;}
+.height30{height:30px;line-height:30px;}
+.langtab{position:relative;z-index:100;}
+.langtab p{height:30px;cursor:pointer;}
+.langtab ul{padding:5px 0;border:1px solid #EDEDED;box-shadow:0 2px 1px 0 #DCDBDC;background-color:#fff;position:absolute;top:30px;left:0;z-index:1000;display:none;}
+.langtab li,.langtab li a,.homhelp li a{display:block;height:30px;padding:0 10px;cursor:pointer;}
+.langtab li:hover,.langtab li a:hover,.homhelp li a:hover{background-color:#F9F9F9;}
+.langtab li em,.langtab li a em,.homhelp li a em{display:block;height:29px;line-height:29px;border-top:1px dashed #E5E5E5;}
+.langtab li:first-child em,.langtab li:first-child a em,.homhelp li:first-child a em{border-top:none;}
+.langtab:hover .homservice{display:block;}
+.mar6{margin-top:6px;}
+.marl4{margin-left:4px;}
+.marl10{margin-left:10px;}
+.max130{max-width:132px;position:relative;z-index:100;}
+.max50{max-width:50px;}
+.shopcarnum{position:relative;}
+.shopcarnum p{width:100%;height:1px;background-color:#EDEDED;position:absolute;top:30px;right:0;z-index:20;display:none;}
+.max130:hover .shopcarnum p{display:block;}
+.shoplist{width:278px;padding:8px 20px 20px 20px;border:1px solid #EDEDED;border-top:none;box-shadow:0 2px 1px 0 #DCDBDC;background-color:#fff;position:absolute;top:31px;right:-1px;z-index:1000;display:none;}
+.helplist{width:278px;padding:8px 20px 20px 20px;border:1px solid #EDEDED;border-top:none;box-shadow:0 2px 1px 0 #DCDBDC;background-color:#fff;position:absolute;top:31px;right:-1px;z-index:1000;display:none;}
+.max130:hover .helplist{display:block;}
+.shopcone{width:278px;height:70px;padding-top:11px;border-bottom:1px dashed #E5E5E5;}
+.shopcone dl{width:215px;}
+.shopcone dt{height:33px;}
+.shopcone dd{height:28px;line-height:28px;}
+.shopcone dd a{display:block;width:68px;height:26px;line-height:26px;border:1px solid #E4E4E4;border-radius:4px;background:url(http://img.yoybuy.com/V6/Common/deletebg.png) repeat-x;}
+.shopcone dd a:hover{background:url(http://img.yoybuy.com/V6/Common/deletebgho.png) repeat-x;}
+.itemore{height:30px;line-height:30px;border-bottom:1px dashed #E5E5E5;}
+.headerM{height:90px;background-color:#eee;position:relative;}
+.topbanner,.topbanimg{width:100%;height:90px;}
+.headerMcz{width:100%;position:absolute;top:0;left:0;z-index:10;}
+.topbanclo{display:block;width:16px;height:16px;background:url(http://img.yoybuy.com/V6/Common/topbanclo.png) no-repeat;position:absolute;top:10px;right:0;z-index:10;}
+.topbanclo:hover{background:url(http://img.yoybuy.com/V6/Common/topbancloho.png) no-repeat;}
+.headereal{width:100%;height:84px;}
+.inlogo{width:272px;height:84px;margin-right:18px;}
+.inlogo a{display:block;width:272px;height:84px;background:url(http://img.yoybuy.com/V6/Common/logo.png) no-repeat;text-indent:-9999px;}
+.homesear{width:540px;}
+.headerB{height:60px;background-color:#FF6C10;}
+.inlinka{display:block;height:58px;line-height:58px;font-size:18px;color:#fff;padding:0 20px;border-bottom:2px solid #FF6C10;}
+.marr7{margin-right:7px;}
+.mar28{margin-top:28px;}
+.inlinka:hover,.inlinka.current,.navlink:hover .inlinka{border-bottom:2px solid #E14900;background-color:#FB6009;}
+.navlink{position:relative;z-index:100;}
+.navmenu{width:100%;background-color:#fff;box-shadow:0 2px 1px 0 #DCDBDC;position:absolute;top:60px;left:0;z-index:1000;display:none;}
+.navmenu ul{padding:8px 0 12px 0;border:1px solid #EDEDED;border-top:none;}
+.navlink:hover .navmenu{display:block;}
+.navmenu li{height:28px;line-height:28px;}
+.navmenu li a{display:block;padding-left:30px;}
+.horegister{position:relative;z-index:90;}
+.horegister p{width:138px;height:23px;line-height:23px;padding:4px 0 0 22px;background:url(http://img.yoybuy.com/V6/Common/coupon.png) no-repeat;text-align:center;cursor:default;position:absolute;top:25px;left:-61px;z-index:900;}
+.tous{display:block;margin-top:12px;width:246px;height:26px;line-height:26px;padding:5px 0 5px 7px;background:url(http://img.yoybuy.com/V6/Common/tousbg.png) repeat-x;border-radius:18px 18px 18px 18px;color:#f60;font-size:15px;}
+.tous span{display:block;width:220px;text-align:center;}
+.tous:hover{background:url(http://img.yoybuy.com/V6/Common/tousbgho.png) repeat-x;}
+/*header end*/
+

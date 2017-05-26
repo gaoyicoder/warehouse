@@ -1,0 +1,94 @@
+@charset "utf-8";
+/* CSS Document */
+.inbanner{width:100%;height:640px;min-width:1230px;position:relative;}
+.banlist,.banimg{width:100%;height:640px;}
+.indexturn,.indexturnR{display:block;width:90px;height:90px;position:absolute;top:275px;z-index:10;}
+.indexturn{left:10px;background:url(http://img.yoybuy.com/V6/Home/turnL.png) no-repeat;}
+.indexturn:hover{background:url(http://img.yoybuy.com/V6/Home/turnLho.png) no-repeat;}
+.indexturnR{right:10px;background:url(http://img.yoybuy.com/V6/Home/turnR.png) no-repeat;}
+.indexturnR:hover{background:url(http://img.yoybuy.com/V6/Home/turnRho.png) no-repeat;}
+.indexnum{width:100%;height:23px;position:absolute;bottom:60px;left:0;z-index:10;}
+.indexnum a{display:block;width:24px;height:23px;border-radius:50%;background:url(http://img.yoybuy.com/V6/Home/indexnum.png) no-repeat;}
+.indexnum a:hover,.indexnum a.current{background:url(http://img.yoybuy.com/V6/Home/indexnumho.png) no-repeat;}
+.ymode{width:100%;height:795px;background-color:#F6F6F6;min-width:1230px;}
+.inchoose{width:1230px;height:20px;border-bottom:1px solid #999;}
+.inchoose p{width:335px;height:40px;line-height:40px;background-color:#F6F6F6;position:absolute;top:0;left:447px;z-index:10;}
+.modedl dl{width:246px;}
+.mar45{margin-top:45px;}
+.hometab{border:1px solid #E5E5E5;}
+.hometab td{border-bottom:1px solid #E5E5E5;}
+.homemore{position:absolute;top:22px;right:20px;z-index:10;}
+.marr70{margin-right:70px;}
+.homebut{display:block;height:34px;line-height:36px;border:1px solid #333;}
+.homebut:hover{border:1px solid #f60;color:#f60;}
+.mar55{margin-top:55px;}
+.homelogo1{display:block;width:65px;height:26px;background:url(http://img.yoybuy.com/V6/Home/homelogo.png) no-repeat 0 0;}
+.homelogo1:hover{background:url(http://img.yoybuy.com/V6/Home/homelogoho.png) no-repeat 0 0;}
+.homelogo2{display:block;width:131px;height:26px;background:url(http://img.yoybuy.com/V6/Home/homelogo.png) no-repeat -65px 0;}
+.homelogo2:hover{background:url(http://img.yoybuy.com/V6/Home/homelogoho.png) no-repeat -65px 0;}
+.homelogo3{display:block;width:168px;height:26px;background:url(http://img.yoybuy.com/V6/Home/homelogo.png) no-repeat -196px 0;}
+.homelogo3:hover{background:url(http://img.yoybuy.com/V6/Home/homelogoho.png) no-repeat -196px 0;}
+.homelogo4{display:block;width:69px;height:26px;background:url(http://img.yoybuy.com/V6/Home/homelogo.png) no-repeat 0 -26px;}
+.homelogo4:hover{background:url(http://img.yoybuy.com/V6/Home/homelogoho.png) no-repeat 0 -26px;}
+.homelogo5{display:block;width:36px;height:36px;background:url(http://img.yoybuy.com/V6/Home/homelogo.png) no-repeat -69px -26px;}
+.homelogo5:hover{background:url(http://img.yoybuy.com/V6/Home/homelogoho.png) no-repeat -69px -26px;}
+.homelogo6{display:block;width:69px;height:26px;background:url(http://img.yoybuy.com/V6/Home/homelogo.png) no-repeat -105px -26px;}
+.homelogo6:hover{background:url(http://img.yoybuy.com/V6/Home/homelogoho.png) no-repeat -105px -26px;}
+.homelogo7{display:block;width:172px;height:26px;background:url(http://img.yoybuy.com/V6/Home/homelogo.png) no-repeat -174px -26px;}
+.homelogo7:hover{background:url(http://img.yoybuy.com/V6/Home/homelogoho.png) no-repeat -174px -26px;}
+.marr50{margin-right:50px;}
+.mar65{margin-top:65px;}
+.homehot{width:100%;padding-bottom:70px;background-color:#fff;min-width:1230px;}
+.mar35{margin-top:35px;}
+.hotstit,.hotstits{width:320px;height:51px;padding-right:15px;position:absolute;top:0;left:447px;z-index:10;font-size:30px;}
+.hotstit{background:url(http://img.yoybuy.com/V6/Home/hotstitbg.png) no-repeat #fff right center;}
+.marr15{margin-right:15px;}
+.homepro{padding:40px 1px 0 14px;}
+.homepro dl{width:230px;height:230px;margin-top:10px;margin-right:13px;position:relative;}
+.homepro dt{width:230px;height:230px;}
+.homepro dt a{display:block;width:230px;height:230px;background:url(http://img.yoybuy.com/V6/Common/product185.png) no-repeat center;}
+.homeprobg{width:230px;height:30px;background-color:#000;/*:rgba(0,0,0,0.50);*/opacity:0.50;filter:alpha(opacity=50);-moz-opacity:0.50;position:absolute;bottom:0;left:0;z-index:10;display:none;}
+.homeprocon{width:210px;height:30px;line-height:30px;color:#fff;padding:0 10px;position:absolute;bottom:0;left:0;z-index:20;display:none;}
+.homepro dl:hover .homeprobg,.homepro dl:hover .homeprocon{display:block;}
+.mar50{margin-top:50px;}
+.homefeed{width:100%;padding-bottom:70px;background-color:#F6F6F6;min-width:1230px;}
+.hotstits{background:url(http://img.yoybuy.com/V6/Home/hotstitbg.png) no-repeat #F6F6F6 right center;}
+.hofeedcon{width:560px;margin-right:36px;min-height: 170px;}
+.feedwords{line-height:140%;height:68px;}
+.mar40{margin-top:40px;}
+.homelast{padding:0 1px;}
+.homelast dl{width:307px;}
+.homelast dt{height:35px;line-height:35px;font-size:26px;}
+.font22{font-size:22px;}
+.font30{font-size:30px;}
+.marr28{margin-right:28px;}
+/*Home.html end*/
+.appeardiv{width:35px;height:435px;background-color:#1b1b1b;position:fixed;bottom:20px;right:0;z-index:1000;_position:absolute;_right:auto;_left:expression(eval(document.documentElement.scrollLeft+document.documentElement.clientWidth-this.offsetWidth)-(parseInt(this.currentStyle.marginLeft, 10)||0)-(parseInt(this.currentStyle.marginRight, 10)||20));_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop, 10)||20)-(parseInt(this.currentStyle.marginBottom, 10)||20)));}
+* html .appeardiv{position:absolute;right:expression(eval(document.documentElement.scrollRight+5));top:expression(eval(document.documentElement.scrollTop+150));width:35px;height:435px;background-color:#1b1b1b;}
+.appearcon{width:35px;height:410px;padding-top:25px;}
+.appearT{height:375px;}
+.appart{width:35px;height:35px;position:relative;z-index:100;}
+.appeara,.apptotop{display:block;width:35px;height:35px;}
+.appart:hover .appeara{background:url(http://img.yoybuy.com/V6/Home/appearbg.png) no-repeat #FF630C left center;}
+.appearoth{display:block;width:132px;height:35px;line-height:35px;text-align:center;color:#fff;background-color:#434343;position:absolute;top:0;right:35px;z-index:1000;display:none;}
+.appart:hover .appearoth{display:block;}
+.appearline{width:21px;height:1px;background-color:#434343;margin:0 auto;margin-top:4px;margin-bottom:4px;}
+.apptotop:hover,.shopcarcn:hover{background-color:#FF630C;}
+.shopcarcn{display:block;width:35px;padding:7px 0;text-align:center;color:#f5f5f5;}
+.shopcarcn p{width:21px;padding:0 7px;}
+.marl8{margin-left:8px;}
+/*end*/
+.hovering{width:100%;height:70px;min-width:1230px;position:fixed;top:0;left:0;z-index:1000;_position:absolute;_right:auto;_left:expression(eval(document.documentElement.scrollLeft+document.documentElement.clientWidth-this.offsetWidth)-(parseInt(this.currentStyle.marginLeft, 10)||0)-(parseInt(this.currentStyle.marginRight, 10)||20));_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop, 10)||20)-(parseInt(this.currentStyle.marginBottom, 10)||20)));}
+* html .hovering{position:absolute;right:expression(eval(document.documentElement.scrollRight+5));top:expression(eval(document.documentElement.scrollTop+150));width:100%;height:70px;min-width:1230px;}
+.hovercon{width:100%;height:70px;position:relative;z-index:200;}
+.hoverp{width:100%;height:70px;background-color:#000;/*:rgba(0,0,0,0.50);*/opacity:0.50;filter:alpha(opacity=50);-moz-opacity:0.50;}
+.hovercont{width:100%;height:70px;position:absolute;top:0;left:0;z-index:2000;}
+.hotips{height:56px;padding-top:14px;position:relative;z-index:10;}
+.marr100{margin-right:100px;}
+.hovertip{height:42px;line-height:42px;color:#fff;}
+.hovertip a{color:#fff;}
+.hoverclo{display:block;width:10px;height:10px;background:url(http://img.yoybuy.com/V6/Home/close.png) no-repeat;position:absolute;top:10px;right:10px;z-index:100;}
+.hoverclo:hover{background:url(http://img.yoybuy.com/V6/Home/closeho.png) no-repeat;}
+/*end*/
+#regOrSignOut,#facLogin,#username{position: relative;z-index: 3;}
+

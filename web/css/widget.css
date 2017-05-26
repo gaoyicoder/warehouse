@@ -1,0 +1,59 @@
+@charset "utf-8";
+/* CSS Document */
+.breadcrumb{height:50px;line-height:50px;}
+.padnum{padding:0 2px;}
+.allnum{width:96px;position:relative;}
+.allnum span{display:block;padding:0 4px;color:#fff;}
+/*breadcrumbs end*/
+.allsale{padding:6px 0 6px 2px;border-bottom:2px solid #333;font-weight:bold;}
+.borright{border-right:1px solid #ddd;}
+.onesadl a:hover,.onesadl a.present{text-decoration:none;color:#ff6600;}
+.onesadl dd,.onesadl li{margin-bottom:9px;padding-left:14px;position:relative;}
+.onesadl dd em,.onesadl li em{display:block;background:url(http://img.yoybuy.com/V6/Common/listbg.jpg) no-repeat;width:3px;height:3px;position:absolute;top:6px;left:4px;z-index:10;}
+/*all sale end*/
+.resulterror{border:1px dashed #FFA6AD;background-color:#FEF1F2;padding:14px 18px;}
+.resultip{border:1px dashed #FFD9AF;background-color:#FFFDED;padding:14px 18px;}
+/*tips end*/
+.recentcon{padding-top:30px;}
+.recentL,.recentR{display:block;width:15px;height:25px;margin-top:80px;}
+.recentL{background:url(http://img.yoybuy.com/V6/Common/turn.png) no-repeat 0 0;margin-right:14px;}
+.recentL:hover{background:url(http://img.yoybuy.com/V6/Common/turn.png) no-repeat 0 -25px;}
+.recentR{background:url(http://img.yoybuy.com/V6/Common/turn.png) no-repeat -15px 0;}
+.recentR:hover{background:url(http://img.yoybuy.com/V6/Common/turn.png) no-repeat -15px -25px;}
+.recentcont{width:1172px;}
+.recentconts{width:1172px;}
+.proshow{width:187px;}
+.proshow dt{width:187px;height:187px;}
+.product185{display:block;width:185px;height:185px;border:1px solid #E1E1E1;background:url(http://img.yoybuy.com/V6/Common/product185.png) no-repeat;}
+.product120{display:block;width:120px;height:120px;border:1px solid #E1E1E1;background:url(http://img.yoybuy.com/V6/Common/product120.png) no-repeat;}
+.product70{display:block;width:70px;height:70px;border:1px solid #E1E1E1;background:url(http://img.yoybuy.com/V6/Common/product70.png) no-repeat;}
+.product50{display:block;width:50px;height:50px;border:1px solid #E1E1E1;background:url(http://img.yoybuy.com/V6/Common/product50.png) no-repeat;}
+.person80{display:block;width:80px;height:80px;border:1px solid #E1E1E1;background:url(http://img.yoybuy.com/V6/Common/person80.png) no-repeat;}
+.person50{display:block;width:50px;height:50px;border:1px solid #E1E1E1;background:url(http://img.yoybuy.com/V6/Common/person50.png) no-repeat;}
+.recintro{height:31px;line-height:130%;}
+/*recent end*/
+.shipdoubt{width:15px;height:15px;position:relative;}
+.ark-poptip{box-shadow:2px 2px 5px rgba(9, 9, 9, 0.3);}
+.ark-poptip-container{position:relative;background-color:#EFF8FF;border:1px solid #83C3F5;zoom:1;}
+.ark-poptip-arrow,.ark-poptip-arrow em,.ark-poptip-arrow span{position:absolute;font-size:26px;font-style:normal;line-height:21px;z-index:10;*zoom:1;}
+.ark-poptip-arrow span{color:#EFF8FF;top:0;left:0;}
+/*doubt end*/
+.delete{display:block;width:17px;height:17px;background:url(http://img.yoybuy.com/V6/Common/delete.png) no-repeat;}
+.delete:hover{background:url(http://img.yoybuy.com/V6/Common/deleteho.png) no-repeat;}
+/*delete end*/
+.statuslistR{height:26px;border:1px solid #CCC;border-radius:2px;}
+.seek{display:block;width:13px;height:13px;padding:7px 11px 6px 10px;background-color:#F5F5F5;border-left:1px solid #ccc;}
+.seek:hover{background-color:#ededed;}
+.seek span{display:block;width:13px;height:13px;}
+/*search end*/
+.choosetip{position:relative;}
+.trackcons{border-top:1px solid #E1E1E1;padding:5px 15px 0 15px;}
+.trackcons ul{width:240px;}
+/*status end*/
+.linkage{width:320px;height:38px;position:relative;}
+.linkage ul{width:318px;border:1px solid #E2E2E2;background-color:#fff;position:absolute;top:37px;left:0;z-index:10;max-height:240px;overflow-y:auto;}
+.linkage ul li a{display:block;height:30px;line-height:30px;padding-left:10px;color:#333;overflow:hidden;zoom:1;}
+.linkage ul li a:hover{text-decoration:none;color:#333;background-color:#F1F1F1;}
+.pad10{padding-top:10px;}
+/*city end*/
+

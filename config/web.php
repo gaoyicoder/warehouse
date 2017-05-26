@@ -6,6 +6,18 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'defaultRoute' => 'index',
+    'layout' => 'main',
+    'on beforeRequest' => ['app\components\SiteInit', 'beforeRequest'],
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Admin',
+//            'defaultRoute' => 'index',
+        ],
+    ],
+    'aliases' => [
+        '@imagePath' => 'http://www.warehouse.com/images',
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -13,6 +25,17 @@ $config = [
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
+        ],
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'fileMap' => [
+                        'app' => 'app.php',
+                        'app/user' => 'user.php'
+                    ],
+                ],
+            ],
         ],
         'user' => [
             'identityClass' => 'app\models\User',
@@ -38,14 +61,15 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        /*
-        'urlManager' => [
+        'urlManager'=>array(
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'rules'=>array(
+            ),
+        ),
+        'securityTools' => [
+            'class' => 'app\components\SecurityTools',
         ],
-        */
     ],
     'params' => $params,
 ];
