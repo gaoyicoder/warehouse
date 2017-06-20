@@ -1,0 +1,94 @@
+/*user center*/
+/*.uc_section01{ width:978px; height:184px; display:block; border:#e1e1e1 solid 1px; border-bottom:none; overflow:hidden}
+.uc_section01 .left{ float:left; margin-left:17px;  margin-top:20px; width:435px;}
+.uc_section01 .left dt{ width:83px; height:83px; border:#e1e1e1 solid 1px; margin-right:20px; float:left;}
+.uc_section01 .left dd{ float:left;width: 330px; }
+.uc_section01 .left dd p{ margin:5px 0;float: left;}
+.uc_section01 .left dd p.uc_name{ font-size:20px;}
+.uc_section01 .left dd p.uc_dj em{ display:inline-block;float: left; zoom:1}
+.uc_section01 .left dd p em.ico_yhdj{width:15px; height:15px; margin-right:10px; display:inline-block; zoom:1; float:left;}
+.hr03{ width:0; height:155px; margin:14px 30px; border-left:#e1e1e1 solid 1px; float:left;}
+.uc_section01 .right{ float:left; width:445px; line-height:1.8em; margin-top:20px;}
+.uc_section01 .right p.tit{ font-size:14px; margin-bottom:11px; margin-top:7px;}
+.uc_section01 .right li a{ width:360px; color:#0f8aea; float:left;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-webkit-text-overflow:ellipsis;-o-text-overflow:ellipsis;}
+.uc_section01 .right li em{ float:right; color:#999;}
+.uc_section01 .left dd span.uc_djt{ float:right; position:relative; margin-left:25px; line-height:19px;}
+.uc_section01 .left dd span.uc_djt span{ float:left; margin-right:10px; background:url(http://img.yoybuy.com/20140808/ico_jdt.png) no-repeat 0 -19px; width:139px; height:19px; display:inline-block;}
+.uc_section01 .left dd span.uc_djt em.jdt01{ background:url(http://img.yoybuy.com/20140808/ico_jdt.png) no-repeat 0 0; height:19px; display:inline-block; position:absolute; left:0; top:0; width:139px; text-align:center;}
+.uc_section01 .left dd span.uc_djt em.jdt01 a{ background:url(http://img.yoybuy.com/20140808/ico_jdt.png) no-repeat; height:19px; display:inline-block; width:139px; overflow:hidden;border-radius: 0 9px 9px 0;text-decoration: none;}
+.uc_section01 .left dd span.uc_djt em.jdt01 em{ background: none;width: 100%;color: #999; display:inline-block }*/
+
+.uc_section01{width:944px;border:#e1e1e1 solid 1px;border-bottom:none;overflow:hidden;padding:14px 17px 12px 17px;}
+.uc_section01 .left{float:left;width:465px;padding-top:6px;border-right:1px solid #E1E1E1;}
+.uc_section01 .left .userico{display:block;width:83px;height:83px;border:#e1e1e1 solid 1px;margin-right:20px;float:left;background:url(../../Ru/../Cn/../En/images/pic_tx.png) no-repeat 0 0;}
+.uc_section01 .left ul{float:left;width:360px;}
+.gray{color:#999;}
+a.norcol{color:#333;}
+.font18{font-size:18px;}
+.mar10{margin-top:10px;}
+.mar15{margin-top:15px;}
+.mar20{margin-top:20px;}
+.marr3{margin-right:3px;}
+.marr5{margin-right:5px;}
+.marr10{margin-right:10px;}
+.marr20{margin-right:20px;}
+.flo{ float:left;}
+.ove{ overflow: hidden;zoom: 1;}
+.progress{display:block;width:119px;height:10px;border-radius:5px;background-color:#E7E7EF;}
+.progress em{display:block;height:10px;border-radius:5px 0 0 5px;background-color:#FC7D30;}
+.uc_section01 .right{float:left;width:450px;line-height:1.8em;padding:18px 0 0 28px;}
+.uc_section01 .right p.tit{font-size:14px;margin-bottom:11px;}
+.uc_section01 .right li a{ width:360px; color:#0f8aea; float:left;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-webkit-text-overflow:ellipsis;-o-text-overflow:ellipsis;}
+.uc_section01 .right li em{ float:right; color:#999;width:90px;text-align:right;}
+.uc_section01 .left dd span.uc_djt{ float:right; position:relative; margin-left:25px; line-height:19px;}
+.uc_section01 .left dd span.uc_djt span{ float:left; margin-right:10px; background:url(../../Ru/../Cn/../En/images/ico_jdt.png) no-repeat 0 -19px; width:139px; height:19px; display:inline-block;}
+.uc_section01 .left dd span.uc_djt em.jdt01{ background:url(../../Ru/../Cn/../En/images/ico_jdt.png) no-repeat 0 0; height:19px; display:inline-block; position:absolute; left:0; top:0; width:139px; text-align:right; overflow:hidden;}
+
+
+
+.uc_section02{ width:978px; height:295px; display:block; border:#e1e1e1 solid 1px; border-bottom:none; overflow:hidden;}
+.uc_section02 h3.tit{ width:938px; padding:0 20px; height:40px; line-height:40px; background:#fafafa; border-bottom:#e1e1e1 solid 1px; font-size:14px;}
+.uc_section02 h3.tit em{ background:url(http://img.yoybuy.com/20140808/ico_jiant012.png) no-repeat; width:11px; height:13px; display:inline-block; float:right; position:relative; top:14px; cursor:pointer; right:-5px;}
+.uc_section02 h3.tit em.jiantou02{ background-position:0 -13px;}
+.uc_section02 .left{height: 165px; width:456px; margin-left:16px; margin-top:45px; float:left;position: relative;}
+.uc_section02 .left dl{ width:100%; height:auto; display:inline-block; zoom:1; margin-bottom:25px;}
+.uc_section02 .left dl dt{ float:left; width:130px; color:#0f8aea; font-size:13px; margin-top:4px;}
+.uc_section02 .left dl dt a{ color:#0f8aea}
+.uc_section02 .left dl dd{ width:316px; float:left; margin-left:8px; line-height:1.8em;}
+.uc_section02 .left dl dd a{ display:inline-block; zoom:1; margin:2px 10px; color:#999}
+.uc_section02 .left dl dd a.strong{ color:#333;}
+.uc_section02 .left dl dd a.strong em{ color:#f60;}
+.hr04{ width:0; height:220px; margin:14px 10px; border-left:#e1e1e1 solid 1px; float:left;}
+
+
+
+.uc_section03{ width:978px; height:195px; display:block; border:#e1e1e1 solid 1px;}
+.uc_section03 h3.tit{ width:938px; padding:0 20px; height:40px; line-height:40px; background:#fafafa; border-bottom:#e1e1e1 solid 1px; font-size:14px;}
+.uc_section03 .left{ width:455px; margin-left:16px; margin-top:35px; float:left;}
+.uc_section03 .left p{ text-align:center; margin:15px 0;}
+.uc_section03 .left p strong{ font-size:14px; color:#0f8aea;}
+.uc_section03 .left p strong em{ color:#f60;}
+.uc_section03 .left p a{ padding:0 20px; font-weight:bold; font-size:13px; border-radius:4px; color:#0f8aea}
+.uc_section03 .hr04{ height:118px;}
+.uc_section03 .right{ margin-top:45px;}
+
+.uc_section04{ width:978px; height:220px; display:block; border:#e1e1e1 solid 1px; margin-top:15px;}
+.uc_section04 h3.tit{ width:938px; padding:0 20px; height:40px; line-height:40px; background:#fafafa; border-bottom:#e1e1e1 solid 1px; font-size:14px;}
+.uc_section04 h3.tit a{ float:right; color:#999;}
+.uc_section04 ul{ margin:21px 15px;}
+.uc_section04 ul li{ float:left; margin:0 10px;}
+.right_box{float: right;width: 980px;}
+.lodding {
+    background: url("http://img.yoybuy.com/20140808/loading.gif") no-repeat scroll center center rgba(0, 0, 0, 0);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.maic_box {
+    margin-bottom: 100px;
+    min-height: 1000px;
+    width: 100%;
+}
+

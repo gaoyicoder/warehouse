@@ -54,7 +54,7 @@
 .navmenu li{height:28px;line-height:28px;}
 .navmenu li a{display:block;padding-left:30px;}
 .horegister{position:relative;z-index:90;}
-.horegister p{width:138px;height:23px;line-height:23px;padding:4px 0 0 22px;background:url(../images/main/coupon.png) no-repeat;text-align:center;cursor:default;position:absolute;top:25px;left:-61px;z-index:900;}
+.horegister p{width:138px;height:23px;line-height:23px;padding:4px 0 0 22px;background:url(../../images/main/coupon.png) no-repeat;text-align:center;cursor:default;position:absolute;top:25px;left:-61px;z-index:900;}
 .tous{display:block;margin-top:12px;width:246px;height:26px;line-height:26px;padding:5px 0 5px 7px;background:url(http://img.yoybuy.com/V6/Common/tousbg.png) repeat-x;border-radius:18px 18px 18px 18px;color:#f60;font-size:15px;}
 .tous span{display:block;width:220px;text-align:center;}
 .tous:hover{background:url(http://img.yoybuy.com/V6/Common/tousbgho.png) repeat-x;}

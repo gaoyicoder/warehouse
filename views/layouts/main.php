@@ -127,19 +127,27 @@ yellowbut" style="width:130px;height:24px;line-height:24px;font-size:12px;font-w
             </div>
             <div id="regOrSignOut">
                 <img src="<?=Yii::getAlias('@imagePath'); ?>/main/topbg.png" width="1" height="14" class="floR marl10 mar8">
-                <div class="floR marl10 horegister">
-                    <a href="<?= BaseUrl::to(array('user/register'), true);?>" class="noline norcol height30" rel="nofollow"><?=Yii::t('app', 'Register') ?></a>
-                    <p class="clear ove"><?=Yii::t('app', '$10 for new register') ?></p>
-                </div>
+                <? if(Yii::$app->user->isGuest) {?>
+                    <div class="floR marl10 horegister">
+                        <a href="<?= BaseUrl::to(array('user/register'), true);?>" class="noline norcol height30" rel="nofollow"><?=Yii::t('app', 'Register') ?></a>
+                        <p class="clear ove"><?=Yii::t('app', '$10 for new register') ?></p>
+                    </div>
+                <? } else { ?>
+                    <a href="<?=BaseUrl::to(array('user/logout'), true) ?>" class="floR noline norcol height30 marl5" rel="nofollow"><?=Yii::t('app', 'Sign Out') ?></a>
+                <? } ?>
                 <img src="<?=Yii::getAlias('@imagePath'); ?>/main/topbg.png" width="1" height="14" class="floR marl10 mar8">
-                <a href="http://login.yoybuy.com/en/login" class="floR noline norcol height30 marl5" rel="nofollow">Sign In</a>
+                <? if(Yii::$app->user->isGuest) {?>
+                    <a href="<?=BaseUrl::to(array('user/login'), true) ?>" class="floR noline norcol height30 marl5" rel="nofollow"><?=Yii::t('app', 'Sign In') ?></a>
+                <? } else {?>
+                    <a href="<?=BaseUrl::to(array('member/index'), true) ?>" class="floR noline norcol height30 marl5" rel="nofollow"><?=Yii::t('app', 'Welcome, ') ?><?=Yii::$app->user->identity->userName ?></a>
+                <? } ?>
             </div>
             <p class="floR height30" id="username"></p>
         </div>
         <div class="clear ove headereal mar25">
             <div class="clear ove minwidth">
                 <h1 class="flo inlogo">
-                    <a href="http://www.yoybuy.com/en/">yoybuy.com</a>
+                    <a href="<?=BaseUrl::home(true);?>"></a>
                 </h1>
                 <div class="floR mar10 homesear">
                     <div class="clear ove homesearT">

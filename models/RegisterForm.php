@@ -35,6 +35,12 @@ class RegisterForm extends Model
         ];
     }
 
+    public function scenarios() {
+        return [
+            'default' => ['userName', 'email', 'password', 'passwordRepeat', 'countryID', 'code', 'invitationCode'],
+        ];
+    }
+
     /**
      * @return array customized attribute labels
      */
@@ -57,8 +63,22 @@ class RegisterForm extends Model
             $code = $captchaAction->getVerifyCode();
             $valid = $params['caseSensitive'] ? ($this->$attribute === $code) : strcasecmp($this->$attribute, $code) === 0;
             if (!$valid) {
-                $this->addError($attribute, 'Code Wrong.');
+                $this->addError($attribute, Yii::t('app/user','Code Wrong.'));
             }
         }
+    }
+
+    public function register($post) {
+        if($this->load($post)) {
+            if($this->validate()) {
+                $userModel = new User();
+                $userModel->setScenario(User::SCENARIO_REGISTER);
+                $userModel->load($post,'RegisterForm');
+                if ($userModel->save()) {
+                    return Yii::$app->user->login($userModel, 0);
+                }
+            }
+        }
+        return false;
     }
 }

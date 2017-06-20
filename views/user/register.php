@@ -12,7 +12,7 @@ use yii\helpers\BaseUrl;
 
 /* @var $this yii\web\View */
 $this->registerJsFile('@web/js/register.js',['depends'=>['app\assets\AppAsset']]);
-$this->registerCssFile('@web/css/register.css', ['depends'=>['app\assets\AppAsset']]);
+$this->registerCssFile('@web/css/user/register.css', ['depends'=>['app\assets\AppAsset']]);
 ?>
 <!--Content Start-->
 <div id="container">
@@ -32,7 +32,7 @@ $this->registerCssFile('@web/css/register.css', ['depends'=>['app\assets\AppAsse
                         {input}\n<em style=''>{error}</em>",
                     ],
                 ]); ?>
-                <ul class="login_input">
+                <ul class="login_input style_<?=Yii::$app->language?>">
                     <li>
                         <?= $form->field($model,'email',
                             [
@@ -84,11 +84,11 @@ $this->registerCssFile('@web/css/register.css', ['depends'=>['app\assets\AppAsse
                         ])->textInput(); ?>
                     </li>
                     <li>
-                        <?= Html::submitButton('Sign Up',['class'=>'login_btn']) ?>
+                        <?= Html::submitButton(Yii::t('app/user', 'Sign up'),['class'=>'login_btn']) ?>
                     </li>
                     <li class="rfp">
                         <p>
-                            <?=Yii::t('app/user', 'By creating an account, I accept Yoybuy’s <a href="{urlTerm}">Terms of Service</a>
+                            <?=Yii::t('app/user', 'By creating an account, I accept ChinaInAir’s <a href="{urlTerm}">Terms of Service</a>
                             and <a href="{urlPolicy}">Privacy Policy</a>.', ['urlTerm'=>BaseUrl::to(array('help/index','id'=>1), true), 'urlPolicy'=>BaseUrl::to(array('help/index','id'=>2), true)]) ?>
                         </p>
                         <p style="margin-top:5px;"><?=Yii::t('app/user', 'Sign up to receive the latest updates, promotions, and news from ChinaInAir.') ?></p>

@@ -25,7 +25,7 @@ class SecurityTools
      * @param $hash
      * @return bool whether the password is correct.
      */
-    public function passwordVerify($password, $hash) {
+    public function validatePassword($password, $hash) {
         $salt = "";
         $salt = $salt . substr($password, 0,1);
         $salt = $salt . substr($password, -1,1);

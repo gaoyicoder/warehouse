@@ -1,0 +1,10 @@
+body{background:#f2f2f2;}
+#header{background:#fff}
+.zccgy{ padding:60px 0;font-size:14px}
+.zccgyct{ width:1000px; margin:0 auto; text-align:center; color:#666; background:#fff; padding:50px 0;}
+.icn-cg{ margin:0 auto 25px}
+.gxnn{font-size:18px;padding-bottom:26px; border-bottom:1px solid #e6e6e6; margin:0 100px 30px;}
+.clrorg{color:#ff6b0f;}
+.begnow{ display:block; width:300px; height:45px; line-height:45px;color:#fff; background:#ff6b0f; margin:30px auto 40px; font-size:16px; font-weight:bold; text-decoration:none; border-radius:6px;}
+.begnow:hover{ background:#ff8615; text-decoration:none;}
+.jmp{ color:#999; font-size:12px;}

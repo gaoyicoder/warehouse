@@ -19,6 +19,8 @@ use yii\web\IdentityInterface;
  * @property string $loginIP
  * @property string $emailActivate
  * @property string $status
+ * @property string $authKey;
+ *
  */
 
 class User extends ActiveRecord implements IdentityInterface
@@ -27,14 +29,13 @@ class User extends ActiveRecord implements IdentityInterface
     const SCENARIO_REGISTER = 'register';
 
     public $password;
-
-    public $authKey;
     public $accessToken;
 
     public function scenarios()
     {
         return [
-            self::SCENARIO_REGISTER => ['userName', 'email', 'password', 'countryID', 'countryName', 'invitationCode', 'registerTime', 'emailActivate', 'status'],
+            self::SCENARIO_REGISTER => ['userName', 'email', 'password', 'countryID', 'countryName', 'invitationCode', 'registerTime', 'emailActivate', 'status', 'authKey'],
+            self::SCENARIO_LOGIN => ['loginTime', 'loginIP'],
         ];
     }
 
@@ -43,7 +44,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-
+        return static::findOne($id);
     }
 
     /**
@@ -51,7 +52,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-
+        throw new yii\base\NotSupportedException("'findIdentityByAccessToken' is not implemented.");
     }
 
     /**
@@ -59,7 +60,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getId()
     {
-
+        return $this->getPrimaryKey();
     }
 
     /**
@@ -67,7 +68,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getAuthKey()
     {
-
+        return $this->authKey;
     }
 
     /**
@@ -75,7 +76,12 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function validateAuthKey($authKey)
     {
+        return $this->getAuthKey() === $authKey;
+    }
 
+    public function setAuthKey()
+    {
+        $this->authKey = Yii::$app->security->generateRandomString();
     }
 
     public function beforeSave($insert) {
@@ -85,8 +91,12 @@ class User extends ActiveRecord implements IdentityInterface
                 $this->setPassword($this->password);
                 $this->setCountryName($this->countryID);
                 $this->setRegisterTime();
+                $this->setAuthKey();
                 $this->emailActivate = 0;
                 $this->status = 1;
+            } else {
+                $this->setLoginTime();
+                $this->setLoginIP();
             }
             return true;
 
@@ -106,5 +116,22 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function setRegisterTime() {
         $this->registerTime = Yii::$app->securityTools->getCurrentTime("Y-m-d H:i:s");
+    }
+
+    public function setLoginTime() {
+        $this->loginTime = Yii::$app->securityTools->getCurrentTime("Y-m-d H:i:s");
+    }
+
+    public function setLoginIP() {
+        $this->loginIP = Yii::$app->request->getUserIP();
+    }
+
+    public static function findByEmail($email) {
+        $user = self::findOne(['email' => $email]);
+        return $user;
+    }
+
+    public function validatePassword($password) {
+        return Yii::$app->securityTools->validatePassword($password, $this->passwordHash);
     }
 }

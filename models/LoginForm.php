@@ -1,68 +1,75 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: gaoyi
+ * Date: 4/20/17
+ * Time: 4:21 PM
+ */
 
 namespace app\models;
 
-use Yii;
+use app\components\CaptchaAction;
+use yii;
 use yii\base\Model;
 
-/**
- * LoginForm is the model behind the login form.
- *
- * @property User|null $user This property is read-only.
- *
- */
 class LoginForm extends Model
 {
-    public $username;
+    public $email;
     public $password;
-    public $rememberMe = true;
+    public $code;
+    public $rememberMe = "0";
 
     private $_user = false;
 
-
-    /**
-     * @return array the validation rules.
-     */
     public function rules()
     {
         return [
-            // username and password are both required
-            [['username', 'password'], 'required'],
-            // rememberMe must be a boolean value
-            ['rememberMe', 'boolean'],
-            // password is validated by validatePassword()
+            [['email', 'password', 'code'], 'required'],
+            ['email', 'email'],
+            ['code', 'codeVerify', 'params' => ['caseSensitive' => false]],
             ['password', 'validatePassword'],
         ];
     }
 
-    /**
-     * Validates the password.
-     * This method serves as the inline validation for password.
-     *
-     * @param string $attribute the attribute currently being validated
-     * @param array $params the additional name-value pairs given in the rule
-     */
-    public function validatePassword($attribute, $params)
-    {
-        if (!$this->hasErrors()) {
-            $user = $this->getUser();
+    public function scenarios() {
+        return [
+            'default' => ['email', 'password', 'code', 'rememberMe'],
+        ];
+    }
 
-            if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+    /**
+     * @return array customized attribute labels
+     */
+    public function attributeLabels()
+    {
+        return [
+            'email' => Yii::t('app/user', 'Email'),
+            'password' => Yii::t('app/user', 'Password'),
+            'code' => Yii::t('app/user', 'Code'),
+            'rememberMe' => Yii::t('app/user', 'Remember Me'),
+        ];
+    }
+
+    public function codeVerify($attribute, $params) {
+        $captchaAction = new CaptchaAction('captcha', Yii::$app->controller);
+        if($this->$attribute) {
+            $code = $captchaAction->getVerifyCode();
+            $valid = $params['caseSensitive'] ? ($this->$attribute === $code) : strcasecmp($this->$attribute, $code) === 0;
+            if (!$valid) {
+                $this->addError($attribute, Yii::t('app/user','Code Wrong.'));
             }
         }
     }
 
-    /**
-     * Logs in a user using the provided username and password.
-     * @return bool whether the user is logged in successfully
-     */
-    public function login()
-    {
-        if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
+    public function validatePassword($attribute, $params) {
+        if (!$this->hasErrors()) {
+            $user = $this->getUser();
+
+            if (!$user || !$user->validatePassword($this->password)) {
+                $this->addError($attribute, Yii::t('app/user','Incorrect username or password.'));
+            }
         }
-        return false;
+
     }
 
     /**
@@ -73,9 +80,22 @@ class LoginForm extends Model
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->username);
+            $this->_user = User::findByEmail($this->email);
         }
 
         return $this->_user;
+    }
+
+    public function login($post) {
+        if($this->load($post)) {
+            if($this->validate()) {
+                $userModel = $this->getUser();
+                $userModel->setScenario(User::SCENARIO_LOGIN);
+                if ($userModel->save()) {
+                    return Yii::$app->user->login($this->getUser(), $this->rememberMe=="1" ? 3600*24*30 : 0);
+                }
+            }
+        }
+        return false;
     }
 }

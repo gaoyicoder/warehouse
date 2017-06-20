@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 
-$this->registerCssFile('@web/css/home.css', ['depends'=>['app\assets\AppAsset']]);
+$this->registerCssFile('@web/css/index/home.css', ['depends'=>['app\assets\AppAsset']]);
 ?>
 <!--Content Start-->
 <div class="clear">
