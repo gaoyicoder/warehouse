@@ -1,0 +1,165 @@
+.hr01
+{
+    width: 100%;
+    height: 0;
+    border-bottom: #e2e2e2 dashed 2px;
+    margin: 40px 0;
+}
+
+.admi_section01
+{
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    margin-top: 56px;
+}
+
+.admi_section01 .add_link a.btn
+{
+    display: inline-block;
+    height: 56px;
+    background: #fd8529;
+    width: 178px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 56px;
+    color: #fff;
+    font-weight: bold;
+    float: right;
+}
+
+.admi_section01 .add_link a.btn em
+{
+    background: url(http://img.yoybuy.com/20140808/ico_cart02.png) no-repeat 0 0;
+    width: 34px;
+    height: 27px;
+    display: inline-block;
+    text-indent: -9999px;
+    position: relative;
+    top: 5px;
+    margin-right: 10px;
+}
+
+.admi_section01 .add_link a.btn:hover
+{
+    text-decoration: none;
+}
+
+.admi_section01 .add_link
+{
+    width: 1210px;
+    height: 58px;
+    padding: 10px;
+    background: #f1f5f6;
+}
+
+.admi_section01 .add_link .link_input
+{
+    width: 987px;
+    height: 46px;
+    border: #cccccc solid 1px;
+    float: left;
+    padding: 5px 10px;
+    font-size: 16px;
+    color: #888;
+}
+
+.admi_section01 .mag_text
+{
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 1.6em;
+    color: #666;
+}
+
+.admi_section01 .mag_text p.tit strong
+{
+    background: url(http://img.yoybuy.com/20140808/ico_xdp.png) no-repeat left center;
+    padding-left: 25px;
+    height: 25px;
+    display: inline-block;
+    line-height: 25px;
+    font-size: 14px;
+    color: #333;
+}
+
+.admi_section01 .link_error
+{
+    width: 1210px;
+    margin-left: 10px;
+    color: #cc0033;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.load
+{
+    width: 100%;
+    height: 100%;
+    background: url(http://img.yoybuy.com/20140808/loading.gif) no-repeat center;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.loadadd
+{
+    width: 1230px;
+    height: 100px;
+    position: static;
+}
+
+.loadadd p
+{
+    text-align: center;
+    margin-top: 30px;
+}
+.admi_section01 {
+    margin-top: 0;
+}
+
+.stps {
+    margin: 30px 0 40px;
+    border-bottom: 1px solid #d9d9d9;
+    height: 30px;
+}
+
+.stps li {
+    float: left;
+    width: 20%;
+    text-align: center;
+    line-height: 24px;
+    font-size: 14px;
+    position: relative;
+    height: 30px;
+}
+
+.stps li span {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #cccccc;
+    margin-right: 10px;
+    color: #fff;
+}
+
+.stps .actv span {
+    background: #ff6c10;
+}
+
+.stps li em {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #ff6c10;
+    left: 0;
+    bottom: -1px;
+    display: none;
+}
+
+.stps .actv em {
+    display: block;
+}

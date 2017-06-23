@@ -37,6 +37,22 @@ $(function () {
         jump(toUrl);
     });
 
+    $("#sumbiturl").click(function () {
+        var verified = false;
+        var itemUrl = $("#taobaourl").val();
+        $(".main_url_rules").each(function() {
+            var rule = new RegExp($(this).val(),'i');
+            if(rule.test(itemUrl)) {
+                verified = true;
+            }
+        });
+        if (verified) {
+            jump($('#MainAddItemUrl').val()+"?url="+encodeURI(itemUrl));
+        } else {
+            MessageBox.showAlertMessageBoxWarn(630, 260, $('#MainMsgContent').val(), $('#MainMsgBtn').val(), "");
+        }
+    });
+
 });
 
 function jump(url) {

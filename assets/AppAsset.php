@@ -22,9 +22,12 @@ class AppAsset extends AssetBundle
         'css/main/global.css',
         'css/main/footer.css',
         'css/main/widget.css',
+        'css/main/colorbox.css',
+        'css/main/colorbox.messagebox.css'
     ];
     public $js = [
-        'js/main.js'
+        'js/jquery.colorbox.js',
+        'js/jquery.colorbox.messagebox.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

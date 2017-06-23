@@ -10,12 +10,11 @@ use yii\helpers\BaseUrl;
 
 AppAsset::register($this);
 
+$this->title = Yii::t('app', 'Chinese Buying Agent Help Buy from China and Ship World Widely | ChinaInAir Taobao Agent');
+$this->registerMetaTag(['name' => 'keywords', 'content' => Yii::t('app','China buying agent, 1688 agent, how to Buy from Tao bao, buy from China, taobao english version, taobao shopping service, taobao usa, taobao uk, alibaba 1688 online shopping')]);
 
-$this->title = 'Chinese Buying Agent Help Buy from China and Ship World Widely | ChinaInAir Taobao Agent';
-$this->registerMetaTag(['name' => 'keywords', 'content' => 'China buying agent, 1688 agent, how to Buy from Tao bao, buy from China, taobao english version, taobao shopping service, taobao usa, taobao uk, alibaba 1688 online shopping']);
-
-$this->registerMetaTag(['name' => 'description', 'content' => 'ChinaInAir - Taobao english version helps non-chinese customers easily buy from China and deliver products with our fast international shipping service world widely. | China buying agent']);
-
+$this->registerMetaTag(['name' => 'description', 'content' => Yii::t('app','ChinaInAir - Taobao english version helps non-chinese customers easily buy from China and deliver products with our fast international shipping service world widely. | China buying agent')]);
+$this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -151,8 +150,14 @@ yellowbut" style="width:130px;height:24px;line-height:24px;font-size:12px;font-w
                 </h1>
                 <div class="floR mar10 homesear">
                     <div class="clear ove homesearT">
-                        <input id="taobaourl" type="text" placeholder="Please enter item URL here..." class="flo font14 arial" style="width:400px;height:30px;line-height:30px;border:3px solid #FF6C10;border-right:none;border-radius:0;">
-                        <a class="flo yellowbut" style="width:127px;height:42px;line-height:42px;font-size:20px;border-radius:0;font-weight:normal;" id="sumbiturl">Buy Now</a>
+                        <input id="taobaourl" type="text" placeholder="<?=Yii::t('app', 'Please enter Taobao URL here')?>" class="flo font14 arial" style="width:400px;height:30px;line-height:30px;border:3px solid #FF6C10;border-right:none;border-radius:0;">
+                        <input id="MainAddItemUrl" type="hidden" value="<?=BaseUrl::to(array("member/add-item"))?>" />
+                        <?php foreach(Yii::$app->params['urlRules'] as $rule) { ?>
+                            <input class="main_url_rules" type="hidden" value="<?=$rule ?>">
+                        <?php } ?>
+                        <input id="MainMsgContent" type="hidden" value="<?=Yii::t('app','* Error website address, please check it!')?>" />
+                        <input id="MainMsgBtn" type="hidden" value="<?=Yii::t('app','OK')?>" />
+                        <a class="flo yellowbut" style="width:127px;height:42px;line-height:42px;font-size:20px;border-radius:0;font-weight:normal;" id="sumbiturl"><?=Yii::t('app', 'Buy Now')?></a>
                     </div>
                     <p class="clear ove height30 font14">
                         <a onclick="redirectStoreUrl(&#39;http://www.taobao.com/&#39;, &#39;Taobao&#39;)" class="noline norcol orangea marr5">Taobao</a>

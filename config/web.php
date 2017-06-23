@@ -32,7 +32,8 @@ $config = [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'fileMap' => [
                         'app' => 'app.php',
-                        'app/user' => 'user.php'
+                        'app/user' => 'user.php',
+                        'app/member' => 'member.php',
                     ],
                 ],
             ],

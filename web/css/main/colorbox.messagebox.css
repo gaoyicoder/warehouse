@@ -1,0 +1,20 @@
+#cboxOverlay {
+    background: #fff;
+}
+
+#cboxContent {
+    margin-top: 0px;
+}
+
+#cboxClose {
+    display: none;
+}
+
+#alertMessageBox {
+    width: 580px;
+    height: 200px;
+    margin-top: 20px;
+    margin-left: 20px;
+    position: absolute;
+    z-index: 9999;
+}
