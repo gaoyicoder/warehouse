@@ -1,0 +1,436 @@
+.hr01
+{
+    width: 100%;
+    height: 0;
+    border-bottom: #e2e2e2 dashed 2px;
+    margin: 40px 0;
+}
+
+.admi_section01
+{
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    margin-top: 56px;
+}
+
+.admi_section01 .add_link a.btn
+{
+    display: inline-block;
+    height: 56px;
+    background: #fd8529;
+    width: 178px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 56px;
+    color: #fff;
+    font-weight: bold;
+    float: right;
+}
+
+.admi_section01 .add_link a.btn em
+{
+    background: url(http://img.yoybuy.com/20140808/ico_cart02.png) no-repeat 0 0;
+    width: 34px;
+    height: 27px;
+    display: inline-block;
+    text-indent: -9999px;
+    position: relative;
+    top: 5px;
+    margin-right: 10px;
+}
+
+.admi_section01 .add_link a.btn:hover
+{
+    text-decoration: none;
+}
+
+.admi_section01 .add_link
+{
+    width: 1210px;
+    height: 58px;
+    padding: 10px;
+    background: #f1f5f6;
+}
+
+.admi_section01 .add_link .link_input
+{
+    width: 987px;
+    height: 46px;
+    border: #cccccc solid 1px;
+    float: left;
+    padding: 5px 10px;
+    font-size: 16px;
+    color: #888;
+}
+
+.admi_section01 .mag_text
+{
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 1.6em;
+    color: #666;
+}
+
+.admi_section01 .mag_text p.tit strong
+{
+    background: url(http://img.yoybuy.com/20140808/ico_xdp.png) no-repeat left center;
+    padding-left: 25px;
+    height: 25px;
+    display: inline-block;
+    line-height: 25px;
+    font-size: 14px;
+    color: #333;
+}
+
+.admi_section01 .add_main
+{
+    width: 100%;
+    height: auto;
+    display: block;
+    background: #f1f5f6;
+    padding: 60px 0;
+    margin-top: 20px;
+}
+/*lyhä¿®æ”¹å¸ƒå±€*/
+.admi_section01 .add_main .left
+{
+    width: 800px;
+    float: right;
+    height: auto;
+}
+
+.admi_section01 .add_main .left ul
+{
+    width: 100%;
+    height: auto;
+    display: inline-block;
+}
+
+.admi_section01 .add_main .left ul li
+{
+    width: 100%;
+    display: inline-block;
+    min-height: 42px;
+}
+
+.admi_section01 .add_main .left li span
+{
+    width: 150px;
+    text-align: right;
+    float: left;
+    font-size: 14px;
+    margin-right: 10px;
+    line-height: 26px;
+}
+
+.admi_section01 .add_main .left ul li em.fh
+{
+    float: left;
+    margin-right: 10px;
+    line-height: 26px;
+}
+
+.admi_section01 .add_main .left ul li input[type="text"]
+{
+    border: #b7b7b7 solid 1px;
+    margin-right: 10px;
+    box-shadow: #e3e3e3 0 1px 2px inset;
+    float: left;
+    padding: 2px 5px;
+    height: 24px;
+    font-size: 13px;
+    line-height: 24px;
+}
+
+.admi_section01 .add_main .left ul li .img_box
+{
+    width: auto;
+    float: left;
+    margin-bottom: 12px;
+}
+
+.admi_section01 .add_main .left ul li .img_box a{ width:27px; height:27px; float:left; margin-right:8px; padding:2px; border:#dcdcdc solid 1px; position:relative; display:inline-block; background:#fff;}
+.admi_section01 .add_main .left ul li .img_box a:hover{ border:#ff8000 solid 2px; text-decoration:none;margin: -1px 2px;}
+.admi_section01 .add_main .left ul li .img_box a.no_active:hover{ border:#dcdcdc solid 1px;padding:2px; margin-left:0; margin-top:0; cursor:auto;}
+.admi_section01 .add_main .left ul li .img_box a.active{ border:#ff8000 solid 2px; margin-left:-1px; margin-top:-1px; margin-right:7px;}
+.admi_section01 .add_main .left ul li .img_box a.no_active em.mark{ position:absolute; left:0; top:0; display:inline-block; width:100%; height:100%; background:#fff;opacity:0.7;filter:alpha(opacity=70)}
+.admi_section01 .add_main .left ul li .img_box a.active em.ico_dg{ background:url(../images/ico_zzdg.png) no-repeat 0 0; width:14px; height:14px; position:absolute; right:-7px; bottom:-7px; display:inline-block;}
+.admi_section01 .add_main .left ul li .cp_type a{ width:auto; text-decoration:none; color:#666; height:23px; line-height:23px; margin: 0 3px; padding:0 10px; border:#dcdcdc solid 1px; position:relative; display:inline-block; background:#fff;}
+.admi_section01 .add_main .left ul li .cp_type a:first-child{ margin-left:0;}
+.admi_section01 .add_main .left ul li .cp_type a em.mark{ position:absolute; left:0; top:0; display:inline-block; width:100%; height:100%; background:#fff;opacity:0.7;filter:alpha(opacity=70)}
+.admi_section01 .add_main .left ul li .cp_type a.no_active:hover{border:#dcdcdc solid 1px; padding:0 10px; margin-left:0; margin-top:0; cursor:auto;}
+
+
+.admi_section01 .add_main .left ul li input[type="button"]
+{
+    background: #bfbfbf;
+    border: 0;
+    color: #fff;
+    width: 20px;
+    cursor: pointer;
+    height: 20px;
+    float: left;
+    margin-right: 5px;
+    margin-top: 4px;
+}
+
+.admi_section01 .add_main .left ul li input[type="button"]:hover
+{
+    background: #ccc;
+}
+
+.admi_section01 .add_main .left ul li .text_com
+{
+    width: 590px;
+    height: 80px;
+    padding: 2px 5px;
+    float: left;
+    resize: none;
+    border: #b7b7b7 solid 1px;
+    box-shadow: #e3e3e3 0 1px 2px inset;
+    color: #999;
+}
+
+.admi_section01 .add_main .left ul li p.mag
+{
+    width: 600px;
+    float: left;
+    margin-left: 160px;
+    margin-top: 5px;
+    color: #888;
+}
+
+.admi_section01 .add_main .left .ami_btn
+{
+    display: block;
+    margin-left: 160px;
+}
+
+.admi_section01 .add_main .left .ami_btn a
+{
+    display: inline-block;
+    height: #48px;
+    border-radius: 4px;
+    line-height: 48px;
+    text-align: center;
+    padding: 0 12px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.admi_section01 .add_main .left .ami_btn a:hover
+{
+    text-decoration: none;
+}
+
+.admi_section01 .add_main .left .ami_btn a.btn01
+{
+    background: #fd8529;
+    color: #fff;
+}
+
+.admi_section01 .add_main .left .ami_btn a.btn01 em.ico_cart
+{
+    background: url(http://img.yoybuy.com/20140808/ico_cart03.png) no-repeat 0 0;
+    width: 30px;
+    height: 26px;
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin-right: 10px;
+}
+
+.admi_section01 .add_main .left .ami_btn a.btn02
+{
+    background: #d3d3d3;
+    color: #666666;
+    margin-left: 25px;
+}
+
+/*lyhä¿®æ”¹å¸ƒå±€*/
+.admi_section01 .add_main .right
+{
+    float: left;
+}
+
+.admi_section01 .add_main .right .img_big
+{
+    width: 372px;
+    height: 372px;
+    margin-right: 40px;
+    display: inline-block;
+    border: #cecece solid 1px;
+    background: #fff;
+}
+
+.admi_section01 .add_main .right .img_big span
+{
+    width: 360px;
+    height: 360px;
+    display: inline-block;
+    margin: 6px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.admi_section01 .add_main .right .img_big span img
+{
+    vertical-align: middle;
+    *margin-top: -1px;
+}
+
+.admi_section01 .add_main .right .img_big span em.thmb_v
+{
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.admi_section01 .add_main .left ul li span.mag_error
+{
+    width: 600px;
+    display: inline-block;
+    line-height: 14px;
+    height: 14px;
+    color: #cc0033;
+    margin-left: 160px;
+    text-align: left;
+    font-size: 12px;
+}
+
+.admi_section01 .link_error
+{
+    width: 1210px;
+    margin-left: 10px;
+    color: #cc0033;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.load
+{
+    width: 100%;
+    height: 100%;
+    background: url(http://img.yoybuy.com/20140808/loading.gif) no-repeat center;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.loadadd
+{
+    width: 1230px;
+    height: 100px;
+    position: static;
+}
+
+.loadadd p
+{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.prodetail{padding-top: 40px;}
+.protit{height:37px;border-bottom:1px solid #f60;}
+.protit a{display:block;/*width:150px;*/ padding: 0 10px;height:37px;line-height:37px;border:1px solid #D9D9D9;border-bottom:none;text-align:center;border-top-left-radius:4px;border-top-right-radius:4px;font-weight:bold;font-size:14px;}
+.protit a:hover,.protit a.current{border:1px solid #f60;border-bottom:none;background-color:#f60;color:#fff;}
+.prosubtit{height:27px;line-height:27px;background-color:#F6F6F6;padding:0 15px 0 15px;}
+.protype{padding: 20px 0 20px 15px;background-color: #F1F5F6;}
+.norton li{height: 25px;line-height: 25px;}
+.nortond{background: url(http://img.yoybuy.com/V6/Product/nortonbg.png) no-repeat left center;padding-left: 20px;}
+.paymentp a{display:block;float:left;margin-right:6px;width:45px;height:27px;border:1px solid #E2E2E2;background-color:#fff;}
+
+/*商品详情*/
+.describeproduct{margin-bottom: 20px;padding: 10px;border-bottom: solid 1px #eee;padding-bottom: 15px;}
+.attributes-list{padding: 0 15px;overflow:hidden;}
+.attributes-list li{display: inline;float:left;width: 260px;height: 24px;line-height: 24px;margin-right: 35px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size: 14px;color: #333;font-weight: bold;}
+.prodetail table img{display:inline-block;}
+.prodetail table{margin-left:0!important;}
+
+
+
+/*最近修改*/
+.goodsboxs{overflow:hidden}
+#goodsinfodiv{float:left;width: 948px;}
+.admi_section01 .addurlcont{margin-top: 0;padding: 0;background: none}
+.addurlft{width: 930px;border: 1px solid #e6e6e6;overflow: hidden;padding:8px;padding-bottom: 15px;}
+.admi_section01 .addurlft .right{float: left;}
+.admi_section01 .addurlft .left{float: right;width: 600px;padding:15px 0;background: #f1f5f6;}
+.admi_section01 .addurlft .left li span{width: 122px;}
+.admi_section01 .addurlft .left ul li input[type="text"]{}
+.admi_section01 .addurlft .left ul li p.mag{margin-left: 132px;width: 454px;}
+.admi_section01 .addurlft .left ul li .img_box{width: 460px;margin-bottom:0}
+.admi_section01 .addurlft .left ul li .text_com{width: 442px;}
+.admi_section01 .addurlcont .right .img_big{width: 100%;border: 0;margin: 0;}
+.admi_section01 .addurlcont .right .img_big span{width: 100%;margin: 0;}
+.imglist{width: 322px; background: url(http://img.yoybuy.com/V6/Common/product185.png) no-repeat center;}
+.tb-s310, .tb-s310 a{width: 320px;height: 320px;}
+.imglistT img{margin:0 auto}
+.tb-s310, .tb-s310 img{max-height: 320px;max-width: 320px;}
+.imglistB{margin-top: 10px;height: 64px;padding: 0 1px}
+.imglistB a{width: 56px;height: 56px;background: url(http://img.yoybuy.com/v6/Home/imgbgnew.png) no-repeat;margin-right:5px; padding: 6px 2px 2px 2px;}
+.imglistB a:last-child{margin-right: 0;}
+.imglistB a.hoverimg{background: url(http://img.yoybuy.com/v6/Home/imgbgnew.png) no-repeat -60px 0;}
+.imglistB a img{max-width: 56px;max-height: 56px;margin:0 auto}
+.admi_section01 .add_main .left ul li{min-height: 27px;margin-bottom:8px}
+.dplink{line-height: 26px;text-decoration: underline;}
+.admi_section01 .add_main .left .ami_btn{margin-left: 132px;height: 48px;}
+.admi_section01 .add_main .left .ami_btn a.btn01{background: #ff6200;}
+.prodetail{padding-top: 40px;}
+.imgdivcell{width: 56px;height: 56px;display: table-cell;vertical-align: middle;}
+
+
+
+
+.shopcrt{width: 255px;float: right;background: #fff;}
+.shopcrt h6{font-size: 18px;color: #fff;text-align: center;background:url(http://img.yoybuy.com/v6/Home/cartbg.jpg) no-repeat;background-color: #ff8133;height: 45px;line-height: 45px;}
+.shptit{display: block;height: 30px;line-height: 30px;padding-left: 10px;background: #ebebeb;font-size: 14px; overflow:hidden;}
+.shptit em{ float:right; margin-right:10px; color:#ff6200; font-size:12px;}
+.totlprc{height: 32px;line-height: 32px;border-top: 1px solid #e6e6e6;text-align:right;font-size: 14px;padding-right: 16px;}
+.totlprc span{color: #ff6c10}
+.chekot{display: block;width: 215px;height: 38px;line-height: 38px;font-size: 16px;font-weight: bold;color: #fff;text-align: center;margin: 0 auto;background: #ff6200;border-radius: 5px;}
+.chekot:hover{text-decoration: none;background: #FF6C10}
+.spcrtul li{padding: 15px 10px 15px 0;overflow: hidden;border-bottom: 1px solid #e6e6e6;margin-left: 10px; position:relative;}
+.grydiv{border: 1px solid #ebebeb;padding-bottom: 15px;}
+.spctht{height: 335px;overflow-x: hidden;overflow-y: auto;}
+.prodcta{float: left;border:1px solid #dddddd;}
+.prodcta img{width: 60px;height: 60px;}
+.closeX{ position:absolute; top:20px; right:10px; width:10px; height:10px; background:url(http://img.yoybuy.com/v6/Home/closeX.png) no-repeat; cursor:pointer; display:none;}
+.spcrtul li:hover .closeX{ display:block}
+.protms{ padding-left:70px;}
+.addtjbtn{ overflow:hidden; text-align:center}
+.addtjbtn span{ float:left; width:18px;border:1px solid #d9d9d9;height:18px; line-height:18px; color:#595959; cursor:pointer}
+.addtjbtn .btnmins{ border-right:0;}
+.addtjbtn .btnplus{ border-left:0}
+.addtjbtn .btnmins1{ color:#ccc}
+.addtjbtn input{ float:left;width:30px; border-color:#d9d9d9;border-radius: 0;padding: 0 5px; height:18px;color:#333;text-align: center;}
+.col999{ color:#999}
+.limitwd{ white-space:nowrap; overflow:hidden;text-overflow: ellipsis; padding-right:20px; margin-bottom:5px}
+.prcjg{color:#ff6200; float:right; line-height: 20px;color: #666;}
+.cartBox-box{ margin-top:120px; padding:72px 20px 0;background: url('https://www.superbuy.com/cn/source/img/buy/bg_cartBox_box.png') top no-repeat;text-align: center;color: #999;}
+
+
+/*imagezoom 放大镜效果样式*/
+img{vertical-align:top;border:0;}
+
+/* box */
+.tb-pic a{display:table-cell;text-align:center;vertical-align:middle;}
+.tb-pic a img{vertical-align:middle;}
+.tb-pic a{*display:block;*font-family:Arial;*line-height:1;}
+.tb-thumb{margin:10px 0 0;overflow:hidden;}
+.tb-thumb li{background:none repeat scroll 0 0 transparent;float:left;height:42px;margin:0 6px 0 0;overflow:hidden;padding:1px;}
+.tb-s310, .tb-s310 a{height:320px;width:320px;}
+.tb-s310, .tb-s310 img {max-height: 320px; max-width: 320px;}
+.tb-s310 a{*font-size:271px;}
+.tb-s40 a{*font-size:35px;}
+.tb-s40, .tb-s40 a{height:40px;width:40px;}
+.tb-booth{border:1px solid #CDCDCD;position:relative;z-index:1;}
+.tb-thumb .tb-selected{background:none repeat scroll 0 0 #C30008;height:40px;padding:2px;}
+.tb-thumb .tb-selected div{background-color:#FFFFFF;border:medium none;}
+.tb-thumb li div{border:1px solid #CDCDCD;}
+.zoomDiv{z-index:999;position:absolute;top:0px;left:0px;width:200px;height:200px;background:#ffffff;border:1px solid #CCCCCC;display:none;text-align:center;overflow:hidden;}
+.zoomMask{position:absolute;background:url("http://demo.lanrenzhijia.com/2015/jqzoom0225/images/mask.png") repeat scroll 0 0 transparent;cursor:move;z-index:1; width:150px!important;height:150px!important}
+/*imagezoom*/

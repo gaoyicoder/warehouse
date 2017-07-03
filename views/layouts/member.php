@@ -85,28 +85,6 @@ orangea">Submit a ticket</a></dd>
                 </dl>
             </div>
 
-            <script>
-                var shineCount= 100;
-                function shine(id) {
-                    var m = shineCount % 2;
-                    shineCount--;
-                    if (shineCount < 0) {
-                        shineCount = 100;
-                    }
-                    var c = "#000";
-                    switch (m) {
-                        case 0:
-                            c = "#f60";
-                            break;
-                        case 1:
-                            c = "#333";
-                            break;
-                    }
-                    document.getElementById(id).style.color = c;
-                };
-                setInterval("shine('myshareNav')",300);
-            </script>
-
             <input id="buyformeservice_message" type="hidden" value="0">
             <input id="onesteporder_message" type="hidden" value="0">
             <?= $content ?>

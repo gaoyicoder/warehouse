@@ -319,125 +319,6 @@ radius: 0;">
 
                     please input the correct one.</p>
                 <p class="clear ove mar8">Sign up to receive the latest updates, promotions, and news from YOYBUY.</p>
-                <script type="text/javascript">
-                    var spreaddefultlang = 'en';
-
-                    function spreadNoFormSubmit(lan) {
-                        spreadClearMsg();
-                        if (lan != null) {
-                            spreaddefultlang = lan;
-                        }
-                        if (spreadCheckMail()) {
-                            spreadAjaxSubmit();
-                        }
-                    }
-
-                    function spreadCheckMail() {
-                        var x = $("#txtSpreadEmail").val();
-                        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-                        if (filter.test(x)) {
-                            return true;
-                        }
-                        else {
-                            spreadShowErrorMsg(GetLangString('emailVerifiedMsg', spreaddefultlang));
-                            return false;
-                        }
-                    }
-
-                    function spreadAjaxSubmit() {
-                        var dataPara = spreadGetFormJson();
-
-                        $.ajax({
-                            async: false,
-                            url: 'http://subscriber.reasonablespread.com/SubscribeFormAsyn.aspx',
-                            type: 'get',
-                            dataType: "jsonp",
-                            data: dataPara,
-                            jsonp: "callbackparam",
-                            jsonpCallback: "success_jsonpCallback",
-                            success: spreadAjaxCallback//,
-                            //error: spreadShowMsg('Subscribe to the failure, please try again', 'red')
-                        });
-                    }
-
-                    function spreadGetFormJson() {
-                        var a = $("#SpreadfrmSample").contents().find("input").serialize();
-                        return a;
-                    }
-
-                    function spreadAjaxCallback(data) {
-                        if (data.isSuccess == "False") {
-                            //spreadShowErrorMsg(GetLangString('failMsg', spreaddefultlang));
-                        } else {
-                            spreadShowSuccessMsg(GetLangString('successMsg', spreaddefultlang));
-                        }
-                    }
-
-                    function spreadShowErrorMsg(msg) {
-                        $('#spreadShowErrorMsg').html(msg).show();
-                    }
-
-                    function spreadShowSuccessMsg(msg) {
-                        $('#spreadShowSuccessMsg').html(msg).show();
-                    }
-
-                    function spreadClearMsg() {
-                        $('#spreadShowErrorMsg').hide();
-                        $('#spreadShowSuccessMsg').hide();
-                    }
-
-                    function GetLangString(mark, lang) {
-                        var result = '';
-                        if (mark == 'successMsg') {
-                            if (lang == 'zh-cn') {
-                                result = '邮件订阅成功！感谢您的订阅！';
-                            }
-                            else if (lang == 'ru') {
-                                result = 'Подписка оформлена успешно.';
-                            }
-                            else if (lang == 'es') {
-                                result = 'Te has suscrito correctamente.';
-                            }
-                            else {
-                                result = 'You’ve subscribed successfully.';
-                            }
-                        }
-                        else if (mark == 'failMsg') {
-                            if (lang == 'zh-cn') {
-                                result = '订阅失败，请重试！';
-                            }
-                            else if (lang == 'ru') {
-                                result = '感謝您的訂閱！';
-                            }
-                            else if (lang == 'es') {
-                                result = '感謝您的訂閱！';
-                            }
-                            else {
-                                result = 'Subscribe to the failure, please try again!';
-                            }
-                        }
-                        else if (mark == 'emailVerifiedMsg') {
-                            if (lang == 'zh-cn') {
-                                result = '邮箱格式有误，请重新输入。';
-                            }
-                            else if (lang == 'ru') {
-                                result = 'Неправильный формат электронной почты, пожалуйста, введите корректные данные.';
-                            }
-                            else if (lang == 'es') {
-                                result = 'Formato de email erróneo, por favor introduzca uno correcto.';
-                            }
-                            else {
-                                result = 'Wrong email format. Please input a correct one.';
-                            }
-                        }
-
-                        return result;
-                    }
-
-                </script>
-
-
-
             </div>
         </div>
         <div class="foot02">
@@ -543,6 +424,61 @@ radius: 0;">
         </div>
     </div>
 </div>
+<script>
+    $(function () {
+        $("#langSelectedItem").click(function (e) {
+            e ? e.stopPropagation() : event.cancelBubble = true;
+        });
+
+        $("#langSelectedItem").click(function () {
+            if ($("#langSelectItems").css("display") == "none") {
+                $("#langSelectItems").show();
+            } else {
+                $("#langSelectItems").hide();
+            }
+        });
+
+        $("#langSelectedItem1").click(function (e) {
+            e ? e.stopPropagation() : event.cancelBubble = true;
+        });
+
+        $("#langSelectedItem1").click(function () {
+            if ($("#langSelectItems").css("display") == "none") {
+                $("#langSelectItems").show();
+            } else {
+                $("#langSelectItems").hide();
+            }
+
+        });
+
+        $(document).click(function () {
+            $("#langSelectItems").hide();
+        });
+
+        $("#langSelectItems > li").click(function() {
+            var obj = $(this);
+            var toUrl = obj.attr('toUrl');
+            jump(toUrl);
+        });
+
+        $("#sumbiturl").click(function () {
+            var verified = false;
+            var itemUrl = $("#taobaourl").val();
+            $(".main_url_rules").each(function() {
+                var rule = new RegExp($(this).val(),'i');
+                if(rule.test(itemUrl)) {
+                    verified = true;
+                }
+            });
+            if (verified) {
+                jump($('#MainAddItemUrl').val()+"?url="+encodeURIComponent(itemUrl));
+            } else {
+                MessageBox.showAlertMessageBoxWarn(630, 260, $('#MainMsgContent').val(), $('#MainMsgBtn').val(), "");
+            }
+        });
+
+    });
+</script>
 <?php $this->endBody() ?>
 </body></html>
 <?php $this->endPage() ?>

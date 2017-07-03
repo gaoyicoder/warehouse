@@ -11,7 +11,6 @@ use yii\helpers\Html;
 use yii\helpers\BaseUrl;
 
 /* @var $this yii\web\View */
-$this->registerJsFile('@web/js/register.js',['depends'=>['app\assets\AppAsset']]);
 $this->registerCssFile('@web/css/user/register.css', ['depends'=>['app\assets\AppAsset']]);
 ?>
 <!--Content Start-->
@@ -104,4 +103,41 @@ $this->registerCssFile('@web/css/user/register.css', ['depends'=>['app\assets\Ap
     </div>
     <!-- //content -->
 </div>
+<script>
+    $(function() {
+        $(document).click(function () {
+            $("#country").find("dd").hide();
+        });
+        $("#country").find("dt").click(function (e) {
+            var obj = $("#country").find("dd");
+            if (obj.is(":visible")) {
+                obj.hide();
+            } else {
+                obj.show();
+
+            }
+            e.preventDefault();
+            return false;
+        });
+
+        $("#country").find("a").bind({
+            'click': function (event) {
+                var countryName = $.trim($(this).html());
+                var countryId = $.trim($(this).attr("data-countryId"));
+                $("#country").children().eq(0).children().eq(0).html(countryName);
+                if(countryId == 0) {
+                    $("#registerform-countryid").val('');
+                } else {
+                    $("#registerform-countryid").val(countryId);
+                }
+
+                var $form = $('#register-form');
+                $form.yiiActiveForm("validateAttribute", "registerform-countryid");
+                $("#country").find("dd").hide();
+                event.stopPropagation();
+            }
+        });
+
+    });
+</script>
 <!--Content End-->

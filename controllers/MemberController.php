@@ -8,7 +8,7 @@
 
 namespace app\controllers;
 
-use Yii;
+use yii;
 use yii\web\Controller;
 
 class MemberController extends Controller
@@ -25,4 +25,20 @@ class MemberController extends Controller
         return $this->render('addUrl',['urlRules' => $urlRules, 'urlExamples' => $urlExamples]);
     }
 
+    public function actionAddItem() {
+        $request = \Yii::$app->getRequest();
+        $url = $request->get('url');
+        $this->layout='main';
+        return $this->render('addItem', ['urlAddress' => $url]);
+    }
+
+    public function actionGetGoods() {
+        $request = \Yii::$app->getRequest();
+        $url = $request->get('goodsUrl');
+
+        $data = Yii::$app->taoBaoManager->resolverGoods($url);
+        mb_convert_encoding($data, 'UTF-8', 'GBK');
+        echo $data;
+//        return $this->asJson(array('result'=> true, 'data' => $data));
+    }
 }

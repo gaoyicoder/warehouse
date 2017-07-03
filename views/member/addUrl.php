@@ -9,7 +9,6 @@
 /* @var $urlExamples array*/
 use yii\helpers\BaseUrl;
 
-$this->registerJsFile('@web/js/memberAddUrl.js',['depends'=>['app\assets\AppAsset']]);
 $this->registerCssFile('@web/css/member/addUrl.css', ['depends'=>['app\assets\AppAsset']]);
 ?>
 <!--Content Start-->
@@ -46,4 +45,25 @@ $this->registerCssFile('@web/css/member/addUrl.css', ['depends'=>['app\assets\Ap
     </div>
     <!-- //content -->
 </div>
+<script>
+    $(function(){
+
+        $('#SumbitUrlBtn').click(function(){
+            var verified = false;
+            var itemUrl = $("#ItemUrl").val().trim();
+            $(".url_rules").each(function() {
+                var rule = new RegExp($(this).val(),'i');
+                if(rule.test(itemUrl)) {
+                    verified = true;
+                }
+            });
+            if (verified) {
+                location.href = $('#AddItemUrl').val()+"?url="+encodeURIComponent(itemUrl);
+            } else {
+                $('#ItemUrlInputErrorMsg').html($('#MsgContent').val());
+                $('#ItemUrlInputErrorMsg').show();
+            }
+        });
+    });
+</script>
 <!--Content End-->

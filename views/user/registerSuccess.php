@@ -26,4 +26,22 @@ $this->registerJsFile('@web/js/registerSuccess.js',['depends'=>['app\assets\AppA
         </div>
     </div>
 </div>
+<script>
+    $(function(){
+        var timeCount = 5;
+        jumpToHome(timeCount);
+
+    });
+
+    function jumpToHome(timeCount) {
+        $("#countdown").html(timeCount);
+        timeCount = timeCount -1;
+        if (timeCount > 0) {
+            setTimeout("jumpToHome("+timeCount+")",1000);
+        } else {
+            location.href = $('.begnow').attr('href');
+        }
+
+    }
+</script>
 <!--Content End-->

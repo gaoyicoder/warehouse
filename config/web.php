@@ -19,6 +19,13 @@ $config = [
         '@imagePath' => 'http://www.warehouse.com/images',
     ],
     'components' => [
+        'assetManager'=>[
+            'bundles'=>[
+                'yii\web\JqueryAsset'=>[
+                    'jsOptions'=>['position'=>\yii\web\View::POS_HEAD],
+                ],
+            ],
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'xjXo38cA3JjEqh4JVSF75JoA6B23j4uv',
@@ -72,6 +79,9 @@ $config = [
         'securityTools' => [
             'class' => 'app\components\SecurityTools',
         ],
+        'taoBaoManager'=> array(
+            'class' => 'app\components\TaoBaoManager',
+        ),
     ],
     'params' => $params,
 ];

@@ -28,6 +28,7 @@ class AppAsset extends AssetBundle
     public $js = [
         'js/jquery.colorbox.js',
         'js/jquery.colorbox.messagebox.js',
+        'js/main.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
