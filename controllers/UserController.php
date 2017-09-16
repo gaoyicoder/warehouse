@@ -1,6 +1,7 @@
 <?php
 
 namespace app\controllers;
+use app\models\Cart;
 use app\models\RegisterForm;
 use app\models\LoginForm;
 use yii\web\Controller;
@@ -123,6 +124,8 @@ class UserController extends Controller
         $request = \Yii::$app->getRequest();
         if ($request->isPost) {
             if($model->login($request->post())){
+                $cartModel = new Cart();
+                $cartModel->updateCartToLoginUser();
                 return $this->redirect(['member/index']);
             }
         }

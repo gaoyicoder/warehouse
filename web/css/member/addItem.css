@@ -152,16 +152,14 @@
     margin-bottom: 12px;
 }
 
-.admi_section01 .add_main .left ul li .img_box a{ width:27px; height:27px; float:left; margin-right:8px; padding:2px; border:#dcdcdc solid 1px; position:relative; display:inline-block; background:#fff;}
-.admi_section01 .add_main .left ul li .img_box a:hover{ border:#ff8000 solid 2px; text-decoration:none;margin: -1px 2px;}
-.admi_section01 .add_main .left ul li .img_box a.no_active:hover{ border:#dcdcdc solid 1px;padding:2px; margin-left:0; margin-top:0; cursor:auto;}
-.admi_section01 .add_main .left ul li .img_box a.active{ border:#ff8000 solid 2px; margin-left:-1px; margin-top:-1px; margin-right:7px;}
+.admi_section01 .add_main .left ul li .img_box a{ width:27px; height:27px; float:left; border:#dcdcdc solid 1px; position:relative; display:inline-block; background:#fff;}
+.admi_section01 .add_main .left ul li .img_box a:hover{ border:#ff8000 solid 2px; margin: 1px 2px 4px 2px; text-decoration:none;}
+.admi_section01 .add_main .left ul li .img_box a.no_active:hover{ border:#dcdcdc solid 1px; cursor:auto; margin: 2px 3px 5px 3px;}
+.admi_section01 .add_main .left ul li .img_box a.active{ border:#ff8000 solid 2px; margin: 1px 2px 4px 2px;}
 .admi_section01 .add_main .left ul li .img_box a.no_active em.mark{ position:absolute; left:0; top:0; display:inline-block; width:100%; height:100%; background:#fff;opacity:0.7;filter:alpha(opacity=70)}
-.admi_section01 .add_main .left ul li .img_box a.active em.ico_dg{ background:url(../images/ico_zzdg.png) no-repeat 0 0; width:14px; height:14px; position:absolute; right:-7px; bottom:-7px; display:inline-block;}
-.admi_section01 .add_main .left ul li .cp_type a{ width:auto; text-decoration:none; color:#666; height:23px; line-height:23px; margin: 0 3px; padding:0 10px; border:#dcdcdc solid 1px; position:relative; display:inline-block; background:#fff;}
-.admi_section01 .add_main .left ul li .cp_type a:first-child{ margin-left:0;}
+.admi_section01 .add_main .left ul li .cp_type a{ width:auto; text-decoration:none; color:#666; height:23px; line-height:23px; margin: 2px 3px 5px 3px; padding:0 10px; border:#dcdcdc solid 1px; position:relative; display:inline-block; background:#fff;}
 .admi_section01 .add_main .left ul li .cp_type a em.mark{ position:absolute; left:0; top:0; display:inline-block; width:100%; height:100%; background:#fff;opacity:0.7;filter:alpha(opacity=70)}
-.admi_section01 .add_main .left ul li .cp_type a.no_active:hover{border:#dcdcdc solid 1px; padding:0 10px; margin-left:0; margin-top:0; cursor:auto;}
+.admi_section01 .add_main .left ul li .cp_type a.no_active:hover{border:#dcdcdc solid 1px; padding:0 10px; cursor:auto;}
 
 
 .admi_section01 .add_main .left ul li input[type="button"]
@@ -381,8 +379,8 @@
 .admi_section01 .add_main .left .ami_btn a.btn01{background: #ff6200;}
 .prodetail{padding-top: 40px;}
 .imgdivcell{width: 56px;height: 56px;display: table-cell;vertical-align: middle;}
-
-
+#delivery_fee div label{cursor:pointer; margin: 0 7px 0 2px;}
+#delivery_fee div input, #delivery_fee div label{ vertical-align: middle;}
 
 
 .shopcrt{width: 255px;float: right;background: #fff;}
@@ -412,6 +410,8 @@
 .prcjg{color:#ff6200; float:right; line-height: 20px;color: #666;}
 .cartBox-box{ margin-top:120px; padding:72px 20px 0;background: url('https://www.superbuy.com/cn/source/img/buy/bg_cartBox_box.png') top no-repeat;text-align: center;color: #999;}
 
+.BuyYesUlLoad{ height:60px;background:url(http://img.yoybuy.com/20140808/loading.gif) no-repeat center;background-color: #fff;border-bottom: dashed 1px #e6e6e6; display:none}
+#msg-box{ position:absolute; top:8px; left:340px; height:60px; width:60px;border:1px solid #dddddd;z-index:10;display:none}
 
 /*imagezoom 放大镜效果样式*/
 img{vertical-align:top;border:0;}
@@ -434,3 +434,66 @@ img{vertical-align:top;border:0;}
 .zoomDiv{z-index:999;position:absolute;top:0px;left:0px;width:200px;height:200px;background:#ffffff;border:1px solid #CCCCCC;display:none;text-align:center;overflow:hidden;}
 .zoomMask{position:absolute;background:url("http://demo.lanrenzhijia.com/2015/jqzoom0225/images/mask.png") repeat scroll 0 0 transparent;cursor:move;z-index:1; width:150px!important;height:150px!important}
 /*imagezoom*/
+
+/*script template*/
+ .admi_section01 .add_main .left .ami_btn a.cancl-btn {
+     float: right;
+     margin-right: 40px;
+     background: #e5e5e5;
+     color: #999;
+ }
+
+.favorite {
+    width: 28px;
+    height: 48px;
+    background: #e5e5e5;
+    border: 0;
+    min-width: 26px;
+    margin-top: -1px;
+    position: relative;
+}
+
+.favorite em {
+    display: block;
+    width: 26px;
+    height: 22px;
+    margin-top: 13px;
+    background: url(http://img.yoybuy.com/V6/ShoppingCart/lovesc.jpg) no-repeat;
+}
+
+.favsuccess em {
+    background: url(http://img.yoybuy.com/V6/ShoppingCart/lovescw.jpg) no-repeat;
+}
+
+.favtips {
+    position: absolute;
+    bottom: -35px;
+    left: 30px;
+    font-size: 12px;
+    color: #333;
+    background: #fff;
+    padding: 0 10px;
+    border: 1px solid #eeeeee;
+    white-space: nowrap;
+    height: 24px;
+    line-height: 24px;
+    font-weight: normal;
+    display: none;
+}
+
+.favtips i {
+    position: absolute;
+    left: 17px;
+    top: -5px;
+    width: 10px;
+    height: 5px;
+    background: url(http://img.yoybuy.com/V6/ShoppingCart/sanj-1.jpg) no-repeat;
+}
+
+.favorite:hover .favtips {
+    display: block;
+}
+
+.favsuccess:hover .favtips {
+    display: none;
+}

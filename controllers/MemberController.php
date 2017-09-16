@@ -8,8 +8,10 @@
 
 namespace app\controllers;
 
+use app\models\CartForm;
 use yii;
 use yii\web\Controller;
+use app\models\Cart;
 
 class MemberController extends Controller
 {
@@ -34,11 +36,50 @@ class MemberController extends Controller
 
     public function actionGetGoods() {
         $request = \Yii::$app->getRequest();
-        $url = $request->get('goodsUrl');
+        $url = $request->post('goodsUrl');
+        $result = false;
+        $data = [];
+        if($url) {
+            foreach(Yii::$app->params['urlRules'] as $urlRule) {
 
-        $data = Yii::$app->taoBaoManager->resolverGoods($url);
-        mb_convert_encoding($data, 'UTF-8', 'GBK');
-        echo $data;
-//        return $this->asJson(array('result'=> true, 'data' => $data));
+                if(preg_match('/'.addcslashes($urlRule, '/').'/', $url, $match )) {
+                    $data = [];
+                    $result = Yii::$app->taoBaoManager->resolverGoods($url, $data);
+                    break;
+                }
+            }
+        }
+        return $this->asJson(array('result'=> $result, 'data' => $data));
+    }
+
+    public function actionAddCart() {
+        $result = false;
+        $data = [];
+        $model = new Cart();
+
+        $request = \Yii::$app->getRequest();
+        if ($request->isPost) {
+            if($model->addCart($request->post())){
+                $result = true;
+            }
+        }
+        return $this->asJson(array('result'=> $result, 'data' => $data));
+    }
+
+    public function actionGetCartList() {
+        $result = false;
+        $data = [];
+        $cartList = Cart::getCartList();
+
+        if ($cartList) {
+            $result = true;
+            $data = $cartList;
+        }
+        return $this->asJson(array('result'=> $result, 'data' => $data));
+    }
+
+    public function actionDeleteCartItem() {
+        $result = Cart::deleteCartByPost();
+        return $this->asJson(array('result'=> $result));
     }
 }

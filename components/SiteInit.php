@@ -9,6 +9,7 @@
 namespace app\components;
 
 
+use app\models\Cart;
 use yii\base\Object;
 use yii;
 use yii\web\Cookie;
@@ -16,6 +17,11 @@ use yii\web\Cookie;
 class SiteInit extends Object
 {
     static public function beforeRequest() {
+        self::changeLan();
+        self::getCart();
+    }
+
+    static public function changeLan() {
         $cookiesGet = Yii::$app->request->cookies;
         if (!$cookiesGet->has('language') || !array_key_exists($cookiesGet->get('language')->__toString(), Yii::$app->params['availableLanguage'])){
             $cookiesSet = Yii::$app->response->cookies;
@@ -31,6 +37,10 @@ class SiteInit extends Object
             Yii::$app->view->params['userLanguage'] = $lan;
             Yii::$app->language = Yii::$app->params['availableLanguage'][$lan][0];
         }
+    }
 
+    static public function getCart() {
+        $cartList = Cart::getCartList();
+        Yii::$app->view->params['cartList']['count'] = count($cartList);
     }
 }

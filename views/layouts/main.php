@@ -36,6 +36,143 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
 </head>
 <body>
 <?php $this->beginBody() ?>
+<script type="text/javascript">
+    var USDRate = <?=Yii::$app->params['usdRate'];?>;
+    var currentCartList = 0;
+
+    $(function () {
+        Head.languageFun();
+        Head.submitUrlFun();
+        Head.cartMoveFun();
+    });
+
+    var Head = {
+        languageFun: function() {
+            $("#langSelectedItem").click(function (e) {
+                e ? e.stopPropagation() : event.cancelBubble = true;
+            });
+
+            $("#langSelectedItem").click(function () {
+                if ($("#langSelectItems").css("display") == "none") {
+                    $("#langSelectItems").show();
+                } else {
+                    $("#langSelectItems").hide();
+                }
+            });
+
+            $("#langSelectedItem1").click(function (e) {
+                e ? e.stopPropagation() : event.cancelBubble = true;
+            });
+
+            $("#langSelectedItem1").click(function () {
+                if ($("#langSelectItems").css("display") == "none") {
+                    $("#langSelectItems").show();
+                } else {
+                    $("#langSelectItems").hide();
+                }
+
+            });
+
+            $(document).click(function () {
+                $("#langSelectItems").hide();
+            });
+
+            $("#langSelectItems > li").click(function() {
+                var obj = $(this);
+                var toUrl = obj.attr('toUrl');
+                jump(toUrl);
+            });
+        },
+
+        submitUrlFun: function() {
+            $("#sumbiturl").click(function () {
+                var verified = false;
+                var itemUrl = $("#taobaourl").val();
+                $(".main_url_rules").each(function() {
+                    var rule = new RegExp($(this).val(),'i');
+                    if(rule.test(itemUrl)) {
+                        verified = true;
+                    }
+                });
+                if (verified) {
+                    jump($('#MainAddItemUrl').val()+"?url="+encodeURIComponent(itemUrl));
+                } else {
+                    MessageBox.showAlertMessageBoxWarn(630, 260, $('#MainMsgContent').val(), $('#MainMsgBtn').val(), "");
+                }
+            });
+        },
+
+        cartMoveFun: function() {
+            $(".carthover").mouseleave(function () {
+                $(".shoplist").hide();
+            }).mouseover(function () {
+                Head.getCartList();
+            });
+        },
+
+        getCartList: function() {
+            $(".shoplist:eq(0)").show();
+            if(currentCartList == 0) {
+                $.ajax({
+                    url: '<?= BaseUrl::to(array('member/get-cart-list'), true);?>',
+                    dataType: "json",
+                    cache: "false",
+                    success: function(data) {
+                        if (data.result == true) {
+                            var htmlValue = "";
+                            currentCartList = 1;
+                            for(var i = 0; i < data.data.length; i++) {
+                                if (i == 3) {
+                                    $("#ShopingCart").next().show();
+                                    break;
+                                };
+                                htmlValue += "<div class='clear ove shopcone'><a href='" + data.data[i].url + "' target='_blank' class='flo product50'><img src='https:" + data.data[i].photoUrl + "' width='50' height='50' /></a><dl class='floR'><dt class='clear ove'><a href='" + data.data[i].url + "' target='_blank' class='norcol' title='" + data.data[i].name + "'>" + data.data[i].name + "</a></dt><dd class='clear ove mar2'><em class='flo'>US<span class='orangetip'>$" + data.data[i].price + "</span> X " + data.data[i].amount + "</em><a class='floR centers norcol noline' onclick=\"Head.deleteCart(" + data.data[i].id + ",this)\" ><div class='mailtip'><img src='http://img.yoybuy.com/V6/Common/newdelete.png' width='14' height='15' class='flo mar5 marr4' /><span class='flo'>Delete</span></div></a></dd></dl></div>";
+                            }
+                            $("#ShopingCart").html(htmlValue);
+                            Head.showList(1);
+                        } else {
+                            currentCartList = 2;
+                            Head.showList(2);
+                        }
+                    },
+                    error: function() {
+                        currentCartList = 0;
+                        Head.showList(2);
+                    }
+                });
+            } else {
+                Head.showList(currentCartList);
+            }
+        },
+
+        showList: function(listNum) {
+            $(".shoplist").hide();
+            $(".shoplist:eq("+listNum+")").show();
+        },
+        deleteCart: function(cartId, obj) {
+            $.ajax({
+                url: '<?= BaseUrl::to(array('member/delete-cart-item'), true);?>',
+                cache: false,
+                type: 'POST',
+                dataType:"json",
+                data: { "cartId": cartId, "<?=Yii::$app->request->csrfParam?>": '<?=Yii::$app->request->getCsrfToken()?>'},
+                success: function (data) {
+                    if (data.result) {
+                        $(obj).parent().parent().parent().remove();
+                        var cartNum = $("#goodsNum").html().replace("(", "").replace(")", "");
+                        if (cartNum > 0) {
+                            cartNum = cartNum - 1;
+                        }
+                        $("#goodsNum").html("(" + cartNum + ")");
+                        if (cartNum == 0) {
+                            Head.showList(2);
+                        }
+                    }
+                }
+            });
+        }
+    };
+</script>
 <div id="wrap">
     <!-- header start-->
     <div id="header">
@@ -93,25 +230,27 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
             <img src="<?=Yii::getAlias('@imagePath'); ?>/main/topbg.png" width="1" height="14" class="floR marl10 mar8">
             <div class="floR marl10 max130 carthover">
                 <div class="clear shopcarnum">
-                    <a href="http://shoppingcart.yoybuy.com/en/shoppingcart.html" rel="nofollow" target="_blank" class="norcol noline">
+                    <a href="<?= BaseUrl::to(array('member/shopping-cart'), true);?>" rel="nofollow" target="_blank" class="norcol noline">
                     <span class="floR height30 marl4">
-                        Shopping Cart <span class="orangetip" id="goodsNum">(2)</span>
+                        Shopping Cart <span class="orangetip" id="goodsNum">(<?=$this->params['cartList']['count']?>)</span>
                     </span>
                         <img src="<?=Yii::getAlias('@imagePath'); ?>/main/cart.png" width="17" height="13" class="floR mar8">
                     </a>
                     <p class="clear ove"></p>
                 </div>
-                <div class="clear ove shoplist">
-
+                <div class="clear ove shoplist" style="display:none;">
+                    <img style="margin: 5px auto;" src="<?=Yii::getAlias('@imagePath'); ?>/main/loading.gif" alt="load">
+                </div>
+                <div class="clear ove shoplist" style="display:none;">
                     <div id="ShopingCart">
-                        <img src="<?=Yii::getAlias('@imagePath'); ?>/main/loading.gif" alt="load">
+
                     </div>
                     <p class="clear ove itemore centers" style="display:none;">
-                        <a href="http://shoppingcart.yoybuy.com/en/shoppingcart.html" target="_blank" rel="nofollow" class="gray">More items &gt;&gt;</a>
+                        <a href="<?= BaseUrl::to(array('member/shopping-cart'), true);?>" target="_blank" rel="nofollow" class="gray">More items &gt;&gt;</a>
                     </p>
                     <div class="clear ove mar15">
                         <em class="flo font14 mar4">Total：<span class="orangetip" id="totalMoney">$63.2</span></em>
-                        <a href="http://shoppingcart.yoybuy.com/en/shoppingcart.html" rel="nofollow" target="_blank" class="floR
+                        <a href="<?= BaseUrl::to(array('member/shopping-cart'), true);?>" rel="nofollow" target="_blank" class="floR
 yellowbut" style="width:130px;height:24px;line-height:24px;font-size:12px;font-weight:normal;border-radius:4px;">
                             shopping cart
                         </a>
@@ -120,7 +259,7 @@ yellowbut" style="width:130px;height:24px;line-height:24px;font-size:12px;font-w
                 <div class="clear ove shoplist" style="display:none;">
                     <p class="clear ove centers mar10">The shopping cart is empty</p>
                     <p class="clear ove mar12">
-                        <a href="http://shoppingcart.yoybuy.com/en/shoppingcart.html" class="yellowbut marauto" style="width:130px;height:24px;line-height:24px;font-size:12px;font-weight:normal;border-radius:4px;" rel="nofollow">shopping cart</a>
+                        <a href="<?= BaseUrl::to(array('member/shopping-cart'), true);?>" class="yellowbut marauto" style="width:130px;height:24px;line-height:24px;font-size:12px;font-weight:normal;border-radius:4px;" rel="nofollow">shopping cart</a>
                     </p>
                 </div>
             </div>
@@ -194,7 +333,7 @@ yellowbut" style="width:130px;height:24px;line-height:24px;font-size:12px;font-w
                                 <a href="http://www.yoybuy.com/en/BuyForMe.html" target="_blank" class="noline norcol orangea">How It Works</a>
                             </li>
                             <li>
-                                <a href="http://www.yoybuy.com/en/addurl.html" rel="nofollow" target="_blank" class="noline norcol orangea">Add URL</a>
+                                <a href="<?=BaseUrl::to(array('member/add-url'), true)?>" rel="nofollow" target="_blank" class="noline norcol orangea"><?=Yii::t("app/member", 'Add URL')?></a>
                             </li>
                             <li>
                                 <a href="http://order.yoybuy.com/en/myorder" target="_blank" class="noline norcol orangea" rel="nofollow">My Items</a>
@@ -424,61 +563,6 @@ radius: 0;">
         </div>
     </div>
 </div>
-<script>
-    $(function () {
-        $("#langSelectedItem").click(function (e) {
-            e ? e.stopPropagation() : event.cancelBubble = true;
-        });
-
-        $("#langSelectedItem").click(function () {
-            if ($("#langSelectItems").css("display") == "none") {
-                $("#langSelectItems").show();
-            } else {
-                $("#langSelectItems").hide();
-            }
-        });
-
-        $("#langSelectedItem1").click(function (e) {
-            e ? e.stopPropagation() : event.cancelBubble = true;
-        });
-
-        $("#langSelectedItem1").click(function () {
-            if ($("#langSelectItems").css("display") == "none") {
-                $("#langSelectItems").show();
-            } else {
-                $("#langSelectItems").hide();
-            }
-
-        });
-
-        $(document).click(function () {
-            $("#langSelectItems").hide();
-        });
-
-        $("#langSelectItems > li").click(function() {
-            var obj = $(this);
-            var toUrl = obj.attr('toUrl');
-            jump(toUrl);
-        });
-
-        $("#sumbiturl").click(function () {
-            var verified = false;
-            var itemUrl = $("#taobaourl").val();
-            $(".main_url_rules").each(function() {
-                var rule = new RegExp($(this).val(),'i');
-                if(rule.test(itemUrl)) {
-                    verified = true;
-                }
-            });
-            if (verified) {
-                jump($('#MainAddItemUrl').val()+"?url="+encodeURIComponent(itemUrl));
-            } else {
-                MessageBox.showAlertMessageBoxWarn(630, 260, $('#MainMsgContent').val(), $('#MainMsgBtn').val(), "");
-            }
-        });
-
-    });
-</script>
 <?php $this->endBody() ?>
 </body></html>
 <?php $this->endPage() ?>

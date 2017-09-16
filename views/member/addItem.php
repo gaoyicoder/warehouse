@@ -13,6 +13,8 @@
 use yii\helpers\BaseUrl;
 
 $this->registerCssFile('@web/css/member/addItem.css', ['depends'=>['app\assets\AppAsset']]);
+$this->registerJsFile('@web/js/jquery.tmpl.min.js', ['depends'=>['app\assets\AppAsset']]);
+$this->registerJsFile('@web/js/jquery.imagezoom.min.js', ['depends'=>['app\assets\AppAsset']]);
 ?>
 <!--Content Start-->
 <div id="container" style="margin-bottom: 50px">
@@ -23,14 +25,13 @@ $this->registerCssFile('@web/css/member/addItem.css', ['depends'=>['app\assets\A
                 <p>Please wait, loading item information ...</p>
             </div>
             <div class="goodsboxs">
-                <div id="goodsinfodiv"><input type="hidden" data-name="Source" value="淘宝网">     <input type="hidden" data-name="ShopUrl" value="http://shop111419850.taobao.com">     <input type="hidden" data-name="Shop" value="潇洒的风66289">     <input type="hidden" data-name="DHLInvoiceDescription" value="">     <input type="hidden" data-name="NumIid" value="0">     <input type="hidden" data-name="Url" value="https://item.taobao.com/item.htm?spm=a230r.1.14.328.QUFKSj&amp;id=535608330129&amp;ns=1&amp;abbucket=8">     <div class="add_main addurlcont">         <div class="addurlft">             <div class="right">                 <div class="clear imglist box">                     <div class="imglistT">                         <div class="tb-booth tb-pic tb-s310">                             <a href="#"><img data-name="bigimage" src="https://img.alicdn.com/bao/uploaded/i4/1113969501/TB29sSWoUlnpuFjSZFjXXXTaVXa_!!1113969501.jpg" alt="" rel="https://img.alicdn.com/bao/uploaded/i4/1113969501/TB29sSWoUlnpuFjSZFjXXXTaVXa_!!1113969501.jpg_600x600.jpg" class="jqzoom" style="cursor: crosshair;"></a>                         </div>                     </div>                     <div class="imglistB">                                                  <a class="flo  hoverimg">                             <div class="imgdivcell"><img class="curr_base" src="https://img.alicdn.com/bao/uploaded/i4/1113969501/TB29sSWoUlnpuFjSZFjXXXTaVXa_!!1113969501.jpg_50x50.jpg" mid="https://img.alicdn.com/bao/uploaded/i4/1113969501/TB29sSWoUlnpuFjSZFjXXXTaVXa_!!1113969501.jpg" big="https://img.alicdn.com/bao/uploaded/i4/1113969501/TB29sSWoUlnpuFjSZFjXXXTaVXa_!!1113969501.jpg_600x600.jpg"></div>                         </a>                                                  <a class="flo">                             <div class="imgdivcell"><img class="curr_base" src="https://img.alicdn.com/bao/uploaded/i4/1113969501/TB2VRwRsFXXXXbKXpXXXXXXXXXX_!!1113969501.jpg_50x50.jpg" mid="https://img.alicdn.com/bao/uploaded/i4/1113969501/TB2VRwRsFXXXXbKXpXXXXXXXXXX_!!1113969501.jpg" big="https://img.alicdn.com/bao/uploaded/i4/1113969501/TB2VRwRsFXXXXbKXpXXXXXXXXXX_!!1113969501.jpg_600x600.jpg"></div>                         </a>                                                  <a class="flo">                             <div class="imgdivcell"><img class="curr_base" src="https://img.alicdn.com/bao/uploaded/i1/1113969501/TB25sNDsVXXXXXqXXXXXXXXXXXX_!!1113969501.jpg_50x50.jpg" mid="https://img.alicdn.com/bao/uploaded/i1/1113969501/TB25sNDsVXXXXXqXXXXXXXXXXXX_!!1113969501.jpg" big="https://img.alicdn.com/bao/uploaded/i1/1113969501/TB25sNDsVXXXXXqXXXXXXXXXXXX_!!1113969501.jpg_600x600.jpg"></div>                         </a>                                                  <a class="flo">                             <div class="imgdivcell"><img class="curr_base" src="https://img.alicdn.com/bao/uploaded/i2/1113969501/TB2KcAzsFXXXXXZXFXXXXXXXXXX_!!1113969501.jpg_50x50.jpg" mid="https://img.alicdn.com/bao/uploaded/i2/1113969501/TB2KcAzsFXXXXXZXFXXXXXXXXXX_!!1113969501.jpg" big="https://img.alicdn.com/bao/uploaded/i2/1113969501/TB2KcAzsFXXXXXZXFXXXXXXXXXX_!!1113969501.jpg_600x600.jpg"></div>                         </a>                                                  <a class="flo">                             <div class="imgdivcell"><img class="curr_base" src="https://img.alicdn.com/bao/uploaded/i2/1113969501/TB23zlCsVXXXXXkXXXXXXXXXXXX_!!1113969501.jpg_50x50.jpg" mid="https://img.alicdn.com/bao/uploaded/i2/1113969501/TB23zlCsVXXXXXkXXXXXXXXXXXX_!!1113969501.jpg" big="https://img.alicdn.com/bao/uploaded/i2/1113969501/TB23zlCsVXXXXXkXXXXXXXXXXXX_!!1113969501.jpg_600x600.jpg"></div>                         </a>                                               </div>                 </div>             </div>              <div class="left">                 <ul>                     <li class="all_error" data-name="addCartError" style="display: none;"></li>                     <li><span style="font-size: 12px">标题：</span><input style="width: 442px;" type="text" value="飞科电动剃须刀FS337正品 全身水洗智能液晶显示充电式男三头独立" maxlength="150" data-name="title" disabled="disabled"></li>                      <li><span style="font-size: 12px">Merchant:</span><input style="width: 442px;" type="text" value="潇洒的风66289" maxlength="150" data-name="title" disabled="disabled"></li>                      <li><span style="font-size: 12px">价格：</span><input type="text" value="145" data-name="pricermb" style="width: 60px" disabled="disabled"><em class="fh">CNY</em><em class="fh">≈</em><input type="text" data-name="priceusd" value="22.31" disabled="disabled" style="width: 60px" id=""><em class="fh">USD</em></li>                      <li><span style="font-size:12px">国内运费：</span><input type="text" value="0" data-name="shippingrmb" style="width: 60px" name="" id="" disabled="disabled"><em class="fh">CNY</em><em class="fh">≈</em><input data-name="shippingusd" type="text" style="width: 60px" disabled="disabled" value="0" name="" id=""><em class="fh">USD</em></li>                                           <li>                         <span style="font-size:12px">颜色：</span><div class="img_box cp_type">                                                                                       <a class="" style="cursor: pointer" data-prop="word" data-propid="1627207" data-propvalueid="1432715678">337充电器<em class="ico_dg"></em></a>                                                                                                                    <a class="" style="cursor: pointer" data-prop="word" data-propid="1627207" data-propvalueid="1783061753">337官配+3刀头+飞科鼻毛器+布袋<em class="ico_dg"></em></a>                                                                                                                    <a class="" style="cursor: pointer" data-prop="word" data-propid="1627207" data-propvalueid="1432537345">3刀头刀片<em class="ico_dg"></em></a>                                                                                                                    <a class="" style="cursor: pointer" data-prop="word" data-propid="1627207" data-propvalueid="1783061758">飞科337官方标配+收纳布袋<em class="ico_dg"></em></a>                                                                                                                    <a class="" style="cursor: pointer" data-prop="word" data-propid="1627207" data-propvalueid="1783061756">飞科337官配+1刀头刀片+布袋<em class="ico_dg"></em></a>                                                                                                                    <a class="" style="cursor: pointer" data-prop="word" data-propid="1627207" data-propvalueid="1783061757">飞科337官配+2刀头刀片+布袋<em class="ico_dg"></em></a>                                                                                                                    <a class="" style="cursor: pointer" data-prop="word" data-propid="1627207" data-propvalueid="1783061760">飞科337官配+3刀头刀片+布袋<em class="ico_dg"></em></a>                                                                                                                    <a class="" style="cursor: pointer" data-prop="word" data-propid="1627207" data-propvalueid="1783061752">飞科337官配+飞科鼻毛器+布袋<em class="ico_dg"></em></a>                                                                                   </div>                     </li>                                           <li><span style="font-size:12px">数量：</span><input type="text" id="" value="1" data-name="quantity" style="width: 60px;" name=""><input type="button" data-name="addQuantity" value="+" style="line-height:0px;"><input type="button" data-name="subQuantity" value="–" style="line-height:0px;"></li>                     <li><span style="font-size:12px">备注：</span><textarea class="text_com" data-name="comments">Please enter the purchasing information of this item, such as color, size or other requirements.</textarea></li>                     <li>                         <p class="mag">*注意： 若产品的相关信息没有被完全调取过来，请您自己手动填写。</p>                     </li>                 </ul>                 <style>                     .admi_section01 .add_main .left .ami_btn a.cancl-btn {                         float: right;                         margin-right: 40px;                         background: #e5e5e5;                         color: #999;                     }                      .favorite {                         width: 28px;                         height: 48px;                         background: #e5e5e5;                         border: 0;                         min-width: 26px;                         margin-top: -1px;                         position: relative;                     }                          .favorite em {                             display: block;                             width: 26px;                             height: 22px;                             margin-top: 13px;                             background: url(http://img.yoybuy.com/V6/ShoppingCart/lovesc.jpg) no-repeat;                         }                      .favsuccess em {                         background: url(http://img.yoybuy.com/V6/ShoppingCart/lovescw.jpg) no-repeat;                     }                      .favtips {                         position: absolute;                         bottom: -35px;                         left: 30px;                         font-size: 12px;                         color: #333;                         background: #fff;                         padding: 0 10px;                         border: 1px solid #eeeeee;                         white-space: nowrap;                         height: 24px;                         line-height: 24px;                         font-weight: normal;                         display: none;                     }                          .favtips i {                             position: absolute;                             left: 17px;                             top: -5px;                             width: 10px;                             height: 5px;                             background: url(http://img.yoybuy.com/V6/ShoppingCart/sanj-1.jpg) no-repeat;                         }                      .favorite:hover .favtips {                         display: block;                     }                      .favsuccess:hover .favtips {                         display: none;                     }                 </style>                 <div class="ami_btn">                     <a style="cursor: pointer" class="btn01 flo" data-name="addCart"><em class="ico_cart"></em>加入购物车</a>                     <a style="cursor: pointer;display:none" data-name="cancel" class="btn02 flo cancl-btn">取消</a>                      <a id="addGoodsToFav" class="flo mar6 favorite orangea noline centers">                         <em></em>                         <div class="favtips">                             <p>加入收藏夹</p>                             <i></i>                         </div>                     </a>                  </div>             </div>              <div class="clear"></div>             <div class="clear ove prodetail">                 <div class="clear ove protit font14" id="menuDiv">                     <a class="flo noline norcol marr10 current" data-menuindex="0">产品详情</a>                     <a class="flo noline norcol" data-menuindex="1">支付 &amp; 运送</a>                 </div>                 <div class="clear">                     <div class="describeproduct">                         <ul class="attributes-list">                                                          <li title="其他智能">智能类型:其他智能</li>                                                          <li title="飞科337官方标配+收纳布袋,飞科337官配+1刀头刀片+布袋,飞科337官配+2刀头刀片+布袋,飞科337官配+3刀头刀片+布袋,3刀头刀片,337充电器,飞科337官配+飞科鼻毛器+布袋,337官配+3刀头+飞科鼻毛器+布袋">颜色分类:飞科337官方标配+收纳布袋,飞科337官配+1刀头刀片+布袋,飞科337官配+2刀头刀片+布袋,飞科337官配+3刀头刀片+布袋,3刀头刀片,337充电器,飞科337官配+飞科鼻毛器+布袋,337官配+3刀头+飞科鼻毛器+布袋</li>                                                          <li title="有">修发器/修剪器:有</li>                                                          <li title="1小时">充电时间:1小时</li>                                                          <li title="旋转式3刀头">刀头:旋转式3刀头</li>                                                          <li title="Flyco/飞科">品牌:Flyco/飞科</li>                                                          <li title="FS337">飞科剃须刀型号:FS337</li>                                                          <li title="60分钟">完全充电使用时间:60分钟</li>                                                          <li title="全身水洗">清洁方式:全身水洗</li>                                                          <li title="充电式">电源方式:充电式</li>                                                          <li title="全球通用电压(100-240V)">适用电压:全球通用电压(100-240V)</li>                                                          <li title="全国联保">售后服务:全国联保</li>                                                      </ul>                     </div><p><span style="color:#000000;text-align:center;line-height:72.0px;font-size:48.0px;">温馨提示：</span><span style="text-align:center;line-height:72.0px;color:#0000ff;font-size:48.0px;">亲们刀头是易耗品，用久了是需要更换的，建议亲们购买剃须刀时搭配备用刀头一起选购，防止日后单独购买时需要承担高昂的运费。颜色分内中的刀头刀网都为原厂刀头刀网！！！！！！</span></p>
-                                    <p> <img style="max-width:750.0px;" src="https://img.alicdn.com/imgextra/i2/1113969501/TB2SQEHsFXXXXXbXFXXXXXXXXXX_!!1113969501.jpg" align="absmiddle"><img style="max-width:750.0px;" src="https://img.alicdn.com/imgextra/i1/1113969501/TB2fYVfsVXXXXcKXXXXXXXXXXXX_!!1113969501.jpg" align="absmiddle"><img style="max-width:750.0px;" src="https://img.alicdn.com/imgextra/i1/1113969501/TB2IuwOsFXXXXcbXpXXXXXXXXXX_!!1113969501.jpg" align="absmiddle"><img style="max-width:750.0px;" src="https://img.alicdn.com/imgextra/i1/1113969501/TB26u0csVXXXXc9XXXXXXXXXXXX_!!1113969501.jpg" align="absmiddle"><img style="max-width:750.0px;" src="https://img.alicdn.com/imgextra/i4/1113969501/TB2TkkQsFXXXXb7XpXXXXXXXXXX_!!1113969501.jpg" align="absmiddle"><img style="max-width:750.0px;" src="https://img.alicdn.com/imgextra/i1/1113969501/TB2QvpesVXXXXcUXXXXXXXXXXXX_!!1113969501.jpg" align="absmiddle"><img style="max-width:750.0px;" src="https://img.alicdn.com/imgextra/i2/1113969501/TB2UrhasVXXXXXlXpXXXXXXXXXX_!!1113969501.jpg" align="absmiddle"><img style="max-width:750.0px;" src="https://img.alicdn.com/imgextra/i4/1113969501/TB2I9IHsFXXXXXpXFXXXXXXXXXX_!!1113969501.jpg" align="absmiddle"><img style="max-width:750.0px;" src="https://img.alicdn.com/imgextra/i1/1113969501/TB2CRRbsVXXXXcPXXXXXXXXXXXX_!!1113969501.jpg" align="absmiddle"><img style="max-width:750.0px;" src="https://img.alicdn.com/imgextra/i1/1113969501/TB2QIdvsVXXXXaGXXXXXXXXXXXX_!!1113969501.jpg" align="absmiddle"><img style="max-width:750.0px;" src="https://img.alicdn.com/imgextra/i4/1113969501/TB2VmVHsVXXXXXbXXXXXXXXXXXX_!!1113969501.jpg" align="absmiddle"><img style="max-width:750.0px;" src="https://img.alicdn.com/imgextra/i1/1113969501/TB2EddwsVXXXXaJXXXXXXXXXXXX_!!1113969501.jpg" align="absmiddle"><img style="max-width:750.0px;" src="https://img.alicdn.com/imgextra/i2/1113969501/TB2DFBesVXXXXc0XXXXXXXXXXXX_!!1113969501.jpg" align="absmiddle"><img style="max-width:750.0px;" src="https://img.alicdn.com/imgextra/i1/1113969501/TB2GPsLsFXXXXcvXpXXXXXXXXXX_!!1113969501.jpg" align="absmiddle"><img style="max-width:750.0px;" src="https://img.alicdn.com/imgextra/i4/1113969501/TB2Mh4vsVXXXXaGXXXXXXXXXXXX_!!1113969501.jpg" align="absmiddle"> </p>
-
-                                    <p>&nbsp;</p>                 </div>                 <!--Payment & Shipping-->                 <div class="clear" style="display:none;">                     <div class="clear ove protype mar12">                         <img src="http://img.yoybuy.com/V6/Product/passed.png" width="98" height="52" class="flo marr20">                         <ul class="flo norton mar5">                             <li class="clear ove"><strong class="font14">Norton by symantec </strong></li>                             <li class="clear ove col666 nortond">YOYBUY.com can use Symantec services to protect your credit card and other confidential information.</li>                         </ul>                     </div>                     <div class="clear ove protype mar12">                         <p class="clear ove">                             <strong class="font14">Payment Methods: &nbsp;&nbsp; </strong> &nbsp;&nbsp;                             <span class="gray">We accept these payment</span>                         </p>                         <p class="clear ove paymentp mar10">                             <a><img src="http://img.yoybuy.com/V6/Common/payment1.png" width="45" height="27"></a>                             <a><img src="http://img.yoybuy.com/V6/Common/payment2.png" width="45" height="27"></a>                             <a><img src="http://img.yoybuy.com/V6/Common/payment3.png" width="45" height="27"></a>                             <a><img src="http://img.yoybuy.com/V6/Common/payment4.png" width="45" height="27"></a>                             <a><img src="http://img.yoybuy.com/V6/Common/payment5.png" width="45" height="27"></a>                             <a><img src="http://img.yoybuy.com/V6/Common/payment6.png" width="45" height="27"></a>                             <a><img src="http://img.yoybuy.com/V6/Common/payment7.png" width="45" height="27"></a>                         </p>                     </div>                     <div class="clear ove protype mar12">                         <p class="clear ove">                             <strong class="font14">Shipping Methods: &nbsp;&nbsp; </strong> &nbsp;&nbsp;                             <span class="gray">We accept these shipping metho</span>                         </p>                         <p class="clear ove paymentp mar10">                             <a><img src="http://img.yoybuy.com/V6/Common/ship1.png" width="45" height="27"></a>                             <a><img src="http://img.yoybuy.com/V6/Common/ship2.png" width="45" height="27"></a>                             <a><img src="http://img.yoybuy.com/V6/Common/ship3.png" width="45" height="27"></a>                             <a><img src="http://img.yoybuy.com/V6/Common/ship4.png" width="45" height="27"></a>                                                          <a><img src="http://img.yoybuy.com/V6/Common/ship6.png" width="45" height="27"></a>                         </p>                     </div>                 </div>                 <!--Payment & Shipping End-->             </div>         </div>                  <div class="clear"></div>     </div></div>
+                <div id="goodsinfodiv">
+                </div>
 
 
                 <div class="shopcrt">
                     <h6>Shopping cart ( <span>1</span> )</h6>
+                    <div class="BuyYesUlLoad"></div>
                     <div class="grydiv">
                         <div class="spctht">
                             <span class="shptit">优贝全体员工 <em id="totalPrice_2803197">28.46</em><em style="margin-right: 0;">$</em></span>
@@ -58,27 +59,18 @@ $this->registerCssFile('@web/css/member/addItem.css', ['depends'=>['app\assets\A
                                         <span class="font18 redtips" id="alltotalprice">$28.46</span>
                                 </span>
                         </p>
-                        <a href="http://shoppingcart.yoybuy.com/en/shoppingcart.html" class="chekot" style="white-space: pre-line;">支付
+                        <a href="<?= BaseUrl::to(array('member/shopping-cart'), true);?>" class="chekot" style="white-space: pre-line;">支付
                             订单</a>
                     </div>
                 </div>
 
-                <script>
-                    //购物车使用的方法
-
-                </script>
-
-
-
-
-
             </div>
             <div class="hr01"></div>
             <div class="mag_text">
-                <p class="tit"><strong>温馨提示:</strong></p>
-                <p><em>*</em> 除了不能运送违禁品或其他需要特殊处理的商品外，我们几乎可以处理所有商品。</p>
-                <p style="text-indent: 6px;">例如：易燃，易爆，干货，液体，粉状，膏状，磁铁，打火机，电池，管制刀具，压缩气体和半成品，<a href="http://www.yoybuy.com/en/help.html?cateid=601">更多的违禁物品 &gt;&gt;</a></p>
-                <p style="margin-top: 15px;"><em>*</em> 请输入商品的源网址URL，或者直接从我们的网站上添加商品!</p>
+                <p class="tit"><strong><?=Yii::t('app/member','Tips:')?></strong></p>
+                <p><em>*</em> <?=Yii::t('app/member','We can handle almost everything, but we cannot deliver items that are prohibited or require special handling.')?></p>
+                <p style="text-indent: 6px;"><?=Yii::t('app/member','For example: Flammable, explosive, dry, liquid, powdered, Paste, Magnet, lighter, battery, controlled cutting tools, compressed gas and semi-manufactured,')?> <a href="http://www.yoybuy.com/en/help.html?cateid=601"><?=Yii::t('app/member','more prohibited items')?> &gt;&gt;</a></p>
+                <p style="margin-top: 15px;"><em>*</em> <?=Yii::t('app/member','Please enter the original webpage URL of the item or add item from our Taobao in English directly!')?></p>
             </div>
         </div>
 
@@ -91,7 +83,7 @@ $this->registerCssFile('@web/css/member/addItem.css', ['depends'=>['app\assets\A
             <div class="hr01"></div>
             <div class="btn_box">
                 <a class="btn01" style="cursor: pointer" data-name="add">[+] 继续购物</a>
-                <a class="btn02" style="cursor: pointer" href="http://shoppingcart.yoybuy.com/en/shoppingcart.html">查看我的购物车 &gt;&gt;</a>
+                <a class="btn02" style="cursor: pointer" href="<?= BaseUrl::to(array('member/shopping-cart'), true);?>">查看我的购物车 &gt;&gt;</a>
             </div>
         </div>
 
@@ -99,8 +91,20 @@ $this->registerCssFile('@web/css/member/addItem.css', ['depends'=>['app\assets\A
     <!-- //content -->
 </div>
 <script>
-    var AddUrlMessage = {
+    //鼠标移上去事件。
+    function imglistBOnblur(obj)
+    {
+        $(obj).addClass("hoverimg").siblings().removeClass("hoverimg");
+        $(".jqzoom").attr('src', $(obj).find("img").attr("mid"));
+        $(".jqzoom").attr('rel', $(obj).find("img").attr("big"));
+    }
 
+    var AddUrlMessage = {
+        submitUrlFail: "<?=Yii::t('app','* Error website address, please check it!')?>",
+        submitUrlFailBtn: "<?=Yii::t('app','OK')?>",
+        submitUrlNotGet: "<?=Yii::t('app/member','* Sorry, we can\' capture the product option data automatically, please fill out the form with item detail manually.')?>",
+        addCartMissProduct: "<?=Yii::t('app/member', 'Pls check the product information.')?>",
+        addCartErrorMessage: "*Your item information error, please check again."
     };
 
     var AddUrlManager = {
@@ -141,30 +145,751 @@ $this->registerCssFile('@web/css/member/addItem.css', ['depends'=>['app\assets\A
             });
             return verified;
         },
+
+        _submitUrlFail : function() {
+            MessageBox.showAlertMessageBoxWarn(630, 260, AddUrlMessage.submitUrlFail,
+                AddUrlMessage.submitUrlFailBtn, function() { jump('<?= BaseUrl::to(array('member/add-url'), true);?>'); });
+        },
+
+        _showLoading : function() {
+            this._urlLoadingElement.show();
+        },
+        _hideLoading : function() {
+            this._urlLoadingElement.hide();
+        },
         _submitUrlSuccess : function() {
             this._showLoading();
             var url = this._urlAddress;
             $.ajax({
                 url: "<?= BaseUrl::to(array('member/get-goods'), true);?>",
-                data: { goodsUrl:  url },
+                data: { goodsUrl:  url, "<?=Yii::$app->request->csrfParam?>": '<?=Yii::$app->request->getCsrfToken()?>' },
                 cache: false,
+                type: 'POST',
+                dataType:"json",
                 success: function (data) {
-
+                    if(data.result == true) {
+                        AddUrlManager._hideLoading();
+                        GoodsInfoManager.init(data.data, url);
+                    } else {
+                        AddUrlManager._hideLoading();
+                        MessageBox.showAlertMessageBoxWarn(630, 260, AddUrlMessage.submitUrlNotGet,
+                            AddUrlMessage.submitUrlFailBtn, function() {});
+                        GoodsInfoManager.init(data.data, url);
+                    }
                 },
                 error: function() {
+                    MessageBox.showAlertMessageBoxWarn(630, 260, AddUrlMessage.submitUrlFail,
+                        AddUrlMessage.submitUrlFailBtn, function() { jump('<?= BaseUrl::to(array('member/add-url'), true);?>'); });
+                }
+            });
+        }
+    };
 
+    var GoodsInfoManager = {
+        _data : null,
+        _url : null,
+        _goodsInfoDiv: null,
+        _goodsTpl: null,
+        init : function(data, url) {
+
+            this._data = data;
+            this._url = url;
+            this._userselect = [];
+            this._goodsInfoDiv = $("#goodsinfodiv");
+            this._goodsTpl = $("#goodsinfotmpl");
+            this._renderGoodsInfo();
+            this._initElement();
+            this.bindEvent();
+            this._renderSku();
+        },
+
+
+        _initElement : function() {
+            this._bigImageElement = this._goodsInfoDiv.find("[data-name=bigimage]");
+            this._addCartBtn = this._goodsInfoDiv.find("[data-name=addCart]");
+            this._titleInput = this._goodsInfoDiv.find("[data-name=title]");
+            this._pricermbInput = this._goodsInfoDiv.find("[data-name=pricermb]");
+            this._priceusdInput = this._goodsInfoDiv.find("[data-name=priceusd]");
+            this._quantityInput = this._goodsInfoDiv.find("[data-name=quantity]");
+            this._addQuantityBtn = this._goodsInfoDiv.find("[data-name=addQuantity]");
+            this._subQuantityBtn = this._goodsInfoDiv.find("[data-name=subQuantity]");
+            this._commentsInput = this._goodsInfoDiv.find("[data-name=comments]");
+
+            this._propbtnList = this._goodsInfoDiv.find("[data-prop]");
+            this._sourceInput = this._goodsInfoDiv.find("[data-name=source]");
+            this._shopUrlInput = this._goodsInfoDiv.find("[data-name=shopUrl]");
+            this._shopInput = this._goodsInfoDiv.find("[data-name=shop]");
+            this._urlInput = this._goodsInfoDiv.find("[data-name=url]");
+        },
+
+        bindEvent: function() {
+            this._bindAddCartEvent();
+            this._bindPropEvent();
+            this._bindTitleEvent();
+            this._bindPriceRMBEvent();
+            this._bindQuantityEvent();
+            this._bindAddQuantityEvent();
+            this._bindSubQuantityEvent();
+            this._bindCommentsEvent();
+        },
+
+        _bindAddCartEvent: function() {
+            this._addCartBtn.click(function() {
+                var target = GoodsInfoManager;
+                var isSelectSku = 0;
+                if($("div.img_box").html()!=null){
+                    for (var i = 0; i < $("div.img_box").length; i++) {
+                        $($("div.img_box")[i]).find("a[data-propvalueid]").each(function(){
+                            if($(this).attr("class").indexOf("active")!= -1 &&$(this).attr("class")!="no_active"){
+                                isSelectSku++;
+                            }
+                        });
+                    }
+                    if(isSelectSku !=$("[data-propvalueid]").parent().length) {
+                        alert(AddUrlMessage.addCartMissProduct);
+                        return false;
+                    }
+                }
+
+                target._disabledBtn();
+
+                var checkTitle = target._checkTitle();
+                var checkPriceRMB = target._checkPriceRMB();
+                var checkQuantity = target._checkQuantity();
+                var checkComments = target._checkComments();
+
+                if (!checkTitle || !checkPriceRMB || !checkQuantity || !checkComments) {
+                    GoodsInfoManager._showAddCartErrorMessage(AddUrlMessage.addCartErrorMessage);
+                    target._enableBtn();
+                    return false;
+                }
+
+                var name = target._titleInput.val();
+                var price = target._pricermbInput.val();
+                var amount = target._quantityInput.val();
+                var postFeeType = $("input[name='postFee']:checked").val();
+                var sorUrl = target._urlInput.val();
+                var shopUrl = target._shopUrlInput.val();
+                var shop = target._shopInput.val();
+                var photoUrl = target._bigImageElement.attr("src");
+                var source = target._sourceInput.val();
+                var comments = target._commentsInput.val();
+
+                var remark = target._getSelectedString() + comments;
+
+                $(".BuyYesUlLoad").css('display','block');
+                $("#msg-box").css('display','block');
+
+                $.post(
+                    "<?= BaseUrl::to(array('member/add-cart'), true);?>",
+                    {
+                        "name": name,
+                        "price": price,
+                        "amount": amount,
+                        "postFeeType": postFeeType,
+                        "url": sorUrl,
+                        "shopUrl": shopUrl,
+                        "shop": shop,
+                        "photoUrl": photoUrl,
+                        "remark": $.trim(remark),
+                        "source": source,
+                        "<?=Yii::$app->request->csrfParam?>": '<?=Yii::$app->request->getCsrfToken()?>'
+                    },
+
+                    function(data) {
+                        if (data.result == true) {
+
+                        }
+                    },
+                );
+
+            });
+
+        },
+
+        _bindPropEvent: function() {
+            this._propbtnList.click(function() {
+                if ($(this).attr("data-prop") == "img") {
+                    GoodsInfoManager._imagePropClick($(this));
+                } else {
+                    GoodsInfoManager._propClick($(this));
                 }
             });
         },
-        _submitUrlFail : function() {
-            MessageBox.showAlertMessageBoxWarn(630, 260, $('#MainMsgContent').val(), $('#MainMsgBtn').val(), function() { jump('<?= BaseUrl::to(array('member/add-url'), true);?>'); });
+
+        _bindTitleEvent: function() {
+            this._titleInput.blur(function() {
+                GoodsInfoManager._checkTitle();
+            });
         },
-        _showLoading : function() {
-            this._urlLoadingElement.show();
+
+        _bindPriceRMBEvent: function() {
+            this._pricermbInput.change(function() {
+                GoodsInfoManager._priceRMBChange();
+            }).keyup(function() {
+                GoodsInfoManager._priceRMBChange();
+            }).blur(function() {
+                GoodsInfoManager._priceRMBChange();
+            });
+        },
+
+        _bindQuantityEvent: function() {
+            this._quantityInput.change(function() {
+                GoodsInfoManager._checkQuantity();
+            }).keyup(function() {
+                GoodsInfoManager._checkQuantity();
+            });
+        },
+
+        _bindAddQuantityEvent: function() {
+            this._addQuantityBtn.click(function() {
+                if (GoodsInfoManager._checkQuantity()) {
+                    GoodsInfoManager._quantityInput.val(parseInt(GoodsInfoManager._quantityInput.val()) + 1);
+                }
+            });
+        },
+
+        _bindSubQuantityEvent: function() {
+            this._subQuantityBtn.click(function() {
+                if (GoodsInfoManager._checkQuantity() && GoodsInfoManager._quantityInput.val() != "1") {
+                    GoodsInfoManager._quantityInput.val(parseInt(GoodsInfoManager._quantityInput.val()) - 1);
+                }
+            });
+        },
+
+        _bindCommentsEvent: function() {
+            this._commentsInput.blur(function() {
+                GoodsInfoManager._checkComments();
+            });
+        },
+
+        _unbindAddCartEvent: function() {
+            this._addCartBtn.unbind("click");
+        },
+
+        _renderSku: function(){
+            var maxPrice = GoodsInfoManager._data.price;
+
+            GoodsInfoManager._setAllEnable();
+
+            var showList = GoodsInfoManager._data.goodsShowSkuItems;
+            var skus = GoodsInfoManager._data.skus;
+
+            var selectedItems = [];
+
+            for(var i = 0; i < showList.length; i++) {
+                var showsku = showList[i];
+                var ppid = showsku.propertyAliasList[0].propId;
+                var selected = GoodsInfoManager._getSelected(ppid);
+
+                var prop = [];
+
+                prop.propId = ppid;
+                prop.propValues = [];
+
+                if (selected.result == true) {
+                    prop.propValues.push(selected.data);
+                } else {
+
+                    for (var l = 0; l < showsku.propertyAliasList.length; l++) {
+                        prop.propValues.push(showsku.propertyAliasList[l]);
+                    }
+                }
+
+                selectedItems.push(prop);
+            }
+
+            //验证
+            for (i = 0; i < showList.length; i++) {
+                var showItem = showList[i];
+
+                for (var j = 0; j < showItem.propertyAliasList.length; j++) {
+                    var p = showItem.propertyAliasList[j];
+                    var otherProps = [];
+
+                    for (var m = 0; m < selectedItems.length; m++) {
+                        if (selectedItems[m].propId != showItem.propertyAliasList[0].propId) {
+                            otherProps.push(selectedItems[m]);
+                        }
+                    }
+
+                    var checkValues = [];
+
+                    checkValues.push(p);
+
+                    if (GoodsInfoManager._checkEnable(checkValues, otherProps) == false) {
+                        GoodsInfoManager._setDisable(p.propId, p.propValueId);
+                    }
+                }
+            }
+
+            for (var k = 0; k < skus.length; k++) {
+                var sku = skus[k];
+                if (GoodsInfoManager._isContains(GoodsInfoManager._userselect, sku.properties) == true) {
+                    if (sku.quantity > 0 && sku.price < maxPrice) {
+                        maxPrice = sku.price;
+                    }
+                }
+            }
+
+            GoodsInfoManager._renderSelected();
+            GoodsInfoManager._renderPrice(maxPrice);
+
+        },
+
+        _renderGoodsInfo : function() {
+            this.emptyDiv();
+            this._goodsTpl.tmpl(this._formatTplData()).appendTo(this._goodsInfoDiv);
+            this._goodsInfoDiv.find(".describeproduct").after(this._formatTplData().desc);
+            $(".imglistB > a:first").addClass("hoverimg");
+            $(".jqzoom").imagezoom();
+            $(".imglistB > a").hover(function(){
+                imglistBOnblur(this);
+            });
+        },
+
+        _renderSelected: function() {
+            var selects = GoodsInfoManager._userselect;
+
+            for (var i = 0; i < selects.length; i++) {
+                GoodsInfoManager._setActive(selects[i].propId,selects[i].propValueId);
+            }
+        },
+
+        _renderPrice: function(price) {
+            GoodsInfoManager._pricermbInput.val(price);
+            GoodsInfoManager._priceRMBChange();
+        },
+
+        _setAllEnable: function() {
+            this._propbtnList.removeClass("active").removeClass("no_active").find("em").addClass("ico_dg").removeClass("mark");
+        },
+
+        _setDisable: function(propId, propValueId) {
+            GoodsInfoManager._getPropElement(propId, propValueId).addClass("no_active").find("em").addClass("mark").removeClass("ico_dg");
+        },
+
+        _setActive: function(propId, propValueId) {
+            GoodsInfoManager._getPropElement(propId, propValueId).addClass("active").addClass("ico_dg").removeClass("mark");
+        },
+
+        _getSelected: function(propId) {
+            for (var j = 0; j < GoodsInfoManager._userselect.length; j++) {
+                if (GoodsInfoManager._userselect[j].propId == propId && GoodsInfoManager._userselect[j].propValueId != 0) {
+                    return { result: true, data: GoodsInfoManager._userselect[j] };
+                }
+            }
+            return { result: false, data: null };
+        },
+
+        _getPropElement: function(propId, propValueId) {
+            var tempThis=null;
+            this._propbtnList.each(function(){
+                if ($(this).attr("data-propid")  == propId && $(this).attr("data-propvalueid") == propValueId) {
+                    tempThis= $(this);
+                }
+            });
+            return tempThis;
+        },
+
+        _getSelectedString : function() {
+            var str = "";
+
+            for (var j = 0; j < GoodsInfoManager._userselect.length; j++) {
+                str += this._getPropString(this._userselect[j].propId, this._userselect[j].propValueId);
+            }
+
+            return str;
+        },
+
+        _getPropString: function(propId, propValueId) {
+            var list = this._data.goodsShowSkuItems;
+
+            for (var i = 0; i < list.length; i++) {
+                for (var j = 0; j < list[i].propertyAliasList.length; j++) {
+                    var e = list[i].propertyAliasList[j];
+
+                    if (e.propId == propId && e.propValueId == propValueId) {
+                        return list[i].propName + ":" + e.customName + ";";
+                    }
+                }
+            }
+            return "";
+        },
+
+        _checkEnable: function(checkValues, otherProps) {
+            if (checkValues == null) {
+                checkValues = [];
+            }
+
+            var skus = this._data.skus;
+
+            if (otherProps != null && otherProps.length > 0) {
+                var prop = otherProps[0];
+                var nextProps = [];
+
+                if (otherProps.length > 1) {
+                    for (i = 1; i < otherProps.length; i++) {
+                        nextProps.push(otherProps[i]);
+                    }
+                }
+
+                for (var i = 0; i < prop.propValues.length; i++) {
+                    var tempValues = [];
+
+                    for (var k = 0; k < checkValues.length; k++) {
+                        tempValues.push(checkValues[k]);
+                    }
+
+                    tempValues.push(prop.propValues[i]);
+
+                    if (nextProps.length > 0) {
+                        if (GoodsInfoManager._checkEnable(tempValues, nextProps) == true) {
+                            return true;
+                        }
+                    } else {
+                        for (var j = 0; j < skus.length; j++) {
+                            if (GoodsInfoManager._isContains(tempValues, skus[j].properties) == true) {
+                                if (skus[j].quantity > 0) {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                for (j = 0; j < skus.length; j++) {
+                    if (GoodsInfoManager._isContains(checkValues, skus[j].properties) == true) {
+                        if (skus[j].quantity > 0) {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        },
+
+        _checkPriceRMB: function() {
+            var value = this._pricermbInput.val();
+
+            var reg = /^([1-9][0-9]*)$|^([0]|[1-9][0-9]*)(.[0-9]{1,2})+$/;
+
+            if (reg.test(value) == false) {
+                this._pricermbInput.addClass("input_error");
+                return false;
+            } else {
+                this._pricermbInput.removeClass("input_error");
+                return true;
+            }
+        },
+
+        _checkTitle: function() {
+            var value = this._titleInput.val();
+
+            var reg = /^[\s]+$/;
+
+            if (value == "" || value.length > 249 || reg.test(value)) {
+                this._titleInput.addClass("input_error");
+                return false;
+            } else {
+                this._titleInput.removeClass("input_error");
+                return true;
+            }
+        },
+
+        _checkQuantity: function() {
+            var value = this._quantityInput.val();
+
+            var reg = /^[1-9][0-9]*$/;
+
+            if (reg.test(value) == false) {
+                this._quantityInput.addClass("input_error");
+                return false;
+            } else {
+                this._quantityInput.removeClass("input_error");
+                return true;
+            }
+        },
+
+        _checkComments: function() {
+            var value = this._commentsInput.val();
+
+            if (value.length > 400) {
+                this._commentsInput.addClass("input_error");
+                return false;
+            } else {
+                this._commentsInput.removeClass("input_error");
+                return true;
+            }
+        },
+
+        _showAddCartErrorMessage: function(msg) {
+            alert(msg);
+        },
+
+        _enableBtn: function() {
+            this._bindAddCartEvent();
+            this._addCartBtn.css("background", "#fd8529");
+        },
+        _disabledBtn: function() {
+            this._unbindAddCartEvent();
+            this._addCartBtn.css("background", "#999");
+        },
+
+
+        _priceRMBChange: function() {
+            if (this._checkPriceRMB()) {
+                this._priceusdInput.val(Tools.CNYToUSD(this._pricermbInput.val()));
+            } else {
+                this._priceusdInput.val(0);
+            }
+        },
+
+        _imagePropClick: function(e) {
+            if (this._isDisable(e) == false) {
+                this._changePropSelect(e);
+                this._bigImageElement.attr("src", e.attr("data-img"));
+            }
+        },
+
+        _propClick: function(e) {
+            if (this._isDisable(e) == false) {
+                this._changePropSelect(e);
+            }
+        },
+
+        _isDisable: function(e) {
+            return $(e).hasClass("no_active");
+        },
+        _changePropSelect: function(e) {
+            var pid = $(e).attr("data-propid");
+            var pvalueid = $(e).attr("data-propvalueid");
+            var userResult = true;
+            var userSelect = GoodsInfoManager._userselect;
+
+            if (userSelect.length == 0) {
+                userSelect.push({
+                    propId: pid,
+                    propValueId: pvalueid
+                });
+            } else {
+                for(var i = 0; i < userSelect.length; i++) {
+                    if (userSelect[i].propId == pid) {
+                        if (userSelect[i].propValueId != pvalueid) {
+                            userSelect[i].propValueId = pvalueid;
+                        } else {
+                            userSelect.splice(i,1);
+                        }
+                        userResult = false;
+                        break;
+                    }
+                }
+                if (userResult) {
+                    userSelect.push({ propId: pid, propValueId: pvalueid });
+                }
+            }
+            GoodsInfoManager._renderSku();
+        },
+        _formatTplData : function() {
+            var tData = new TplData();
+            var data = this._data;
+
+            $.each(data, function(index) {
+                data[index] = data[index] ? data[index] : "";
+                tData[index] = data[index];
+            });
+
+            tData.USDPrice = Tools.CNYToUSD(data.price);
+
+            return tData;
+        },
+
+        _isContains: function(selecteds, propstr) {
+            propstr = ";" + propstr + ";";
+
+            for (var i = 0; i < selecteds.length; i++) {
+                if (selecteds[i].propValueId != 0) {
+                    var str = ";" + selecteds[i].propId + ":" + selecteds[i].propValueId + ";";
+
+                    if (propstr.indexOf(str) < 0) {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        },
+
+        emptyDiv: function() {
+            this._goodsInfoDiv.html("");
         }
+
     };
+
+    var TplData = function(){
+        this.source = "";
+        this.shopUrl = "";
+        this.shop = "";
+        this.url = "";
+        this.picUrl = "";
+        this.goodsImage = "";
+        this.title = "";
+        this.price = "";
+        this.USDPrice = 0;
+        this.websiteType = false;
+        this.desc = "";
+        this.goodsShowSkuItems = [];
+        this.skus = [];
+
+
+    };
+
     $(function() {
         AddUrlManager.init("<?=$urlAddress?>");
+
+        $("body").on("click", "#menuDiv a", function () {
+            $(this).addClass("current").siblings("a").removeClass("current");
+            $(this).parent().nextAll("div.clear").hide();
+            $($(this).parent().nextAll("div.clear")[$(this).attr("data-menuindex")]).show(1500);
+        });
     });
+</script>
+<script type="text/x-jquery-tmpl" id="goodsinfotmpl">
+    <input type="hidden" data-name="source" value="${source}" />
+    <input type="hidden" data-name="shopUrl" value="${shopUrl}" />
+    <input type="hidden" data-name="shop" value="${shop}" />
+    <input type="hidden" data-name="url" value="${url}" />
+    <div class="add_main addurlcont">
+        <div id="msg-box"><img src="${picUrl}" width="60" height="60" /></div>
+        <div class="addurlft">
+            <div class="right">
+                <div class="clear imglist box">
+                    <div class="imglistT">
+                        <div class="tb-booth tb-pic tb-s310">
+                            <a href="#"><img  data-name="bigimage" src="${picUrl}" alt="" rel="${picUrl}_350x350.jpg" class="jqzoom" style="cursor: crosshair;"></a>
+                        </div>
+                    </div>
+                    <div class="imglistB">
+                        {{each goodsImage}}
+                        <a class="flo ">
+                            <div class="imgdivcell"><img class="curr_base" src="${$value}_50x50.jpg" mid="${$value}" big="${$value}_600x600.jpg" /></div>
+                        </a>
+                        {{/each}}
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="left">
+                <ul>
+                    <li><span style="font-size: 12px"><?=Yii::t('app/member','Title: ')?></span><input style="width: 442px;" type="text" value="${title}" maxlength="150" data-name="title" {{if websiteType== 1}} disabled="disabled" {{/if}}></li>
+
+                    <li><span style="font-size: 12px"><?=Yii::t('app/member','Merchant: ')?></span><input style="width: 442px;" type="text" value="${shop}" maxlength="150" data-name="shop1" {{if websiteType== 1}} disabled="disabled" {{/if}}></li>
+
+                    <li><span style="font-size: 12px"><?=Yii::t('app/member','Unit price: ')?></span><input type="text" value="${price}" data-name="pricermb" style="width: 60px" {{if websiteType== 1}} disabled="disabled" {{/if}}><em class="fh">CNY</em><em class="fh">&asymp;</em><input type="text" data-name="priceusd" value="${USDPrice}" disabled="disabled" style="width: 60px" id=""><em class="fh">USD</em></li>
+
+                    <li id="delivery_fee">
+                        <span style="font-size:12px"><?=Yii::t('app/member','Domestic Shipping: ')?></span>
+                        <div style="float: left">
+                            <div style="float: left">
+                                <input type="radio" id="SelectService1" name="postFee" value="0" checked="checked">
+                                <label for="SelectService1"><?=Yii::t('app/member','Free or low cost delivery')?></label>
+                            </div>
+                            <div style="float: left">
+                                <input type="radio" id="SelectService2" name="postFee" value="1">
+                                <label for="SelectService2"><?=Yii::t('app/member','Fastest delivery')?></label>
+                            </div>
+                            <div style="clear: both; width: 442px;">
+                                <?=Yii::t('app/member','Note: We will choose the most suitable delivery option according to your selection. The delivery cost will be charged to your account and payable when you ship the package home.')?>
+                            </div>
+                        </div>
+                    </li>
+
+                    {{each goodsShowSkuItems}}
+                    <li>
+                        <span style="font-size:12px">${$value.propName}:</span><div class="img_box {{if $value.isHasImage == false}}cp_type{{/if}}">
+                            {{each $value.propertyAliasList}}
+                            {{if $value.isImage == true}}
+                            <a class="" style="cursor: pointer" data-prop="img" data-propid="${$value.propId}" data-propvalueid="${$value.propValueId}" data-img="${$value.bigImage}"><img src="${$value.smallImage}" alt=""><em class="ico_dg"></em></a>
+                            {{else}}
+                            <a class="" style="cursor: pointer" data-prop="word" data-propid="${$value.propId}" data-propvalueid="${$value.propValueId}">${$value.customName}<em class="ico_dg"></em></a>
+                            {{/if}}
+                            {{/each}}
+                        </div>
+                    </li>
+                    {{/each}}
+
+                    <li><span style="font-size:12px"><?=Yii::t('app/member','Quantity: ')?></span><input type="text" id="" value="1" data-name="quantity" style="width: 60px;" name=""><input type="button" data-name="addQuantity" value="+" style="line-height:0px;"><input type="button" data-name="subQuantity" value="&ndash;" style="line-height:0px;"></li>
+                    <li><span style="font-size:12px"><?=Yii::t('app/member','Comments: ')?></span><textarea placeholder="<?=Yii::t('app/member','Please enter the purchasing information of this item, such as color, size or other requirements.')?>" class="text_com" data-name="comments"></textarea></li>
+                    <li>
+                        <p class="mag"><?=Yii::t('app/member','*Note: If the product option data is not completely captured here, please supplement in the comment box.')?></p>
+                    </li>
+                </ul>
+                <div class="ami_btn">
+                    <a style="cursor: pointer" class="btn01 flo" data-name="addCart"><em class="ico_cart"></em><?=Yii::t('app/member','Add to Cart')?></a>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+            <div class="clear ove prodetail">
+                <div class="clear ove protit font14" id="menuDiv">
+                    <a class="flo noline norcol marr10 current" data-menuindex="0"><?=Yii::t('app/member','Product Details')?></a>
+                    <a class="flo noline norcol" data-menuindex="1"><?=Yii::t('app/member','Payment & Shipping')?></a>
+                </div>
+                <div class="clear">
+                    <div class="describeproduct">
+                        <ul class="attributes-list">
+                            {{each goodsDetails}}
+                            <li title="${$value.value}">${$value.key}:${$value.value}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                <!--Payment & Shipping-->
+                <div class="clear" style="display:none;">
+                    <div class="clear ove protype mar12">
+                        <img src="http://img.yoybuy.com/V6/Product/passed.png" width="98" height="52" class="flo marr20">
+                        <ul class="flo norton mar5">
+                            <li class="clear ove"><strong class="font14">Norton by symantec </strong></li>
+                            <li class="clear ove col666 nortond">YOYBUY.com can use Symantec services to protect your credit card and other confidential information.</li>
+                        </ul>
+                    </div>
+                    <div class="clear ove protype mar12">
+                        <p class="clear ove">
+                            <strong class="font14">Payment Methods:    </strong> &nbsp;&nbsp;
+                            <span class="gray">We accept these payment</span>
+                        </p>
+                        <p class="clear ove paymentp mar10">
+                            <a><img src="http://img.yoybuy.com/V6/Common/payment1.png" width="45" height="27"></a>
+                            <a><img src="http://img.yoybuy.com/V6/Common/payment2.png" width="45" height="27"></a>
+                            <a><img src="http://img.yoybuy.com/V6/Common/payment3.png" width="45" height="27"></a>
+                            <a><img src="http://img.yoybuy.com/V6/Common/payment4.png" width="45" height="27"></a>
+                            <a><img src="http://img.yoybuy.com/V6/Common/payment5.png" width="45" height="27"></a>
+                            <a><img src="http://img.yoybuy.com/V6/Common/payment6.png" width="45" height="27"></a>
+                            <a><img src="http://img.yoybuy.com/V6/Common/payment7.png" width="45" height="27"></a>
+                        </p>
+                    </div>
+                    <div class="clear ove protype mar12">
+                        <p class="clear ove">
+                            <strong class="font14">Shipping Methods:    </strong> &nbsp;&nbsp;
+                            <span class="gray">We accept these shipping metho</span>
+                        </p>
+                        <p class="clear ove paymentp mar10">
+                            <a><img src="http://img.yoybuy.com/V6/Common/ship1.png" width="45" height="27"></a>
+                            <a><img src="http://img.yoybuy.com/V6/Common/ship2.png" width="45" height="27"></a>
+                            <a><img src="http://img.yoybuy.com/V6/Common/ship3.png" width="45" height="27"></a>
+                            <a><img src="http://img.yoybuy.com/V6/Common/ship4.png" width="45" height="27"></a>
+
+                            <a><img src="http://img.yoybuy.com/V6/Common/ship6.png" width="45" height="27"></a>
+                        </p>
+                    </div>
+                </div>
+                <!--Payment & Shipping End-->
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
 </script>
 <!--Content End-->
