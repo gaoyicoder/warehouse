@@ -14,46 +14,44 @@
 use yii\helpers\BaseUrl;
 ?>
 <!--Right Side Cart Start-->
-<div class="shopcrt">
-    <h6>Shopping cart ( <span><?=$totalCount?></span> )</h6>
-    <div class="BuyYesUlLoad"></div>
-    <div class="grydiv">
-        <div class="spctht">
-            <?php if($cartArray) {?>
-                <?php foreach($cartArray as $shopName => $cartItem) {?>
-                    <span class="shptit"><?=$shopName?> <em class="shopTotalPrice"><?=Yii::$app->securityTools->cnyToUsd($cartItem['totalMoney'])?></em><em style="margin-right: 0;">$</em></span>
-                    <ul class="spcrtul">
-                        <?php foreach($cartItem['list'] as $item) {?>
-                        <li style="border: 0px;">
-                            <a href="<?=$item['url']?>" class="prodcta" title=""><img src="http:<?=$item['photoUrl']?>" alt=""></a>
-                            <div class="protms">
-                                <p class="limitwd" title="<?=$item['name']?>"><?=$item['name']?></p>
-                                <p class="limitwd col999" title="<?=$item['remark']?>"><?=$item['remark']?></p>
-                                <p class="addtjbtn">
-                                    <span class="btnmins itemsQTYMinus">–</span>
-                                    <input type="text" value="<?=$item['amount']?>" class="flo centers arial cartItemQty" data-cartid="<?=$item['id']?>" data-oldnum="<?=$item['amount']?>" style="width:38px;height:18px;line-height:18px;">
-                                    <span class="btnplus itemsQTYAdd">+</span>
-                                    <em class="prcjg">$<?=Yii::$app->securityTools->cnyToUsd($item['price'])?></em>
-                                </p>
-                            </div>
-                            <em class="closeX" onclick="RightSideCartManager.itemDelete(<?=$item['id']?>)"></em>
-                        </li>
-                        <?php }?>
+<h6>Shopping cart ( <span><?=$totalCount?></span> )</h6>
+<div class="BuyYesUlLoad"></div>
+<div class="grydiv">
+    <div class="spctht">
+        <?php if($cartArray) {?>
+            <?php foreach($cartArray as $shopName => $cartItem) {?>
+                <span class="shptit"><?=$shopName?> <em class="shopTotalPrice"><?=Yii::$app->securityTools->cnyToUsd($cartItem['totalMoney'])?></em><em style="margin-right: 0;">$</em></span>
+                <ul class="spcrtul">
+                    <?php foreach($cartItem['list'] as $item) {?>
+                    <li style="border: 0px;">
+                        <a href="<?=$item['url']?>" class="prodcta" title=""><img src="http:<?=$item['photoUrl']?>" alt=""></a>
+                        <div class="protms">
+                            <p class="limitwd" title="<?=$item['name']?>"><?=$item['name']?></p>
+                            <p class="limitwd col999" title="<?=$item['remark']?>"><?=$item['remark']?></p>
+                            <p class="addtjbtn">
+                                <span class="btnmins itemsQTYMinus">–</span>
+                                <input type="text" value="<?=$item['amount']?>" class="flo centers arial cartItemQty" data-cartid="<?=$item['id']?>" data-oldnum="<?=$item['amount']?>" style="width:38px;height:18px;line-height:18px;">
+                                <span class="btnplus itemsQTYAdd">+</span>
+                                <em class="prcjg">$<?=Yii::$app->securityTools->cnyToUsd($item['price'])?></em>
+                            </p>
+                        </div>
+                        <em class="closeX" onclick="RightSideCartManager.itemDelete(<?=$item['id']?>)"></em>
+                    </li>
+                    <?php }?>
 
-                    </ul>
-                <?php }?>
-            <?php } else {?>
-                <p class="cartBox-box">Want it? Then add it to cart.</p>
+                </ul>
             <?php }?>
-        </div>
-        <p class="totlprc">
-            Total:
-            <span>
-                <span class="font18 redtips" id="alltotalprice">$<?=Yii::$app->securityTools->cnyToUsd($totalMoney)?></span>
-            </span>
-        </p>
-        <a href="<?= BaseUrl::to(array('cart/shopping-cart'), true);?>" class="chekot" style="white-space: pre-line;">支付订单</a>
+        <?php } else {?>
+            <p class="cartBox-box">Want it? Then add it to cart.</p>
+        <?php }?>
     </div>
+    <p class="totlprc">
+        Total:
+        <span>
+            <span class="font18 redtips" id="alltotalprice">$<?=Yii::$app->securityTools->cnyToUsd($totalMoney)?></span>
+        </span>
+    </p>
+    <a href="<?= BaseUrl::to(array('cart/shopping-cart'), true);?>" class="chekot" style="white-space: pre-line;">支付订单</a>
 </div>
 <script>
     var RightSideCartManager ={

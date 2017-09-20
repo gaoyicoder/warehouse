@@ -28,7 +28,8 @@ use yii\web\Cookie;
  * @property string $remark
  * @property string $source
  * @property string $cartCookieId
- * @property integer userId
+ * @property integer $userId
+ * @property string $createTime
  */
 
 class Cart extends ActiveRecord
@@ -41,8 +42,24 @@ class Cart extends ActiveRecord
 
     public function scenarios(){
         return [
-            'default' => ['name', 'price', 'amount', 'postFeeType', 'url', 'shopUrl', 'shop', 'photoUrl', 'remark', 'source', 'cartCookieId']
+            'default' => ['name', 'price', 'amount', 'postFeeType', 'url', 'shopUrl', 'shop', 'photoUrl', 'remark', 'source', 'cartCookieId', 'createTime']
         ];
+    }
+
+    public function beforeSave($insert){
+
+        if (parent::beforeSave($insert)) {
+            if ($insert) {
+                $this->setCreateTime();
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setCreateTime() {
+        $this->createTime = Yii::$app->securityTools->getCurrentTime("Y-m-d H:i:s");
     }
 
     public static function findAllByCartCookieId($cartCookieId) {
@@ -112,6 +129,10 @@ class Cart extends ActiveRecord
             $cartCookieIdentity = Yii::$app->params['userCartCookieIdentity'];
             $cartCookieId = self::getCartCookieId($cartCookieIdentity);
 
+            //this line is for the new arrivals who don't have cart cookie
+            if (!$cartCookieId) {
+                $cartCookieId = self::getCartResponseCookieId($cartCookieIdentity);
+            }
             if ($cartCookieId) {
                 $cartList = self::findAllByCartCookieId($cartCookieId);
             }
@@ -132,6 +153,11 @@ class Cart extends ActiveRecord
             $cartCookieIdentity = Yii::$app->params['userCartCookieIdentity'];
             $cartCookieId = self::getCartCookieId($cartCookieIdentity);
 
+            //this line is for the new arrivals who don't have cart cookie
+            if (!$cartCookieId) {
+                $cartCookieId = self::getCartResponseCookieId($cartCookieIdentity);
+            }
+
             if ($cartCookieId) {
                 $totalMoney = self::getTotalMoneyByCookieId($cartCookieId);
             }
@@ -151,6 +177,11 @@ class Cart extends ActiveRecord
         if (Yii::$app->user->isGuest) {
             $cartCookieIdentity = Yii::$app->params['userCartCookieIdentity'];
             $cartCookieId = self::getCartCookieId($cartCookieIdentity);
+
+            //this line is for the new arrivals who don't have cart cookie
+            if (!$cartCookieId) {
+                $cartCookieId = self::getCartResponseCookieId($cartCookieIdentity);
+            }
 
             if ($cartCookieId) {
                 $totalMoney = self::getShopTotalMoneyByCookieId($cartCookieId,$shop);
@@ -253,6 +284,10 @@ class Cart extends ActiveRecord
 
     public static function getCartCookieId($cookieName) {
         return Yii::$app->getRequest()->getCookies()->getValue($cookieName);
+    }
+
+    public static function getCartResponseCookieId($cookieName) {
+        return Yii::$app->getResponse()->getCookies()->getValue($cookieName);
     }
 
     public static function removeCartCookieId($cookieName) {

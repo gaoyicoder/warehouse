@@ -28,7 +28,9 @@ $this->registerJsFile('@web/js/jquery.imagezoom.min.js', ['depends'=>['app\asset
             <div class="goodsboxs">
                 <div id="goodsinfodiv">
                 </div>
-                <?=$rightSideCart; ?>
+                <div class="shopcrt">
+                    <?=$rightSideCart; ?>
+                </div>
             </div>
             <div class="hr01"></div>
             <div class="mag_text">
