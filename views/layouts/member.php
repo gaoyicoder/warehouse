@@ -5,6 +5,9 @@
  * Date: 6/20/17
  * Time: 11:11 PM
  */
+
+/* @var $this \yii\web\View */
+
 use yii\helpers\BaseUrl;
 
 $this->registerCssFile('@web/css/member/sidebar.css', ['depends'=>['app\assets\AppAsset']]);
@@ -29,7 +32,7 @@ $this->registerCssFile('@web/css/member/sidebar.css', ['depends'=>['app\assets\A
                 <h2><?=Yii::t("app/member", 'My ChinaInAir')?></h2>
                 <dl class="clear ove yoybuylist mar5">
                     <dt><strong><?=Yii::t("app/member", 'BuyForMe Service')?></strong></dt>
-                    <dd class="mar5"><a href="<?=BaseUrl::to(array('member/add-url'), true)?>" class="noline norcol orangea"><?=Yii::t("app/member", 'Add URL')?></a></dd>
+                    <dd class="mar5"><a href="<?=BaseUrl::to(array('cart/add-url'), true)?>" class="noline norcol orangea"><?=Yii::t("app/member", 'Add URL')?></a></dd>
                     <dd><a id="myitems" href="http://order.yoybuy.com/en/myorder" class="noline norcol orangea">My
 
                             Items</a></dd>

@@ -7,7 +7,7 @@
  */
 
 namespace app\components;
-
+use Yii;
 
 class SecurityTools
 {
@@ -46,4 +46,22 @@ class SecurityTools
         $uuid .= substr($str,20,12);
         return $prefix . $uuid;
     }
+
+    public function cnyToUsd($cny) {
+        $usdRate = Yii::$app->params['usdRate'];
+        if(is_numeric($usdRate)) {
+            return $this->formatNum($cny/$usdRate, 2);
+        } else {
+            return $this->formatNum($cny/6.10, 2);
+        }
+    }
+
+    public function formatNum($num1, $num2) {
+        if (is_null($num1) || is_null($num2)) {
+            return 0;
+        } else {
+           return round($num1, $num2);
+        }
+    }
+
 }

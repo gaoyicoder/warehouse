@@ -13,7 +13,7 @@
 
 use yii\helpers\BaseUrl;
 
-$this->registerCssFile('@web/css/member/addItem.css', ['depends'=>['app\assets\AppAsset']]);
+$this->registerCssFile('@web/css/cart/addItem.css', ['depends'=>['app\assets\AppAsset']]);
 $this->registerJsFile('@web/js/jquery.tmpl.min.js', ['depends'=>['app\assets\AppAsset']]);
 $this->registerJsFile('@web/js/jquery.imagezoom.min.js', ['depends'=>['app\assets\AppAsset']]);
 ?>
@@ -32,10 +32,10 @@ $this->registerJsFile('@web/js/jquery.imagezoom.min.js', ['depends'=>['app\asset
             </div>
             <div class="hr01"></div>
             <div class="mag_text">
-                <p class="tit"><strong><?=Yii::t('app/member','Tips:')?></strong></p>
-                <p><em>*</em> <?=Yii::t('app/member','We can handle almost everything, but we cannot deliver items that are prohibited or require special handling.')?></p>
-                <p style="text-indent: 6px;"><?=Yii::t('app/member','For example: Flammable, explosive, dry, liquid, powdered, Paste, Magnet, lighter, battery, controlled cutting tools, compressed gas and semi-manufactured,')?> <a href="http://www.yoybuy.com/en/help.html?cateid=601"><?=Yii::t('app/member','more prohibited items')?> &gt;&gt;</a></p>
-                <p style="margin-top: 15px;"><em>*</em> <?=Yii::t('app/member','Please enter the original webpage URL of the item or add item from our Taobao in English directly!')?></p>
+                <p class="tit"><strong><?=Yii::t('app/cart','Tips:')?></strong></p>
+                <p><em>*</em> <?=Yii::t('app/cart','We can handle almost everything, but we cannot deliver items that are prohibited or require special handling.')?></p>
+                <p style="text-indent: 6px;"><?=Yii::t('app/cart','For example: Flammable, explosive, dry, liquid, powdered, Paste, Magnet, lighter, battery, controlled cutting tools, compressed gas and semi-manufactured,')?> <a href="http://www.yoybuy.com/en/help.html?cateid=601"><?=Yii::t('app/cart','more prohibited items')?> &gt;&gt;</a></p>
+                <p style="margin-top: 15px;"><em>*</em> <?=Yii::t('app/cart','Please enter the original webpage URL of the item or add item from our Taobao in English directly!')?></p>
             </div>
         </div>
 
@@ -67,8 +67,8 @@ $this->registerJsFile('@web/js/jquery.imagezoom.min.js', ['depends'=>['app\asset
     var AddUrlMessage = {
         submitUrlFail: "<?=Yii::t('app','* Error website address, please check it!')?>",
         submitUrlFailBtn: "<?=Yii::t('app','OK')?>",
-        submitUrlNotGet: "<?=Yii::t('app/member','* Sorry, we can\' capture the product option data automatically, please fill out the form with item detail manually.')?>",
-        addCartMissProduct: "<?=Yii::t('app/member', 'Pls check the product information.')?>",
+        submitUrlNotGet: "<?=Yii::t('app/cart','* Sorry, we can\' capture the product option data automatically, please fill out the form with item detail manually.')?>",
+        addCartMissProduct: "<?=Yii::t('app/cart', 'Pls check the product information.')?>",
         addCartErrorMessage: "*Your item information error, please check again."
     };
 
@@ -757,25 +757,25 @@ $this->registerJsFile('@web/js/jquery.imagezoom.min.js', ['depends'=>['app\asset
 
             <div class="left">
                 <ul>
-                    <li><span style="font-size: 12px"><?=Yii::t('app/member','Title: ')?></span><input style="width: 442px;" type="text" value="${title}" maxlength="150" data-name="title" {{if websiteType== 1}} disabled="disabled" {{/if}}></li>
+                    <li><span style="font-size: 12px"><?=Yii::t('app/cart','Title: ')?></span><input style="width: 442px;" type="text" value="${title}" maxlength="150" data-name="title" {{if websiteType== 1}} disabled="disabled" {{/if}}></li>
 
-                    <li><span style="font-size: 12px"><?=Yii::t('app/member','Merchant: ')?></span><input style="width: 442px;" type="text" value="${shop}" maxlength="150" data-name="shop1" {{if websiteType== 1}} disabled="disabled" {{/if}}></li>
+                    <li><span style="font-size: 12px"><?=Yii::t('app/cart','Merchant: ')?></span><input style="width: 442px;" type="text" value="${shop}" maxlength="150" data-name="shop1" {{if websiteType== 1}} disabled="disabled" {{/if}}></li>
 
-                    <li><span style="font-size: 12px"><?=Yii::t('app/member','Unit price: ')?></span><input type="text" value="${price}" data-name="pricermb" style="width: 60px" {{if websiteType== 1}} disabled="disabled" {{/if}}><em class="fh">CNY</em><em class="fh">&asymp;</em><input type="text" data-name="priceusd" value="${USDPrice}" disabled="disabled" style="width: 60px" id=""><em class="fh">USD</em></li>
+                    <li><span style="font-size: 12px"><?=Yii::t('app/cart','Unit price: ')?></span><input type="text" value="${price}" data-name="pricermb" style="width: 60px" {{if websiteType== 1}} disabled="disabled" {{/if}}><em class="fh">CNY</em><em class="fh">&asymp;</em><input type="text" data-name="priceusd" value="${USDPrice}" disabled="disabled" style="width: 60px" id=""><em class="fh">USD</em></li>
 
                     <li id="delivery_fee">
-                        <span style="font-size:12px"><?=Yii::t('app/member','Domestic Shipping: ')?></span>
+                        <span style="font-size:12px"><?=Yii::t('app/cart','Domestic Shipping: ')?></span>
                         <div style="float: left">
                             <div style="float: left">
                                 <input type="radio" id="SelectService1" name="postFee" value="0" checked="checked">
-                                <label for="SelectService1"><?=Yii::t('app/member','Free or low cost delivery')?></label>
+                                <label for="SelectService1"><?=Yii::t('app/cart','Free or low cost delivery')?></label>
                             </div>
                             <div style="float: left">
                                 <input type="radio" id="SelectService2" name="postFee" value="1">
-                                <label for="SelectService2"><?=Yii::t('app/member','Fastest delivery')?></label>
+                                <label for="SelectService2"><?=Yii::t('app/cart','Fastest delivery')?></label>
                             </div>
                             <div style="clear: both; width: 442px;">
-                                <?=Yii::t('app/member','Note: We will choose the most suitable delivery option according to your selection. The delivery cost will be charged to your account and payable when you ship the package home.')?>
+                                <?=Yii::t('app/cart','Note: We will choose the most suitable delivery option according to your selection. The delivery cost will be charged to your account and payable when you ship the package home.')?>
                             </div>
                         </div>
                     </li>
@@ -794,22 +794,22 @@ $this->registerJsFile('@web/js/jquery.imagezoom.min.js', ['depends'=>['app\asset
                     </li>
                     {{/each}}
 
-                    <li><span style="font-size:12px"><?=Yii::t('app/member','Quantity: ')?></span><input type="text" id="" value="1" data-name="quantity" style="width: 60px;" name=""><input type="button" data-name="addQuantity" value="+" style="line-height:0px;"><input type="button" data-name="subQuantity" value="&ndash;" style="line-height:0px;"></li>
-                    <li><span style="font-size:12px"><?=Yii::t('app/member','Comments: ')?></span><textarea placeholder="<?=Yii::t('app/member','Please enter the purchasing information of this item, such as color, size or other requirements.')?>" class="text_com" data-name="comments"></textarea></li>
+                    <li><span style="font-size:12px"><?=Yii::t('app/cart','Quantity: ')?></span><input type="text" id="" value="1" data-name="quantity" style="width: 60px;" name=""><input type="button" data-name="addQuantity" value="+" style="line-height:0px;"><input type="button" data-name="subQuantity" value="&ndash;" style="line-height:0px;"></li>
+                    <li><span style="font-size:12px"><?=Yii::t('app/cart','Comments: ')?></span><textarea placeholder="<?=Yii::t('app/cart','Please enter the purchasing information of this item, such as color, size or other requirements.')?>" class="text_com" data-name="comments"></textarea></li>
                     <li>
-                        <p class="mag"><?=Yii::t('app/member','*Note: If the product option data is not completely captured here, please supplement in the comment box.')?></p>
+                        <p class="mag"><?=Yii::t('app/cart','*Note: If the product option data is not completely captured here, please supplement in the comment box.')?></p>
                     </li>
                 </ul>
                 <div class="ami_btn">
-                    <a style="cursor: pointer" class="btn01 flo" data-name="addCart"><em class="ico_cart"></em><?=Yii::t('app/member','Add to Cart')?></a>
+                    <a style="cursor: pointer" class="btn01 flo" data-name="addCart"><em class="ico_cart"></em><?=Yii::t('app/cart','Add to Cart')?></a>
                 </div>
             </div>
 
             <div class="clear"></div>
             <div class="clear ove prodetail">
                 <div class="clear ove protit font14" id="menuDiv">
-                    <a class="flo noline norcol marr10 current" data-menuindex="0"><?=Yii::t('app/member','Product Details')?></a>
-                    <a class="flo noline norcol" data-menuindex="1"><?=Yii::t('app/member','Payment & Shipping')?></a>
+                    <a class="flo noline norcol marr10 current" data-menuindex="0"><?=Yii::t('app/cart','Product Details')?></a>
+                    <a class="flo noline norcol" data-menuindex="1"><?=Yii::t('app/cart','Payment & Shipping')?></a>
                 </div>
                 <div class="clear">
                     <div class="describeproduct">

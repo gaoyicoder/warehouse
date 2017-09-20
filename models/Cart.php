@@ -69,6 +69,43 @@ class Cart extends ActiveRecord
         }
     }
 
+    /**
+     * @return static
+     */
+    public static function updateCartAmountByPost() {
+        $result = false;
+
+        $request = \Yii::$app->getRequest();
+        if ($request->isPost) {
+            $post = $request->post();
+            $cartId = $post['cartId'];
+            $amount =intval($post['amount']);
+
+            if ($cartId && $amount > 0) {
+                $cartModel = Cart::findOne($cartId);
+                if ($cartModel->id) {
+                    if(Yii::$app->user->isGuest) {
+                        $cartCookieIdentity = Yii::$app->params['userCartCookieIdentity'];
+                        $cartCookieId = self::getCartCookieId($cartCookieIdentity);
+                        if ($cartModel->cartCookieId == $cartCookieId) {
+                            $cartModel->amount = $amount;
+                            $cartModel->save();
+                            $result = $cartModel;
+                        }
+                    }else {
+                        if (Yii::$app->user->id == $cartModel->userId) {
+                            $cartModel->amount = $amount;
+                            $cartModel->save();
+                            $result = $cartModel;
+                        }
+                    }
+                }
+            }
+        }
+
+        return $result;
+    }
+
     public static function getCartList() {
         $cartList = [];
         if (Yii::$app->user->isGuest) {
@@ -86,6 +123,71 @@ class Cart extends ActiveRecord
             }
         }
         return $cartList;
+    }
+
+    public static function getCartTotalMoney() {
+
+        $totalMoney = 0;
+        if (Yii::$app->user->isGuest) {
+            $cartCookieIdentity = Yii::$app->params['userCartCookieIdentity'];
+            $cartCookieId = self::getCartCookieId($cartCookieIdentity);
+
+            if ($cartCookieId) {
+                $totalMoney = self::getTotalMoneyByCookieId($cartCookieId);
+            }
+        } else {
+            $userId = Yii::$app->user->id;
+
+            if ($userId) {
+                $totalMoney = self::getTotalMoneyByUserId($userId);
+            }
+        }
+        return $totalMoney;
+
+    }
+
+    public static function getCartShopTotalMoney($shop) {
+        $totalMoney = 0;
+        if (Yii::$app->user->isGuest) {
+            $cartCookieIdentity = Yii::$app->params['userCartCookieIdentity'];
+            $cartCookieId = self::getCartCookieId($cartCookieIdentity);
+
+            if ($cartCookieId) {
+                $totalMoney = self::getShopTotalMoneyByCookieId($cartCookieId,$shop);
+            }
+        } else {
+            $userId = Yii::$app->user->id;
+
+            if ($userId) {
+                $totalMoney = self::getShopTotalMoneyByUserId($userId,$shop);
+            }
+        }
+        return $totalMoney;
+    }
+
+    public static function getTotalMoneyByCookieId($cookieId) {
+        $where = ["cartCookieId" => $cookieId];
+        return self::getTotalMoneyByWhere($where);
+    }
+
+    public static function getTotalMoneyByUserId($userId) {
+        $where = ["userId" => $userId];
+        return self::getTotalMoneyByWhere($where);
+    }
+
+    public static function getShopTotalMoneyByCookieId($cookieId,$shop) {
+        $where = ["cartCookieId" => $cookieId, "shop" => $shop];
+        return self::getTotalMoneyByWhere($where);
+    }
+
+    public static function getShopTotalMoneyByUserId($userId,$shop) {
+
+        $where = ["userId" => $userId, "shop" => $shop];
+        return self::getTotalMoneyByWhere($where);
+    }
+
+    public static function getTotalMoneyByWhere($where) {
+        return self::find()->where($where)->sum('price*amount');
     }
 
     public static function deleteCartByPost() {

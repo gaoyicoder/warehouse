@@ -114,21 +114,24 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
             $(".shoplist:eq(0)").show();
             if(currentCartList == 0) {
                 $.ajax({
-                    url: '<?= BaseUrl::to(array('member/get-cart-list'), true);?>',
+                    url: '<?= BaseUrl::to(array('cart/get-cart-list'), true);?>',
                     dataType: "json",
                     cache: "false",
                     success: function(data) {
                         if (data.result == true) {
                             var htmlValue = "";
+                            var totalMoney = 0;
                             currentCartList = 1;
                             for(var i = 0; i < data.data.length; i++) {
+                                totalMoney = totalMoney + data.data[i].price * data.data[i].amount;
                                 if (i == 3) {
                                     $("#ShopingCart").next().show();
-                                    break;
-                                };
-                                htmlValue += "<div class='clear ove shopcone'><a href='" + data.data[i].url + "' target='_blank' class='flo product50'><img src='https:" + data.data[i].photoUrl + "' width='50' height='50' /></a><dl class='floR'><dt class='clear ove'><a href='" + data.data[i].url + "' target='_blank' class='norcol' title='" + data.data[i].name + "'>" + data.data[i].name + "</a></dt><dd class='clear ove mar2'><em class='flo'>US<span class='orangetip'>$" + data.data[i].price + "</span> X " + data.data[i].amount + "</em><a class='floR centers norcol noline' onclick=\"Head.deleteCart(" + data.data[i].id + ",this)\" ><div class='mailtip'><img src='http://img.yoybuy.com/V6/Common/newdelete.png' width='14' height='15' class='flo mar5 marr4' /><span class='flo'>Delete</span></div></a></dd></dl></div>";
+                                    continue;
+                                }
+                                htmlValue += "<div class='clear ove shopcone'><a href='" + data.data[i].url + "' target='_blank' class='flo product50'><img src='https:" + data.data[i].photoUrl + "' width='50' height='50' /></a><dl class='floR'><dt class='clear ove'><a href='" + data.data[i].url + "' target='_blank' class='norcol' title='" + data.data[i].name + "'>" + data.data[i].name + "</a></dt><dd class='clear ove mar2'><em class='flo'>US<span class='orangetip'>$" + Tools.CNYToUSD(data.data[i].price) + "</span> X " + data.data[i].amount + "</em><a class='floR centers norcol noline' onclick=\"Head.deleteCart(" + data.data[i].id + ",this)\" ><div class='mailtip'><img src='http://img.yoybuy.com/V6/Common/newdelete.png' width='14' height='15' class='flo mar5 marr4' /><span class='flo'>Delete</span></div></a></dd></dl></div>";
                             }
                             $("#ShopingCart").html(htmlValue);
+                            $("#totalMoney").html("$"+Tools.CNYToUSD(totalMoney));
                             Head.showList(1);
                         } else {
                             currentCartList = 2;
@@ -151,7 +154,7 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
         },
         deleteCart: function(cartId, obj) {
             $.ajax({
-                url: '<?= BaseUrl::to(array('member/delete-cart-item'), true);?>',
+                url: '<?= BaseUrl::to(array('cart/delete-cart-item'), true);?>',
                 cache: false,
                 type: 'POST',
                 dataType:"json",
@@ -162,6 +165,7 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
                         var cartNum = $("#goodsNum").html().replace("(", "").replace(")", "");
                         if (cartNum > 0) {
                             cartNum = cartNum - 1;
+                            $("#totalMoney").html("$"+Tools.CNYToUSD(data.data.totalMoney));
                         }
                         $("#goodsNum").html("(" + cartNum + ")");
                         if (cartNum == 0) {
@@ -230,7 +234,7 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
             <img src="<?=Yii::getAlias('@imagePath'); ?>/main/topbg.png" width="1" height="14" class="floR marl10 mar8">
             <div class="floR marl10 max130 carthover">
                 <div class="clear shopcarnum">
-                    <a href="<?= BaseUrl::to(array('member/shopping-cart'), true);?>" rel="nofollow" target="_blank" class="norcol noline">
+                    <a href="<?= BaseUrl::to(array('cart/shopping-cart'), true);?>" rel="nofollow" target="_blank" class="norcol noline">
                     <span class="floR height30 marl4">
                         Shopping Cart <span class="orangetip" id="goodsNum">(<?=$this->params['cartList']['count']?>)</span>
                     </span>
@@ -246,11 +250,11 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
 
                     </div>
                     <p class="clear ove itemore centers" style="display:none;">
-                        <a href="<?= BaseUrl::to(array('member/shopping-cart'), true);?>" target="_blank" rel="nofollow" class="gray">More items &gt;&gt;</a>
+                        <a href="<?= BaseUrl::to(array('cart/shopping-cart'), true);?>" target="_blank" rel="nofollow" class="gray">More items &gt;&gt;</a>
                     </p>
                     <div class="clear ove mar15">
-                        <em class="flo font14 mar4">Total：<span class="orangetip" id="totalMoney">$63.2</span></em>
-                        <a href="<?= BaseUrl::to(array('member/shopping-cart'), true);?>" rel="nofollow" target="_blank" class="floR
+                        <em class="flo font14 mar4">Total：<span class="orangetip" id="totalMoney"></span></em>
+                        <a href="<?= BaseUrl::to(array('cart/shopping-cart'), true);?>" rel="nofollow" target="_blank" class="floR
 yellowbut" style="width:130px;height:24px;line-height:24px;font-size:12px;font-weight:normal;border-radius:4px;">
                             shopping cart
                         </a>
@@ -259,7 +263,7 @@ yellowbut" style="width:130px;height:24px;line-height:24px;font-size:12px;font-w
                 <div class="clear ove shoplist" style="display:none;">
                     <p class="clear ove centers mar10">The shopping cart is empty</p>
                     <p class="clear ove mar12">
-                        <a href="<?= BaseUrl::to(array('member/shopping-cart'), true);?>" class="yellowbut marauto" style="width:130px;height:24px;line-height:24px;font-size:12px;font-weight:normal;border-radius:4px;" rel="nofollow">shopping cart</a>
+                        <a href="<?= BaseUrl::to(array('cart/shopping-cart'), true);?>" class="yellowbut marauto" style="width:130px;height:24px;line-height:24px;font-size:12px;font-weight:normal;border-radius:4px;" rel="nofollow">shopping cart</a>
                     </p>
                 </div>
             </div>
@@ -290,7 +294,7 @@ yellowbut" style="width:130px;height:24px;line-height:24px;font-size:12px;font-w
                 <div class="floR mar10 homesear">
                     <div class="clear ove homesearT">
                         <input id="taobaourl" type="text" placeholder="<?=Yii::t('app', 'Please enter Taobao URL here')?>" class="flo font14 arial" style="width:400px;height:30px;line-height:30px;border:3px solid #FF6C10;border-right:none;border-radius:0;">
-                        <input id="MainAddItemUrl" type="hidden" value="<?=BaseUrl::to(array("member/add-item"))?>" />
+                        <input id="MainAddItemUrl" type="hidden" value="<?=BaseUrl::to(array("cart/add-item"))?>" />
                         <?php foreach(Yii::$app->params['urlRules'] as $rule) { ?>
                             <input class="main_url_rules" type="hidden" value="<?=$rule ?>">
                         <?php } ?>
@@ -333,7 +337,7 @@ yellowbut" style="width:130px;height:24px;line-height:24px;font-size:12px;font-w
                                 <a href="http://www.yoybuy.com/en/BuyForMe.html" target="_blank" class="noline norcol orangea">How It Works</a>
                             </li>
                             <li>
-                                <a href="<?=BaseUrl::to(array('member/add-url'), true)?>" rel="nofollow" target="_blank" class="noline norcol orangea"><?=Yii::t("app/member", 'Add URL')?></a>
+                                <a href="<?=BaseUrl::to(array('cart/add-url'), true)?>" rel="nofollow" target="_blank" class="noline norcol orangea"><?=Yii::t("app/cart", 'Add URL')?></a>
                             </li>
                             <li>
                                 <a href="http://order.yoybuy.com/en/myorder" target="_blank" class="noline norcol orangea" rel="nofollow">My Items</a>
