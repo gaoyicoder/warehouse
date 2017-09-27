@@ -42,19 +42,6 @@ $this->registerJsFile('@web/js/jquery.imagezoom.min.js', ['depends'=>['app\asset
         </div>
 
     </div>
-    <div id="successcontent" style="display: none">
-        <div class="bs_box">
-            <p class="big"><strong>商品已成功加入购物车！</strong></p>
-            <p data-name="title"></p>
-            <p>Unit Price: $<span data-name="price"></span>  Domestic Shipping: $<span data-name="shipping"></span>  Qty: <span data-name="qty"></span></p>
-            <div class="hr01"></div>
-            <div class="btn_box">
-                <a class="btn01" style="cursor: pointer" data-name="add">[+] 继续购物</a>
-                <a class="btn02" style="cursor: pointer" href="<?= BaseUrl::to(array('cart/shopping-cart'), true);?>">查看我的购物车 &gt;&gt;</a>
-            </div>
-        </div>
-
-    </div>
     <!-- //content -->
 </div>
 <script>

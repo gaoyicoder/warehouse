@@ -17,13 +17,7 @@ $this->registerCssFile('@web/css/member/sidebar.css', ['depends'=>['app\assets\A
 <div id="container" class="clear ove padb90">
     <div id="content">
         <div class="clear breadcrumb">
-
-            <div class="clear breadcrumb">
-                <a href="<?=BaseUrl::home(true)?>" class="flo norcol padnum"><?=Yii::t("app/member", 'Home')?></a>
-                <span class="flo padnum">&gt;</span>
-                <a href="<?=BaseUrl::to(array('member/index'), true)?>" class="flo norcol padnum"><?=Yii::t("app/member", 'My ChinaInAir')?></a>
-            </div>
-
+            <?=$this->render("/layouts/topNav", []); ?>
 
         </div>
         <div class="clear ordercont">

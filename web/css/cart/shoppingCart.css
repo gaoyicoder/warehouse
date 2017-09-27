@@ -1,0 +1,147 @@
+@charset "utf-8";
+/* CSS Document */
+.signin{padding:32px 34px 0 34px;}
+.signintit{border-bottom:1px dashed #E2E2E2;padding-bottom:15px;}
+.signintit h3{font-size:30px;}
+.popcont{width:366px;}
+.facebooknm{display:block;width:287px;height:40px;padding:2px 0 1px 0;border:1px solid #307DBF;background-color:#3E8ACC;border-radius:8px;}
+.facebooknm:hover{background-color:#235ccf;}
+.facebooknm span{display:block;width:48px;height:40px;border-right:1px solid #A0C6E8;}
+.facebooknm em{display:block;width:238px;height:40px;line-height:40px;color:#fff;}
+.popupor{width:65px;}
+.popupor span{display:block;width:12px;height:16px;border-bottom:1px solid #999;}
+.popupor i{display:block;height:32px;line-height:32px;font-style:italic;}
+.popinput{height:37px;line-height:37px;padding:3px 10px;}
+.popinput.current{border:3px solid #00C4CD;padding:1px 8px;}
+.inputlab{position:relative;}
+.inputpo{height:45px;line-height:45px;position:absolute;top:0;left:11px;z-index:10;}
+.code{width:128px;height:35px;padding-right:3px;}
+.popupgray{display:block;border:1px solid #E5E5E5;background-color:#F0F0F0;border-radius:8px;font-weight:bold;color:#999;text-align:center;font-size:18px;}
+.popupgray:hover{background-color:#e1e1e1;color:#666;text-decoration:none;}
+.inputgap{height:8px;}
+.dogap{padding:0 4px;}
+.inputgaps{height:18px;line-height:18px;padding-left:4px;}
+.signintit a{font-style:italic;}
+/*Sign in.html end*/
+/*Join YOYBUY now.html end*/
+.cartit{border:1px solid #E1E1E1;height:40px;}
+.firstcart{padding-left:18px;}
+.carbor{border:1px solid #E8E8E8;}
+.carbor.current{border:1px solid #D7EDFF;background-color:#E9F8FF;}
+.weightitem{text-align:left;padding:25px 0 27px 18px;line-height:130%;}
+.carinput{width:37px;}
+.cartimgs{width:72px;height:72px;}
+.weightitem ul{width:425px;}
+.cartadd{display:block;width:20px;height:20px;background-color:#D6D7D9;}
+.cartadd:hover{background-color:#BFBFBF;}
+.padl40{padding-left:40px;}
+.cartaddress{height:32px;line-height:32px;padding-right:18px;}
+.marl15{margin-left:15px;}
+.cartbut{height:48px;line-height:48px;border:1px solid #E8E8E8;background-color:#F5F5F5;padding:12px 12px 12px 18px;}
+.mar17{margin-top:17px;}
+.tofavorite{display:block;background:url(http://img.yoybuy.com/V6/ShoppingCart/heartno.png) no-repeat left center;padding-left:20px;}
+.tofavorite:hover{background:url(../Images/heart.png) no-repeat left center;}
+/*Cart.html end*/
+/*Cart no.html end*/
+.myyoybuy{width:232px;padding-bottom:50px;background-color:#FAFAFA;}
+.myyoybuy h2{width:232px;height:50px;line-height:50px;text-align:center;background-color:#FF850E;color:#fff;font-size:18px;border-radius:4px 4px 0 0;}
+.yoybuylist dt{padding:10px 28px 0 28px;}
+.yoybuylist dt strong{display:block;border-bottom:1px solid #DFDFDF;font-size:16px;padding-left:1px;padding-bottom:10px;}
+.qutonew{display:block;width:18px;height:7px;}
+.yoybuylist dd a{display:block;width:204px;border-left:3px solid #FAFAFA;padding:7px 0 7px 25px;font-size:13px;}
+.yoybuylist dd a.current{border-left:3px solid #FD8529;color:#f60;}
+.status{width:980px;}
+/*ucenter left common*/
+.parbor{border-bottom:1px solid #E1E1E1;padding-bottom:10px;}
+.newborders{background:url(../../Images/ShoppingCart/borderbgs.png) no-repeat right center;}
+.favobut{display:block;width:27px;padding:55px 0 0 25px;}
+.favoitem{width:430px;}
+.faitem{width:290px;}
+.faitem ul{height:90px;}
+.graybuts{display:block;height:29px;line-height:29px;border:1px solid #DADADA;background-color:#F0F0F0;}
+.graybuts:hover{background-color:#eaeaea;}
+.mar7{margin-top:7px;}
+.parcelbot{height:37px;line-height:37px;background-color:#F5F5F5;}
+.marr8{margin-right:8px;}
+.marr15{margin-right:15px;}
+/*My favorite.html end*/
+
+
+/*最近修改*/
+.stps {
+    margin: 15px 0 40px;
+    border-bottom: 1px solid #d9d9d9;
+    height: 30px;
+}
+
+.stps li {
+    float: left;
+    width: 20%;
+    text-align: center;
+    line-height: 24px;
+    font-size: 14px;
+    position: relative;
+    height: 30px;
+}
+
+.stps li span {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #cccccc;
+    margin-right: 10px;
+    color: #fff;
+}
+
+.stps .actv span {
+    background: #ff6c10;
+}
+
+.stps li em {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #ff6c10;
+    left: 0;
+    bottom: -1px;
+    display: none;
+}
+
+.stps .actv em {
+    display: block;
+}
+
+.spinfo {
+    margin-top: 20px;
+    border: 1px solid #E1E1E1;
+    border-bottom: 0;
+}
+
+.spinfo td {
+    border-bottom: 1px solid #E1E1E1;
+}
+
+.spinfo thead td {
+    text-align: left;
+    padding-left: 18px;
+    height: 38px;
+}
+
+.spinfo thead td input {
+    height: auto;
+    vertical-align: middle;
+    margin-top: -2px;
+}
+
+.spinfo thead td span {
+    margin-left: 25px;
+}
+
+.carbor.current {
+    border: 0;
+}
+
+#showSubBtn {
+    margin-top: 25px;
+}

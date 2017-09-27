@@ -111,6 +111,13 @@ class CartController extends Controller
 
     }
 
+    //show shopping cart view
+    public function actionShoppingCart() {
+
+        return $this->render("shoppingCart", []);
+
+    }
+
     private function getCartView() {
 
         $cartList = Cart::getCartList();
