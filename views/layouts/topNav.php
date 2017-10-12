@@ -14,8 +14,8 @@ use yii\helpers\BaseUrl;
     <a href="<?=BaseUrl::home(true);?>" class="flo norcol padnum">Home</a>
 
 
-    <? if($this->context->topNav) { ?>
-        <? foreach($this->context->topNav as $navKey => $navUrl) {?>
+    <? if($this->params['topNav']) { ?>
+        <? foreach($this->params['topNav'] as $navKey => $navUrl) {?>
             <span class="flo padnum">&gt;</span>
             <? if($navUrl) {?>
                 <a href="<?=$navUrl;?>" class="flo norcol padnum"><?=$navKey?></a>

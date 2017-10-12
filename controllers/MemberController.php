@@ -14,12 +14,11 @@ use yii\helpers\BaseUrl;
 
 class MemberController extends Controller
 {
-    public $topNav = [];
     public $layout='member';
 
     public function beforeAction($action) {
         if(parent::beforeAction($action)) {
-            $this->topNav = [Yii::t('app/cart', 'My ChinaInAir') => BaseUrl::to("member/index")];
+            $this->view->params['topNav'] = [Yii::t('app/cart', 'My ChinaInAir') => BaseUrl::to("member/index")];
 
             return true;
         } else {
@@ -34,7 +33,7 @@ class MemberController extends Controller
 
     private function addNav($nextNav) {
         if($nextNav) {
-            $this->topNav = array_merge($this->topNav, $nextNav);
+            $this->view->params['topNav'] = array_merge($this->view->params['topNav'], $nextNav);
         }
     }
 }

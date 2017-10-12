@@ -7,6 +7,7 @@
  */
 /* @var $urlRules array*/
 /* @var $urlExamples array*/
+/* @var $this \yii\web\View */
 use yii\helpers\BaseUrl;
 
 $this->registerCssFile('@web/css/cart/addUrl.css', ['depends'=>['app\assets\AppAsset']]);
@@ -15,14 +16,7 @@ $this->registerCssFile('@web/css/cart/addUrl.css', ['depends'=>['app\assets\AppA
 <div id="container">
     <!-- content -->
     <div id="content">
-        <ul class="stps">
-            <li class="actv"><span>1</span><?=Yii::t('app/cart','Search URL')?><em></em></li>
-            <li><span>2</span><?=Yii::t('app/cart','Pay Order')?><em></em></li>
-            <li><span>3</span><?=Yii::t('app/cart','ChinaInAir Purchasing')?><em></em></li>
-            <li><span>4</span><?=Yii::t('app/cart','Submit Parcel')?><em></em></li>
-            <li><span>5</span><?=Yii::t('app/cart','Confirm Reception')?><em></em></li>
-
-        </ul>
+        <?=$this->render('/layouts/shoppingSteps', ['shoppingStep' => 1])?>
         <div class="admi_section01">
             <div class="add_link">
                 <input placeholder="<?=Yii::t('app/cart','Please enter Taobao URL here');?>" class="link_input" type="text" name="" id="ItemUrl" />

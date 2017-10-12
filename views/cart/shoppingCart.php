@@ -12,16 +12,11 @@ use yii\helpers\BaseUrl;
 
 $this->registerCssFile('@web/css/cart/shoppingCart.css', ['depends'=>['app\assets\AppAsset']]);
 ?>
-
+<!--Content Start-->
 <div id="container" class="clear ove padb90">
+    <!-- content -->
     <div id="content">
-        <ul class="stps">
-            <li class="actv"><span>1</span>Search URL<em></em></li>
-            <li><span>2</span>Pay Order<em></em></li>
-            <li><span>3</span>YOYBUY Purchasing<em></em></li>
-            <li><span>4</span>Submit Parcel<em></em></li>
-            <li><span>5</span>Confirm Reception<em></em></li>
-        </ul>
+        <?=$this->render('/layouts/shoppingSteps', ['shoppingStep' => 1])?>
         <table cellpadding="0" cellspacing="0" width="100%" class="clear collapse cartit centers">
             <tbody>
             <tr bgcolor="F5F5F5">
@@ -236,4 +231,21 @@ $this->registerCssFile('@web/css/cart/shoppingCart.css', ['depends'=>['app\asset
         </div>
 
     </div>
+    <!-- //content -->
 </div>
+<script>
+    var ShoppingCartManager = {
+        init: function(){
+            this.bindEvent();
+        }
+
+        bindEvent: function() {
+            
+        }
+    };
+
+    $(function(){
+        ShoppingCartManager.init();
+    });
+</script>
+<!--Content End-->
