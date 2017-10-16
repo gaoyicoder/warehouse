@@ -8,7 +8,7 @@ return [
     ],
     'urlRules' => [
         "^(https://){0,1}item.taobao.com/item.htm\?",
-        "^http(s){0,1}://.+/.+",
+//        "^http(s){0,1}://.+/.+",
     ],
     'urlExamples' => [
         'https://item.taobao.com/item.htm?spm=a230r.1.14.328.QUFKSj&id=535608330129&ns=1&abbucket=8',

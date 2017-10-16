@@ -34,6 +34,8 @@ use yii\web\Cookie;
 
 class Cart extends ActiveRecord
 {
+    public $postFeeTypeStr;
+
     public function rules() {
         return [
             [['name', 'price', 'amount', 'postFeeType', 'url', 'shopUrl', 'shop', 'photoUrl', 'remark', 'source'], 'required'],
@@ -63,11 +65,11 @@ class Cart extends ActiveRecord
     }
 
     public static function findAllByCartCookieId($cartCookieId) {
-        return self::findAll(["cartCookieId" => $cartCookieId]);
+        return self::find()->where(["cartCookieId" => $cartCookieId])->orderBy('createTime DESC')->all();
     }
 
     public static function findAllByUserId($userId) {
-        return self::findAll(["userId" => $userId]);
+        return self::find()->where(["userId" => $userId])->orderBy('createTime DESC')->all();
     }
 
     public static function updateAllUserIdByCartCookieId($userId, $cartCookieId) {
@@ -247,6 +249,24 @@ class Cart extends ActiveRecord
                 }
             }
         }
+        return $result;
+    }
+
+    public static function deleteCartByIds($ids = []) {
+        $result = false;
+
+        if($ids != []) {
+            if(Yii::$app->user->isGuest) {
+                $cartCookieIdentity = Yii::$app->params['userCartCookieIdentity'];
+                $cartCookieId = self::getCartCookieId($cartCookieIdentity);
+                $result = Cart::deleteAll(['id' => $ids, 'cartCookieId' => $cartCookieId]);
+
+            } else {
+                $userId = Yii::$app->user->id;
+                $result = Cart::deleteAll(['id' => $ids, 'userId' => $userId]);
+            }
+        }
+
         return $result;
     }
 

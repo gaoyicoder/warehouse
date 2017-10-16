@@ -38,8 +38,8 @@
 .ark-poptip-arrow,.ark-poptip-arrow em,.ark-poptip-arrow span{position:absolute;font-size:26px;font-style:normal;line-height:21px;z-index:10;*zoom:1;}
 .ark-poptip-arrow span{color:#EFF8FF;top:0;left:0;}
 /*doubt end*/
-.delete{display:block;width:17px;height:17px;background:url(http://img.yoybuy.com/V6/Common/delete.png) no-repeat;}
-.delete:hover{background:url(http://img.yoybuy.com/V6/Common/deleteho.png) no-repeat;}
+.delete{display:block;width:17px;height:17px;background:url(/images/main/delete.png) no-repeat;}
+.delete:hover{background:url(/images/main/deleteho.png) no-repeat;}
 /*delete end*/
 .statuslistR{height:26px;border:1px solid #CCC;border-radius:2px;}
 .seek{display:block;width:13px;height:13px;padding:7px 11px 6px 10px;background-color:#F5F5F5;border-left:1px solid #ccc;}

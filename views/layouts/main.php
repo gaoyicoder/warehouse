@@ -97,7 +97,7 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
                 if (verified) {
                     jump($('#MainAddItemUrl').val()+"?url="+encodeURIComponent(itemUrl));
                 } else {
-                    MessageBox.showAlertMessageBoxWarn(630, 260, $('#MainMsgContent').val(), $('#MainMsgBtn').val(), "");
+                    MessageBox.showAlertMessageBoxWarn(630, 260, '<?=Yii::t('app','* Error website address, please check it!')?>', '<?=Yii::t('app','OK')?>', "");
                 }
             });
         },

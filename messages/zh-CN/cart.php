@@ -45,4 +45,7 @@ return [
     'Fastest delivery' => '最快的运送',
     'Note: We will choose the most suitable delivery option according to your selection. The delivery cost will be charged to your account and payable when you ship the package home.' => '注意事项: 我们将根据您的选择选取合适的中国境内运费, 运费将计入您的账户, 并在您支付国际运费时收取。',
     'Failed to add item, please try again later' => '添加购物车失败, 请稍后再试',
+
+    //shoppingCart
+    "Please select items which you would like to delete!" => "请选择您需要删除的项目",
 ];

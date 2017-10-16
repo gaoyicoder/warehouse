@@ -86,6 +86,23 @@ class CartController extends Controller
         return $this->asJson(array('result'=> $result, 'data'=>$data));
     }
 
+    //Delete multiple cart items, return json
+    public function actionDeleteCartMulItems() {
+        $result = false;
+
+        $request = \Yii::$app->getRequest();
+        if ($request->isPost) {
+            $post = $request->post();
+            $cartId = $post['cartId'];
+            $cartIdArray = explode("&", str_replace("cartids=", "", $cartId));
+            $result = Cart::deleteCartByIds($cartIdArray);
+        }
+
+        $data['totalMoney'] = Cart::getCartTotalMoney();
+        return $this->asJson(array('result'=> $result, 'data'=>$data));
+
+    }
+
     //Delete cart item for add item view,, return json
     public function actionDeleteCartItemRight() {
         $result = Cart::deleteCartByPost();
@@ -113,8 +130,24 @@ class CartController extends Controller
 
     //show shopping cart view
     public function actionShoppingCart() {
+        $cartArray = [];
+        $totalPayment = 0;
+        $cartList = Cart::getCartList();
+        foreach($cartList as $cart) {
+            $cartArray[$cart['shopUrl']]['shop'] = $cart['shop'];
+            $cartArray[$cart['shopUrl']]['source'] = $cart['source'];
 
-        return $this->render("shoppingCart", []);
+            if ($cart['postFeeType'] == 0) {
+                $cart['postFeeTypeStr'] = Yii::t('app/cart','Free or low cost delivery');
+            } else {
+                $cart['postFeeTypeStr'] = Yii::t('app/cart','Fastest delivery');
+            }
+            $cartArray[$cart['shopUrl']]['cart'][] = $cart;
+
+            $totalPayment = $totalPayment + $cart['price'] * $cart['amount'];
+        }
+
+        return $this->render("shoppingCart", ['cartList' => $cartArray, 'totalPayment' => Yii::$app->securityTools->cnyToUsd($totalPayment)]);
 
     }
 

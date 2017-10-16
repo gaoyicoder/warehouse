@@ -39,8 +39,6 @@
 .marl15{margin-left:15px;}
 .cartbut{height:48px;line-height:48px;border:1px solid #E8E8E8;background-color:#F5F5F5;padding:12px 12px 12px 18px;}
 .mar17{margin-top:17px;}
-.tofavorite{display:block;background:url(http://img.yoybuy.com/V6/ShoppingCart/heartno.png) no-repeat left center;padding-left:20px;}
-.tofavorite:hover{background:url(../Images/heart.png) no-repeat left center;}
 /*Cart.html end*/
 /*Cart no.html end*/
 .myyoybuy{width:232px;padding-bottom:50px;background-color:#FAFAFA;}
@@ -136,10 +134,6 @@
 
 .spinfo thead td span {
     margin-left: 25px;
-}
-
-.carbor.current {
-    border: 0;
 }
 
 #showSubBtn {
