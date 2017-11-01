@@ -125,6 +125,42 @@ class Cart extends ActiveRecord
         return $result;
     }
 
+    public static function updateCartRemarkByPost() {
+
+        $result = false;
+
+        $request = \Yii::$app->getRequest();
+        if ($request->isPost) {
+            $post = $request->post();
+            $cartId = $post['cartId'];
+
+            $remark =$post['remark'];
+
+            if ($cartId && strlen($remark)<500) {
+                $cartModel = Cart::findOne($cartId);
+                if ($cartModel->id) {
+                    if(Yii::$app->user->isGuest) {
+                        $cartCookieIdentity = Yii::$app->params['userCartCookieIdentity'];
+                        $cartCookieId = self::getCartCookieId($cartCookieIdentity);
+                        if ($cartModel->cartCookieId == $cartCookieId) {
+                            $cartModel->remark = $remark;
+                            $cartModel->save();
+                            $result = $cartModel;
+                        }
+                    }else {
+                        if (Yii::$app->user->id == $cartModel->userId) {
+                            $cartModel->remark = $remark;
+                            $cartModel->save();
+                            $result = $cartModel;
+                        }
+                    }
+                }
+            }
+        }
+
+        return $result;
+    }
+
     public static function getCartList() {
         $cartList = [];
         if (Yii::$app->user->isGuest) {

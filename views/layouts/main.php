@@ -374,7 +374,7 @@ yellowbut" style="width:130px;height:24px;line-height:24px;font-size:12px;font-w
                 </a>
                 <style>
                     .bstsell{ position:relative;}
-                    .bstsell em{ position:absolute; left:55%; top:-8px; width:44px; height:24px; background:url(http://img.yoybuy.com/www/home/hoticon.gif) no-repeat;}
+                    .bstsell em{ position:absolute; left:55%; top:-8px; width:44px; height:24px; background:url(<?=Yii::getAlias('@imagePath'); ?>/main/hoticon.gif) no-repeat;}
                 </style>
                 <a href="http://www.yoybuy.com/en/BestSelling.html" target="_blank" class="flo noline inlinka bstsell">
                     Best Selling<em></em>

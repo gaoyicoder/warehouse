@@ -4,7 +4,7 @@
 .foot01{ width:1230px; display:block; margin:0 auto; height:200px;}
 .foot01 .left_sar{float:left;width:265px;height:200px;padding-left:65px;}
 .foot01 .left_sar .sar_main{ width:100%; height:auto; display:inline-block;}
-.foot01 .left_sar .sar_main a{ background:url(http://img.yoybuy.com/20140808/ico_shar_a.png) no-repeat; display:inline-block; margin:2px; width:48px; height:48px;}
+.foot01 .left_sar .sar_main a{ background:url(../../images/main/ico_shar_a.png) no-repeat; display:inline-block; margin:2px; width:48px; height:48px;}
 .foot01 .left_sar .sar_main a:hover{ background:url(http://img.yoybuy.com/20140808/ico_shar_b.png) no-repeat;}
 .foot01 .left_sar .sar_main a.s1{ background-position:0 0;}
 .foot01 .left_sar .sar_main a.s2{ background-position:-61px 0;}

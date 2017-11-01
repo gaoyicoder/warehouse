@@ -93,8 +93,7 @@ class CartController extends Controller
         $request = \Yii::$app->getRequest();
         if ($request->isPost) {
             $post = $request->post();
-            $cartId = $post['cartId'];
-            $cartIdArray = explode("&", str_replace("cartids=", "", $cartId));
+            $cartIdArray = $post['cartId'];
             $result = Cart::deleteCartByIds($cartIdArray);
         }
 
@@ -110,7 +109,7 @@ class CartController extends Controller
         return $this->asJson(array('result'=> $result, 'data'=>$data));
     }
 
-    //Update cart item amount for add item view,, return json
+    //Update cart item amount for add item view and shopping cart view, return json
     public function actionUpdateCartItemAmount() {
         $result = false;
         $data = [];
@@ -126,6 +125,18 @@ class CartController extends Controller
         }
         return $this->asJson(array('result'=> $result, 'data'=>$data));
 
+    }
+
+    //Update cart item amount for add item view and shopping cart view, return json
+    public function actionUpdateCartItemRemark() {
+        $result = false;
+        $data = [];
+
+        $cartModel = Cart::updateCartRemarkByPost();
+        if ($cartModel) {
+            $result = true;
+        }
+        return $this->asJson(array('result'=> $result, 'data'=>$data));
     }
 
     //show shopping cart view
@@ -149,6 +160,10 @@ class CartController extends Controller
 
         return $this->render("shoppingCart", ['cartList' => $cartArray, 'totalPayment' => Yii::$app->securityTools->cnyToUsd($totalPayment)]);
 
+    }
+
+    public function actionShoppingCartPay(){
+        
     }
 
     private function getCartView() {

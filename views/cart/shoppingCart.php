@@ -74,7 +74,7 @@ $this->registerCssFile('@web/css/cart/shoppingCart.css', ['depends'=>['app\asset
                             </p>
                             <ul>
                                 <li><a href="<?=$cart['url']?>" class="norcol orangea" title="<?=$cart['name']?>" target="_blank"><?=$cart['name']?></a></li>
-                                <li class="mar5"><textarea class="flo col666 arial goodsRemark" data-cartid="2964916" data-oldremark="<?=$cart['remark']?>" style="width: 283px; height: 34px; overflow-y: hidden;"><?=$cart['remark']?></textarea></li>
+                                <li class="mar5"><textarea class="flo col666 arial goodsRemark" data-cartid="<?=$cart['id']?>" data-oldremark="<?=$cart['remark']?>" style="width: 283px; height: 34px; overflow-y: hidden;"><?=$cart['remark']?></textarea></li>
                             </ul>
 
                         </div>
@@ -150,7 +150,7 @@ $this->registerCssFile('@web/css/cart/shoppingCart.css', ['depends'=>['app\asset
                 <a class="closebut"></a>
                 <div class="clear ove mailtips centers">
                     <div class="clear ove mailtip">
-                        <img src="http://img.yoybuy.com/V6/Common/deletes.png" width="42" height="54" class="flo marr20">
+                        <img src="<?=Yii::getAlias('@imagePath'); ?>/cart/deletes.png" width="42" height="54" class="flo marr20">
                         <p class="flo font16 mar20 lefts"><strong>Want to delete the collection to you?</strong></p>
                     </div>
                 </div>
@@ -169,7 +169,7 @@ $this->registerCssFile('@web/css/cart/shoppingCart.css', ['depends'=>['app\asset
                 <a class="closebut"></a>
                 <div class="clear ove mailtips centers">
                     <div class="clear ove mailtip">
-                        <img src="http://img.yoybuy.com/V6/Common/deletes.png" width="42" height="54" class="flo marr20">
+                        <img src="<?=Yii::getAlias('@imagePath'); ?>/cart/deletes.png" width="42" height="54" class="flo marr20">
                         <p class="flo font16 mar20 lefts"><strong>Are you sure to delete?</strong></p>
                     </div>
                 </div>
@@ -189,8 +189,13 @@ $this->registerCssFile('@web/css/cart/shoppingCart.css', ['depends'=>['app\asset
 
         allTotalPrice: 0.00,
         selectedItems: [],
+        ifCheckOutSubmit: false,
         msg: {
             noSelectItemsDelete:  '<?=Yii::t("app/cart", "Please select items which you would like to delete!")?>',
+            remarkTooLong: '<?=Yii::t("app/cart","Note information is too long")?>',
+            noSelectItemCheckOut: '<?=Yii::t("app/cart","Please select the item(s) at first!")?>',
+            needLogin: '<?=Yii::t("app/cart","Sorry, you need login first")?>',
+            errorWhenCheckout: '<?=Yii::t("app/cart","Sorry, you need login first")?>'
         },
 
         init: function(){
@@ -211,17 +216,17 @@ $this->registerCssFile('@web/css/cart/shoppingCart.css', ['depends'=>['app\asset
             //删除多个
             this.deleteAll();
             //增加商品数量
-//            this.itemQTYAdd();
+            this.itemQTYAdd();
             //减少商品数量
-//            this.ItemsQTYMinus();
+            this.itemQTYMinus();
             //光标离开商品数量文本框
-//            this.ItemQTYTextKeyUp();
+            this.itemQTYTextKeyUp();
             //单个商品备注功能
-//            this.goodsRemarkChange();
+            this.goodsRemarkChange();
             //Checkout的操作栏定位
             this.checkOutDivPosition();
             //checkout 操作
-//            this.checkOut();
+            this.checkOut();
             //加载商品图片
             this.loadGoodsImg();
 
@@ -326,7 +331,7 @@ $this->registerCssFile('@web/css/cart/shoppingCart.css', ['depends'=>['app\asset
         deleteItem: function () {
             $(".spcart_listj").bind("click", function () {
                 var cartId = $(this).attr("data-cartid");
-                $("#DeleteItemDiv").attr("data-ItemCartId", $.param({ "cartids": cartId }));
+                $("#DeleteItemDiv").attr("data-ItemCartId", cartId);
                 $.colorbox({ width: "605px", height: "300px", inline: true, href: "#DeleteItemDiv" });
                 $("#deleteItemYes").bind("click", function () {
                     ShoppingCartManager.deleteItemsCompleted($("#DeleteItemDiv").attr("data-ItemCartId"), true);
@@ -352,7 +357,7 @@ $this->registerCssFile('@web/css/cart/shoppingCart.css', ['depends'=>['app\asset
                 else if (ShoppingCartManager.selectedItems.length > 0) {
                     $.colorbox({ width: "605px", height: "300px", inline: true, href: "#deleteAllDiv" });
                     $("#deleteAllYes").bind("click", function () {
-                        var paramCartId = $.param({ "cartids": ShoppingCartManager.selectedItems }, true);
+                        var paramCartId = ShoppingCartManager.selectedItems;
                         ShoppingCartManager.deleteItemsCompleted(paramCartId, false);
                     });
                 }
@@ -386,11 +391,11 @@ $this->registerCssFile('@web/css/cart/shoppingCart.css', ['depends'=>['app\asset
 
             if (forOne || divLength == 1) {
                 removeDiv.each(function () {
-                    if ($(this).attr("data-cartid") == paramCartId.substr(8)) {
+                    if ($(this).attr("data-cartid") == paramCartId) {
                         var shopUrl = $(this).attr("data-shopurl");
                         var isLast = true;
                         removeDiv.each(function () {
-                            if ($(this).attr("data-shopurl") == shopUrl && $(this).attr("data-cartid") != paramCartId.substr(8)) {
+                            if ($(this).attr("data-shopurl") == shopUrl && $(this).attr("data-cartid") != paramCartId) {
                                 isLast = false;
                             }
                         });
@@ -407,10 +412,10 @@ $this->registerCssFile('@web/css/cart/shoppingCart.css', ['depends'=>['app\asset
                 removeDiv.each(function () {
                     if ($(this).prop("checked") == true) {
                         var shopUrl = $(this).attr("data-shopurl");
-                        var paramCartId = $(this).attr("data-cartid");
+                        var tempParamCartId = $(this).attr("data-cartid");
                         var isLast = true;
                         removeDiv.each(function () {
-                            if ($(this).attr("data-shopurl") == shopUrl && $(this).attr("data-cartid") != paramCartId) {
+                            if ($(this).attr("data-shopurl") == shopUrl && $(this).attr("data-cartid") != tempParamCartId) {
                                 isLast = false;
                             }
                         });
@@ -462,38 +467,251 @@ $this->registerCssFile('@web/css/cart/shoppingCart.css', ['depends'=>['app\asset
 
         checkOutDivPosition: function () {
 
-            var height = $(".spcart_pay").offset().top;
-            var fheight = $(".spcart_pay").height();
-            var wheight = $(window).height();
-            var sheight = height + fheight - wheight;
+            var payDiv = $(".spcart_pay");
+            if(payDiv.offset()){
+                var height = payDiv.offset().top;
+                var fheight = payDiv.height();
+                var wheight = $(window).height();
+                var sheight = height + fheight - wheight;
 
-            if (height <= wheight) {
+                if (height <= wheight) {
 
-                $(".spcart_pay").attr("style", "");
-
-
-            } else {
-                $(".spcart_pay").attr("style", "position: fixed;left: 50%;margin-left: -615px;bottom: 0px;width:1230px");
-            }
-            $(window).bind("scroll", function () {
+                    payDiv.attr("style", "");
 
 
-                var st = $(document).scrollTop();
-                if (st >= sheight) {
-                    $(".spcart_pay").attr("style", "");
                 } else {
-                    $(".spcart_pay").attr("style", "position: fixed;left: 50%;margin-left: -615px;width:1230px;bottom: 0px");
+                    payDiv.attr("style", "position: fixed;left: 50%;margin-left: -615px;bottom: 0px;width:1230px");
                 }
+                $(window).bind("scroll", function () {
 
-            });
+
+                    var st = $(document).scrollTop();
+                    if (st >= sheight) {
+                        payDiv.attr("style", "");
+                    } else {
+                        payDiv.attr("style", "position: fixed;left: 50%;margin-left: -615px;width:1230px;bottom: 0px");
+                    }
+
+                });
+            }
         },
 
         loadGoodsImg: function() {
             var goodsImgUrls = $(".loaddingImg");
             goodsImgUrls.each(function () {
-                $(this).attr("src", $(this).attr("data-src"));
+                $(this).attr("src", $(this).attr("data-src")).attr("data-src", "");
+            });
+        },
+
+        itemQTYAdd: function() {
+            $(".itemsQTYAdd").bind("click", function () {
+
+                var numInput = $(this).prev();
+
+                var afterAddOne = ShoppingCartManager.intAddOne(numInput);
+
+                ShoppingCartManager.itemQTYChanged(numInput, afterAddOne);
+            });
+        },
+
+        itemQTYMinus: function() {
+            $(".itemsQTYMinus").bind("click", function () {
+                var numInput = $(this).next();
+                var afterMinusOne = ShoppingCartManager.intMinusOne(numInput);
+                ShoppingCartManager.itemQTYChanged(numInput, afterMinusOne);
+            });
+        },
+
+        itemQTYTextKeyUp: function() {
+            $(".cartItemQty").bind("blur", function () {
+                ShoppingCartManager.checkInt(this);
+                var amount = $(this).val();
+                ShoppingCartManager.itemQTYChanged(this, amount);
+            });
+        },
+
+        intAddOne: function(obj) {
+            //数字加1
+            var toObjId = obj;
+
+            if (typeof ($(toObjId).val()) == "undefined") {
+                return 1;
+            }
+            var addOne = parseInt($(toObjId).val()) + 1;
+
+            if (addOne >= 10000) {
+                addOne = 1;
+            }
+
+            return addOne;
+        },
+
+        intMinusOne: function(obj) {
+            //数字减1
+            var toObjId = obj;
+
+            if (typeof ($(toObjId).val()) == "undefined") {
+                return 1;
+            }
+
+            var nowvalue = parseInt($(toObjId).val());
+
+            if (nowvalue > 1) {
+                return nowvalue - 1;
+            }
+
+            return 1;
+        },
+
+        checkInt: function (object) {
+            //验证只能是整数
+            var reg = /^[0-9]*$/;
+            if ($.trim($(object).val()) == "" || $(object).val() == "0") {
+                $(object).val("1");
+            }
+            if (!reg.test($(object).val())) {
+                $(object).val("1");
+            } else {
+                if (parseInt($(object).val()) >= 10000) {
+                    $(object).val("1");
+                }
+            }
+        },
+
+        itemQTYChanged: function(numInput, amount) {
+            //改完数量后的处理data-cartid
+            var numInputObj = $(numInput);
+
+
+            var oldAmount = numInputObj.attr("data-oldnum");
+
+            if (amount == oldAmount) {
+                //same
+                return false;
+            }
+
+            var cartId = numInputObj.attr("data-cartid");
+
+            $.ajax({
+                url: "<?= BaseUrl::to(array('cart/update-cart-item-amount'), true);?>",
+                dataType: "json",
+                cache: false,
+                type: 'POST',
+                data: { cartId: cartId, amount: amount, "<?=Yii::$app->request->csrfParam?>": '<?=Yii::$app->request->getCsrfToken()?>' },
+                success: function (data) {
+                    if (data.result == true) {
+
+                        var amountBacked = data.data.amount;
+
+                        var checkBoxInput =$("input[data-cartid='" + cartId + "']");
+                        var price =  checkBoxInput.attr("data-price");
+
+                        var itemTotalPrice = amountBacked * price;
+                        var itemTotalUSDPrice = Tools.CNYToUSD(itemTotalPrice);
+
+                        checkBoxInput.attr("data-totalprice", itemTotalPrice);
+
+                        $("#totalPrice_" + cartId).text("$"+itemTotalUSDPrice);
+
+                        numInputObj.val(amountBacked);
+
+                        ShoppingCartManager.changeAllTotalPrice();
+
+
+                        numInputObj.attr("data-oldnum", amountBacked);
+
+                    }
+                }
+            });
+        },
+
+        goodsRemarkChange: function() {
+            $(".goodsRemark").bind("blur", function () {
+
+                var remarkText = $(this);
+
+                var remark = remarkText.val();
+                if (remark.length > 500) {
+                    MessageBox.showAlertMessageBoxWarn(630, 260, ShoppingCartManager.msg.remarkTooLong, '<?=Yii::t('app','OK')?>', "");
+                    return false;
+                }
+                var oldRemark = remarkText.attr("data-oldremark");
+
+                if (remark == oldRemark) {
+                    return false;
+                }
+                var cartid = remarkText.attr("data-cartid");
+                $.ajax({
+                    url: "<?= BaseUrl::to(array('cart/update-cart-item-remark'), true);?>",
+                    dataType: "json",
+                    cache: false,
+                    type: "POST",
+                    data: { cartId: cartid, remark: remark, "<?=Yii::$app->request->csrfParam?>": '<?=Yii::$app->request->getCsrfToken()?>'},
+                    success: function (data) {
+                        if (data.result == true) {
+                            remarkText.attr("data-oldremark", remark);
+                        }
+                    }
+                });
+
+            });
+        },
+
+        checkOut: function () {
+
+            $("#CartCheckout").bind("click", function () {
+
+                if (ShoppingCartManager.ifCheckOutSubmit) {
+                    return;
+                }
+
+                ShoppingCartManager.getSelectedItems();
+
+                if (ShoppingCartManager.selectedItems.length == 0) {
+                    MessageBox.showAlertMessageBoxWarn(630, 260, ShoppingCartManager.msg.noSelectItemCheckOut, '<?=Yii::t('app','OK')?>', "");
+                    return;
+                }
+
+                ShoppingCartManager.ifCheckOutSubmit = true;
+
+                var checkoutTempHtml = $("#CartCheckout").html();
+                
+                $("#CartCheckout").unbind("click");
+                $("#CartCheckout").css("background", "rgb(204,204,204)");
+
+                $.ajax({
+                    url: "<?= BaseUrl::to(array('cart/shopping-cart-pay'), true);?>",
+                    dataType: "json",
+                    cache: false,
+                    type: "POST",
+                    data: { "cartIds":ShoppingCartManager.selectedItems, "<?=Yii::$app->request->csrfParam?>": '<?=Yii::$app->request->getCsrfToken()?>'},
+                    success: function (data) {
+                        if (data.result == true) {
+                            window.location.href = data.returnUrl;
+                        } else {
+
+                            MessageBox.showAlertMessageBoxWarn(630, 260, ShoppingCartManager.msg.needLogin, '<?=Yii::t('app','OK')?>', "");
+                            //显示登录框
+//                            暂时注释,等实现CartLogin.js
+//                            CartLogin.ClearLogOrRegInput();
+//                            $.colorbox({ width: "496px", height: "546px", inline: true, href: "#loginDiv" });
+
+                        }
+
+                        ShoppingCartManager.ifCheckOutSubmit = false;
+                        $("#CartCheckout").html(checkoutTempHtml);
+                    },
+                    error: function () {
+                        ShoppingCartManager.ifCheckOutSubmit = false;
+                        $("#CartCheckout").html(checkoutTempHtml);
+                        MessageBox.showAlertMessageBoxWarn(630, 260, ShoppingCartManager.msg.errorWhenCheckout, '<?=Yii::t('app','OK')?>', "");
+
+                    }
+                });
+
             });
         }
+
     };
 
     $(function(){

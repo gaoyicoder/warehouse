@@ -48,4 +48,7 @@ return [
 
     //shoppingCart
     "Please select items which you would like to delete!" => "请选择您需要删除的项目",
+    "Note information is too long" => "备注信息过长",
+    "Please select the item(s) at first!" => "请至少选择一个项目",
+    "Sorry, you need login first" => "对不起, 您需要先登录",
 ];
