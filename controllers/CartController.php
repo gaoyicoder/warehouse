@@ -163,21 +163,25 @@ class CartController extends Controller
     public function actionShoppingCartPay(){
         $result = false;
         $msg = "";
+        $orderId = "";
 
         if(!Yii::$app->user->isGuest) {
             $request = \Yii::$app->getRequest();
             if ($request->isPost) {
                 $post = $request->post();
                 $cartIdArray = $post['cartIds'];
-                $result = Cart::combineOrderByIds($cartIdArray);
-                if (!$result) {
+                $orderId = Cart::combineOrderByIds($cartIdArray);
+                if (!$orderId) {
                     $msg = Yii::t("app/cart","Sorry, error happened when create order.");
+                    $result = false;
+                }else {
+                    $result = true;
                 }
             }
         } else {
             $msg = Yii::t("app/cart","Sorry, you need login first.");
         }
-        return $this->asJson(array('result'=> $result, 'msg'=> $msg, 'returnUrl' => BaseUrl::to(array('member/pay-order'), true)));
+        return $this->asJson(array('result'=> $result, 'msg'=> $msg, 'returnUrl' => BaseUrl::to(array('order/pay-order', 'id'=>$orderId), true)));
     }
 
     private function getCartView() {

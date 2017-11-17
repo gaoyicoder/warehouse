@@ -335,7 +335,7 @@ class Cart extends ActiveRecord
                         OrderItem::createOrderItemByCart($cart, $orderModel->id);
                     }
                     Cart::deleteCartByIds($ids);
-                    $result = true;
+                    $result = $orderModel->id;
                     $transaction->commit();
 
                 } catch (Exception $e) {
