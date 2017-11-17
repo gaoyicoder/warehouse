@@ -113,6 +113,7 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
         getCartList: function() {
             $(".shoplist:eq(0)").show();
             if(currentCartList == 0) {
+                currentCartList = 1;
                 $.ajax({
                     url: '<?= BaseUrl::to(array('cart/get-cart-list'), true);?>',
                     dataType: "json",
@@ -121,12 +122,11 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
                         if (data.result == true) {
                             var htmlValue = "";
                             var totalMoney = 0;
-                            currentCartList = 1;
                             for(var i = 0; i < data.data.length; i++) {
                                 totalMoney = totalMoney + data.data[i].price * data.data[i].amount;
                                 if (i == 3) {
                                     $("#ShopingCart").next().show();
-                                    continue;
+                                    break;
                                 }
                                 htmlValue += "<div class='clear ove shopcone'><a href='" + data.data[i].url + "' target='_blank' class='flo product50'><img src='https:" + data.data[i].photoUrl + "' width='50' height='50' /></a><dl class='floR'><dt class='clear ove'><a href='" + data.data[i].url + "' target='_blank' class='norcol' title='" + data.data[i].name + "'>" + data.data[i].name + "</a></dt><dd class='clear ove mar2'><em class='flo'>US<span class='orangetip'>$" + Tools.CNYToUSD(data.data[i].price) + "</span> X " + data.data[i].amount + "</em><a class='floR centers norcol noline' onclick=\"Head.deleteCart(" + data.data[i].id + ",this)\" ><div class='mailtip'><img src='http://img.yoybuy.com/V6/Common/newdelete.png' width='14' height='15' class='flo mar5 marr4' /><span class='flo'>Delete</span></div></a></dd></dl></div>";
                             }

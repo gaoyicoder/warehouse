@@ -11,6 +11,7 @@ namespace app\controllers;
 use yii;
 use yii\web\Controller;
 use app\models\Cart;
+use yii\helpers\BaseUrl;
 
 class CartController extends Controller
 {
@@ -73,6 +74,9 @@ class CartController extends Controller
         $cartList = Cart::getCartList();
 
         if ($cartList) {
+            if(count($cartList) >= 4) {
+                $cartList = array_slice($cartList, 0, 4);
+            }
             $result = true;
             $data = $cartList;
         }
@@ -147,12 +151,6 @@ class CartController extends Controller
         foreach($cartList as $cart) {
             $cartArray[$cart['shopUrl']]['shop'] = $cart['shop'];
             $cartArray[$cart['shopUrl']]['source'] = $cart['source'];
-
-            if ($cart['postFeeType'] == 0) {
-                $cart['postFeeTypeStr'] = Yii::t('app/cart','Free or low cost delivery');
-            } else {
-                $cart['postFeeTypeStr'] = Yii::t('app/cart','Fastest delivery');
-            }
             $cartArray[$cart['shopUrl']]['cart'][] = $cart;
 
             $totalPayment = $totalPayment + $cart['price'] * $cart['amount'];
@@ -163,7 +161,23 @@ class CartController extends Controller
     }
 
     public function actionShoppingCartPay(){
-        
+        $result = false;
+        $msg = "";
+
+        if(!Yii::$app->user->isGuest) {
+            $request = \Yii::$app->getRequest();
+            if ($request->isPost) {
+                $post = $request->post();
+                $cartIdArray = $post['cartIds'];
+                $result = Cart::combineOrderByIds($cartIdArray);
+                if (!$result) {
+                    $msg = Yii::t("app/cart","Sorry, error happened when create order.");
+                }
+            }
+        } else {
+            $msg = Yii::t("app/cart","Sorry, you need login first.");
+        }
+        return $this->asJson(array('result'=> $result, 'msg'=> $msg, 'returnUrl' => BaseUrl::to(array('member/pay-order'), true)));
     }
 
     private function getCartView() {

@@ -9,8 +9,10 @@
 namespace app\models;
 
 
+use yii\base\Exception;
 use yii\db\ActiveRecord;
 use Yii;
+use yii\db\Transaction;
 use yii\web\Cookie;
 
 /**
@@ -21,6 +23,7 @@ use yii\web\Cookie;
  * @property float $price
  * @property integer $amount
  * @property integer $postFeeType
+ * @property string $postFeeTypeDesc
  * @property string $url
  * @property string $shopUrl
  * @property string $shop
@@ -34,17 +37,16 @@ use yii\web\Cookie;
 
 class Cart extends ActiveRecord
 {
-    public $postFeeTypeStr;
 
     public function rules() {
         return [
-            [['name', 'price', 'amount', 'postFeeType', 'url', 'shopUrl', 'shop', 'photoUrl', 'remark', 'source'], 'required'],
+            [['name', 'price', 'amount', 'postFeeType', 'postFeeTypeDesc', 'url', 'shopUrl', 'shop', 'photoUrl', 'remark', 'source'], 'required'],
         ];
     }
 
     public function scenarios(){
         return [
-            'default' => ['name', 'price', 'amount', 'postFeeType', 'url', 'shopUrl', 'shop', 'photoUrl', 'remark', 'source', 'cartCookieId', 'createTime']
+            'default' => ['name', 'price', 'amount', 'postFeeType', 'postFeeTypeDesc', 'url', 'shopUrl', 'shop', 'photoUrl', 'remark', 'source', 'cartCookieId', 'createTime']
         ];
     }
 
@@ -64,12 +66,16 @@ class Cart extends ActiveRecord
         $this->createTime = Yii::$app->securityTools->getCurrentTime("Y-m-d H:i:s");
     }
 
-    public static function findAllByCartCookieId($cartCookieId) {
+    public static function findAllByCartCookieId($cartCookieId = "") {
         return self::find()->where(["cartCookieId" => $cartCookieId])->orderBy('createTime DESC')->all();
     }
 
-    public static function findAllByUserId($userId) {
+    public static function findAllByUserId($userId = "") {
         return self::find()->where(["userId" => $userId])->orderBy('createTime DESC')->all();
+    }
+
+    public static function findAllByIdsAndUserId($ids = [], $userId = "") {
+        return self::find()->where(["id" => $ids, "userId" => $userId])->orderBy('createTime DESC')->all();
     }
 
     public static function updateAllUserIdByCartCookieId($userId, $cartCookieId) {
@@ -239,19 +245,24 @@ class Cart extends ActiveRecord
         return self::getTotalMoneyByWhere($where);
     }
 
-    public static function getTotalMoneyByUserId($userId) {
+    public static function getTotalMoneyByUserId($userId = '') {
         $where = ["userId" => $userId];
         return self::getTotalMoneyByWhere($where);
     }
 
-    public static function getShopTotalMoneyByCookieId($cookieId,$shop) {
+    public static function getShopTotalMoneyByCookieId($cookieId = '',$shop = '') {
         $where = ["cartCookieId" => $cookieId, "shop" => $shop];
         return self::getTotalMoneyByWhere($where);
     }
 
-    public static function getShopTotalMoneyByUserId($userId,$shop) {
+    public static function getShopTotalMoneyByUserId($userId = '',$shop = '') {
 
         $where = ["userId" => $userId, "shop" => $shop];
+        return self::getTotalMoneyByWhere($where);
+    }
+
+    public static function getTotalMoneyByIdsAndUserId($ids = [], $userId = '') {
+        $where = ["id" => $ids, "userId" => $userId];
         return self::getTotalMoneyByWhere($where);
     }
 
@@ -306,8 +317,47 @@ class Cart extends ActiveRecord
         return $result;
     }
 
+    public static function combineOrderByIds($ids = []) {
+        $result = false;
+
+        if($ids != []) {
+            $userId = Yii::$app->user->id;
+            $cartList = Cart::findAllByIdsAndUserId($ids, $userId);
+            if($cartList) {
+                //TODO 事务处理
+                $db = static::getDb();
+                $transaction = $db->beginTransaction();
+                try {
+                    $subtotal = Cart::getTotalMoneyByIdsAndUserId($ids, $userId);
+                    $orderModel = Order::createNewOrder($userId, $subtotal);
+
+                    foreach($cartList as $cart) {
+                        OrderItem::createOrderItemByCart($cart, $orderModel->id);
+                    }
+                    Cart::deleteCartByIds($ids);
+                    $result = true;
+                    $transaction->commit();
+
+                } catch (Exception $e) {
+                    $transaction->rollBack();
+                    Yii::error($e);
+                    $result = false;
+                }
+
+            }
+        }
+
+        return $result;
+    }
+
     public function addCart($post) {
+
         if($this->load($post, "")) {
+            if($this->postFeeType == 0) {
+                $this->postFeeTypeDesc = Yii::t('app/cart','Free or low cost delivery');;
+            } else {
+                $this->postFeeTypeDesc = Yii::t('app/cart','Fastest delivery');
+            }
             if ($this->validate()) {
 
                 $cartCookieIdentity = Yii::$app->params['userCartCookieIdentity'];
@@ -321,6 +371,7 @@ class Cart extends ActiveRecord
                 } else {
                     $this->userId = Yii::$app->user->id;
                 }
+
                 if ($this->save()) {
                     return true;
                 }

@@ -51,4 +51,6 @@ return [
     "Note information is too long" => "备注信息过长",
     "Please select the item(s) at first!" => "请至少选择一个项目",
     "Sorry, you need login first" => "对不起, 您需要先登录",
+    "Sorry, Some error happened when checkout, please try again later." => "对不起, 结账出了一些问题, 请稍后再试。",
+    "Sorry, error happened when create order." => "对不起, 创建订单时出错。",
 ];

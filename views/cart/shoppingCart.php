@@ -87,7 +87,7 @@ $this->registerCssFile('@web/css/cart/shoppingCart.css', ['depends'=>['app\asset
                             <a class="flo cartadd mar5 itemsQTYAdd" title="add"><img src="<?=Yii::getAlias('@imagePath'); ?>/cart/cartadd.png" width="20" height="20"></a>
                         </div>
                     </td>
-                    <td width="14%"><?=$cart['postFeeTypeStr']?></td>
+                    <td width="14%"><?=$cart['postFeeTypeDesc']?></td>
                     <td width="12%"><strong class="font14 redtips" id="totalPrice_<?=$cart['id']?>">$<?=Yii::$app->securityTools->cnyToUsd($cart['price'] * $cart['amount'])?></strong></td>
                     <td style="padding-left: 5%" width="12%">
                         <a class="flo delete spcart_listj" data-cartid="<?=$cart['id']?>"></a>
@@ -194,8 +194,7 @@ $this->registerCssFile('@web/css/cart/shoppingCart.css', ['depends'=>['app\asset
             noSelectItemsDelete:  '<?=Yii::t("app/cart", "Please select items which you would like to delete!")?>',
             remarkTooLong: '<?=Yii::t("app/cart","Note information is too long")?>',
             noSelectItemCheckOut: '<?=Yii::t("app/cart","Please select the item(s) at first!")?>',
-            needLogin: '<?=Yii::t("app/cart","Sorry, you need login first")?>',
-            errorWhenCheckout: '<?=Yii::t("app/cart","Sorry, you need login first")?>'
+            errorWhenCheckout: '<?=Yii::t("app/cart","Sorry, Some error happened when checkout, please try again later.")?>'
         },
 
         init: function(){
@@ -673,10 +672,8 @@ $this->registerCssFile('@web/css/cart/shoppingCart.css', ['depends'=>['app\asset
                 }
 
                 ShoppingCartManager.ifCheckOutSubmit = true;
-
-                var checkoutTempHtml = $("#CartCheckout").html();
                 
-                $("#CartCheckout").unbind("click");
+//                $("#CartCheckout").unbind("click");
                 $("#CartCheckout").css("background", "rgb(204,204,204)");
 
                 $.ajax({
@@ -690,20 +687,21 @@ $this->registerCssFile('@web/css/cart/shoppingCart.css', ['depends'=>['app\asset
                             window.location.href = data.returnUrl;
                         } else {
 
-                            MessageBox.showAlertMessageBoxWarn(630, 260, ShoppingCartManager.msg.needLogin, '<?=Yii::t('app','OK')?>', "");
+                            MessageBox.showAlertMessageBoxWarn(630, 260, data.msg, '<?=Yii::t('app','OK')?>', "");
                             //显示登录框
 //                            暂时注释,等实现CartLogin.js
 //                            CartLogin.ClearLogOrRegInput();
 //                            $.colorbox({ width: "496px", height: "546px", inline: true, href: "#loginDiv" });
 
                         }
-
+                        $("#CartCheckout").css("background-color", "#f60");
                         ShoppingCartManager.ifCheckOutSubmit = false;
-                        $("#CartCheckout").html(checkoutTempHtml);
+
                     },
                     error: function () {
+
                         ShoppingCartManager.ifCheckOutSubmit = false;
-                        $("#CartCheckout").html(checkoutTempHtml);
+                        $("#CartCheckout").css("background-color", "#f60");
                         MessageBox.showAlertMessageBoxWarn(630, 260, ShoppingCartManager.msg.errorWhenCheckout, '<?=Yii::t('app','OK')?>', "");
 
                     }
