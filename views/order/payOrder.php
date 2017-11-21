@@ -5,6 +5,9 @@
  * Date: 11/21/17
  * Time: 4:14 PM
  */
+
+use yii\helpers\BaseUrl;
+$this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\AppAsset']]);
 ?>
 <div id="container" class="clear ove padb90">
     <div id="content">
