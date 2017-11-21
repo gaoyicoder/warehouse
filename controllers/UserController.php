@@ -126,7 +126,7 @@ class UserController extends Controller
             if($model->login($request->post())){
                 $cartModel = new Cart();
                 $cartModel->updateCartToLoginUser();
-                return $this->redirect(['member/index']);
+                return $this->goBack('/member/index');
             }
         }
         Yii::error("User didn't pass the validation when do login.");

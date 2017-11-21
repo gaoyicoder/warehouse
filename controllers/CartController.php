@@ -163,7 +163,7 @@ class CartController extends Controller
     public function actionShoppingCartPay(){
         $result = false;
         $msg = "";
-        $orderId = "";
+        $returnUrl = "";
 
         if(!Yii::$app->user->isGuest) {
             $request = \Yii::$app->getRequest();
@@ -176,12 +176,14 @@ class CartController extends Controller
                     $result = false;
                 }else {
                     $result = true;
+                    $returnUrl = BaseUrl::to(array('order/pay-order', 'id'=>$orderId), true);
                 }
             }
         } else {
+            BaseUrl::remember("/cart/shopping-cart");
             $msg = Yii::t("app/cart","Sorry, you need login first.");
         }
-        return $this->asJson(array('result'=> $result, 'msg'=> $msg, 'returnUrl' => BaseUrl::to(array('order/pay-order', 'id'=>$orderId), true)));
+        return $this->asJson(array('result'=> $result, 'msg'=> $msg, 'returnUrl' => $returnUrl));
     }
 
     private function getCartView() {

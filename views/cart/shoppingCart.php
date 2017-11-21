@@ -686,8 +686,10 @@ $this->registerCssFile('@web/css/cart/shoppingCart.css', ['depends'=>['app\asset
                         if (data.result == true) {
                             window.location.href = data.returnUrl;
                         } else {
-
-                            MessageBox.showAlertMessageBoxWarn(630, 260, data.msg, '<?=Yii::t('app','OK')?>', "");
+                            MessageBox.showAlertMessageBoxWarn(630, 260, data.msg, '<?=Yii::t('app','OK')?>',
+                                function(){
+                                    window.location.href = '<?=BaseUrl::to("user/login", true)?>';
+                                });
                             //显示登录框
 //                            暂时注释,等实现CartLogin.js
 //                            CartLogin.ClearLogOrRegInput();

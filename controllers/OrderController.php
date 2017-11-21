@@ -10,10 +10,31 @@ namespace app\controllers;
 
 
 use yii\web\Controller;
+use yii;
 
 class OrderController extends Controller
 {
-    public function actionPayOrder() {
-
+    public function behaviors() {
+        return [
+            'access' => [
+                'class' => yii\filters\AccessControl::className(),
+                'only' => ['pay-order'],
+                'rules' => [
+                    [
+                        'allow' => 'true',
+                        'actions' => ['index'],
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'allow' => 'true',
+                        'actions' => ['pay-order'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ]
+        ];
+    }
+    public function actionPayOrder($id) {
+        return $this->render("payOrder", []);
     }
 }
