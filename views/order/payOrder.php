@@ -11,19 +11,13 @@ $this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\A
 ?>
 <div id="container" class="clear ove padb90">
     <div id="content">
-        <ul class="stps">
-            <li class="actv"><span>1</span>Search URL<em></em></li>
-            <li class="actv"><span>2</span>Pay Order<em></em></li>
-            <li style="width: 24%;"><span>3</span>YOYBUY Purchasing<em></em></li>
-            <li><span>4</span>Submit Parcel<em></em></li>
-            <li><span>5</span>Confirm Reception<em></em></li>
-        </ul>
+        <?=$this->render('/layouts/shoppingSteps', ['shoppingStep' => 2])?>
         <div class="clear ove mar20">
             <div class="flo ove stepL">
                 <div class="clear mar25">
                     <p class="flo verdana font17 marr10 padb15"><strong>Choose your prefer payment method</strong></p>
                     <div class="flo shipdoubt mar5">
-                        <img src="./ pay_order_files/doubt.png" width="15" height="15" id="paymentHelp" style="cursor:pointer">
+                        <img src="http://img.yoybuy.com/v6/Common/doubt.png" width="15" height="15" id="paymentHelp" style="cursor:pointer">
                         <div class="ark-poptip" style="position:absolute;top:-25px;left:22px;z-index:10;width:430px;display:none" id="paymentHelpTips">
                             <div class="ark-poptip-container" style="padding:13px 15px;">
                                 <div class="ark-poptip-arrow" style="top:20px;left:-6px;">
@@ -49,7 +43,7 @@ $this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\A
                 <div class="clear ove padl19 mar15">
                     <p class="newcoptit">
                         <a class="norcol noline">
-                            <span class="flo mar2 marr15"><img id="btnUseCoupon" data-coupon-use="true" style="cursor: pointer;" src="./ pay_order_files/expansion.png" width="16" height="16"></span>
+                            <span class="flo mar2 marr15"><img id="btnUseCoupon" data-coupon-use="true" style="cursor: pointer;" src="/Content/Images/Common/expansion.png" width="16" height="16"></span>
                             <strong class="flo font14">Use the coupon</strong>
                         </a>
                     </p>
@@ -65,7 +59,7 @@ $this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\A
                 <div class="clear ove padl19 mar15">
                     <p class="newcoptit">
                         <a class="norcol noline">
-                            <span class="flo mar2 marr15"><img id="btnUseOuterCoupon" data-coupon-use="false" style="cursor: pointer;" src="./ pay_order_files/combine.png" width="16" height="16"></span>
+                            <span class="flo mar2 marr15"><img id="btnUseOuterCoupon" data-coupon-use="false" style="cursor: pointer;" src="/Content/Images/Common/combine.png" width="16" height="16"></span>
                             <strong class="flo font14">Coupon Code ( Optional )</strong>
                         </a>
                     </p>
@@ -95,7 +89,7 @@ $this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\A
                             <input type="radio" class="norinput" name="rdoThirdPay" value="CreditCard" data-payvalue="1.86" data-value="1.86" data-feerate="0.035" style="cursor:pointer">
                             <span></span>
                         </label>
-                        <p class="flo shipp marr10"><img src="./ pay_order_files/CreditCard.jpg" width="49" height="30" class="marauto"></p>
+                        <p class="flo shipp marr10"><img src="http://img.yoybuy.com/v6/Common/CreditCard.jpg" width="49" height="30" class="marauto"></p>
                         <dl class="flo paymentdl col666">
                             <dt>
                                 <span class="flo col666">Pay On-line by Credit Card, the handling fee is <strong>3.5%</strong>, for one transaction there is a limit for 2000USD.</span>
@@ -107,7 +101,7 @@ $this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\A
                             <input type="radio" class="norinput" name="rdoThirdPay" value="Qiwi" data-payvalue="2.13" data-value="2.13" data-feerate="0.04" style="cursor:pointer">
                             <span></span>
                         </label>
-                        <p class="flo shipp marr10"><img src="./ pay_order_files/payment6a.png" width="61" height="30" class="marauto"></p>
+                        <p class="flo shipp marr10"><img src="http://img.yoybuy.com/v6/Common/payment6a.png" width="61" height="30" class="marauto"></p>
                         <dl class="flo paymentdl">
                             <dt>
                                 <span class="flo col666">Pay On-line by QIWI, the handling fee is <strong>4%</strong>, for one transaction there is a limit for 500USD.</span>
@@ -148,7 +142,7 @@ $this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\A
                             <input type="radio" class="norinput" name="rdoThirdPay" value="WebmoneyOnline" data-payvalue="1.06" data-value="1.06" data-feerate="0.02" style="cursor:pointer">
                             <span></span>
                         </label>
-                        <p class="flo shipp marr10"><img src="./ pay_order_files/payment18a.png" width="84" height="30" class="marauto"></p>
+                        <p class="flo shipp marr10"><img src="http://img.yoybuy.com/v6/Common/payment18a.png" width="84" height="30" class="marauto"></p>
                         <dl class="flo paymentdl">
                             <dt>
                                 <span class="flo col666">Pay On-line by WebMoney Online, the handling fee is <strong>2%</strong>.</span>
@@ -157,12 +151,12 @@ $this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\A
                     </div>
 
 
-                    <div class="clear ove shipone" id="deletePay">
+                    <div class="clear ove shipone" id="deletePay" style="display: none;">
                         <label class="flo shipinput mar8 marr5" for="">
                             <input type="radio" class="norinput" name="rdoThirdPay" value="PayPal" data-payvalue="1.86" data-value="1.86" data-feerate="0.035" style="cursor:pointer" data-payoff="payoff">
                             <span></span>
                         </label>
-                        <p class="flo shipp marr10"><img src="./ pay_order_files/paypal.png" width="84" height="30" class="marauto"></p>
+                        <p class="flo shipp marr10"><img src="http://img.yoybuy.com/v6/Common/paypal.png" width="84" height="30" class="marauto"></p>
                         <dl class="flo paymentdl col666">
                             <dt>
                                 <span class="flo col666">Pay On-line by Paypal, the handling fee is <strong>3.5% + $0.300</strong>, for one transaction there is a limit for 2000USD.</span>
@@ -175,7 +169,7 @@ $this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\A
 
 
                 <div class="resultip ove" style="padding:14px 0 14px 10px; margin-top:10px;">
-                    <em class="flo marr5"><img src="./ pay_order_files/error.png" width="15" height="15"></em>
+                    <em class="flo marr5"><img src="http://img.yoybuy.com/v6/Common/error.png" width="15" height="15"></em>
                     <strong class="flo font14 marr5">Tips:</strong>
                     <ul class="flo mar2">
                         <li>If your use Western Union, Webmoney or Wire Transfer, because the three method are non-real time, please <a href="https://account.yoybuy.com/en/addmoney" class="norhover">Add money</a> in your YOYBUY balance firstly.</li>
@@ -183,7 +177,7 @@ $this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\A
                 </div>
 
                 <div class="clear ove mar25">
-                    <p class="clear"><strong class="font14 marr5">Items List</strong><span>(2 items)</span>&nbsp;&nbsp; <strong style="color:red"><input type="button" onclick="DeleteTortJavascript('2017110212152633636265')" style="height:24px;line-height:24px;padding:0 10px;border:1px solid #ff6600;color:#ff6600;border-radius:4px;background:none" value="Remove the sensitive branded item"></strong></p>
+                    <p class="clear"><strong class="font14 marr5">Items List</strong><span>(2 items)</span>&nbsp;&nbsp; <strong style="color:red"><input type="button" onclick="DeleteTortJavascript('2017111417173633636289')" style="height:24px;line-height:24px;padding:0 10px;border:1px solid #ff6600;color:#ff6600;border-radius:4px;background:none" value="Remove the sensitive branded item"></strong></p>
                     <table cellpadding="0" cellspacing="0" width="100%" class="centers weightab mar12">
                         <tbody><tr bgcolor="F5F5F5" class="weighthead">
                             <td width="13%"><strong>ID</strong></td>
@@ -192,30 +186,12 @@ $this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\A
                             <td width="25%"><strong>Subtotal</strong></td>
                         </tr>
                         <tr>
-                            <td>6914001</td>
+                            <td>6939877</td>
                             <td>
                                 <div class="clear ove weightitem">
-                                    <p class="flo marr20"><a href="https://item.taobao.com/item.htm?id=528465917423" target="_blank" class="product70"><img src="./ pay_order_files/TB2pozstXXXXXb2XpXXXXXXXXXX_!!2594360131.jpg" width="70" height="70"></a></p>
+                                    <p class="flo marr20"><a href="https://item.taobao.com/item.htm?id=560448763378" target="_blank" class="product70"><img src="https://img.alicdn.com/bao/uploaded/i4/35148661/TB29J.BpbsTMeJjy1zeXXcOCVXa_!!35148661.jpg" width="70" height="70"></a></p>
                                     <ul class="flo mar15">
-                                        <li><a href="https://item.taobao.com/item.htm?id=528465917423" class="norcol orangea" title="Light Sky Blue OrganzapiecesTrereeendy Sky Blue Suit For Women Suit For WomenSuiter">Aluminum frame, pull case, 20 suitcase, 24 trunk, 28 student password box, wrapping box, universal wheel, 26 inches of men and women</a></li>
-                                        <li>
-                                            <em>
-
-                                            </em></li>
-                                    </ul>
-                                </div>
-
-                            </td>
-                            <td>2</td>
-                            <td>$120.63</td>
-                        </tr>
-                        <tr>
-                            <td>6915853</td>
-                            <td>
-                                <div class="clear ove weightitem">
-                                    <p class="flo marr20"><a href="https://item.taobao.com/item.htm?id=560448763378" target="_blank" class="product70"><img src="./ pay_order_files/TB29J.BpbsTMeJjy1zeXXcOCVXa_!!35148661.jpg" width="70" height="70"></a></p>
-                                    <ul class="flo mar15">
-                                        <li><a href="https://item.taobao.com/item.htm?id=560448763378" class="norcol orangea" title="Light Sky Blue OrganzapiecesTrereeendy Sky Blue Suit For Women Suit For WomenSuiter">Mainland game PS4 genuine second-hand game CD sale / PS4 genuine second-hand game recycling / purchase</a></li>
+                                        <li><a href="https://item.taobao.com/item.htm?id=560448763378" class="norcol orangea" title="Light Sky Blue OrganzapiecesTrereeendy Sky Blue Suit For Women Suit For WomenSuiter">PS4 Authentic second-hand game CD sold/PS4 Genuine second-hand game recycling/redemption</a></li>
                                         <li>
                                             <em>
 
@@ -227,8 +203,27 @@ $this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\A
                             <td>1</td>
                             <td>$13.97</td>
                         </tr>
+                        <tr>
+                            <td>6941957</td>
+                            <td>
+                                <div class="clear ove weightitem">
+                                    <p class="flo marr20"><a href="https://item.taobao.com/item.htm?id=535608330129" target="_blank" class="product70"><img src="https://img.alicdn.com/bao/uploaded/i3/1113969501/TB2o1d9XIaCJuJjy1zkXXbelVXa_!!1113969501.jpg" width="70" height="70"></a></p>
+                                    <ul class="flo mar15">
+                                        <li><a href="https://item.taobao.com/item.htm?id=535608330129" class="norcol orangea" title="Light Sky Blue OrganzapiecesTrereeendy Sky Blue Suit For Women Suit For WomenSuiter">Fei Ke electric shaver FS337 genuine body wash Intelligent liquid crystal display rechargeable male three head Independent</a></li>
+                                        <li>
+                                            <em>
+                                                <em style="color:red">Sensitive branded item, it cannot be paid by PayPal</em>
+
+                                            </em></li>
+                                    </ul>
+                                </div>
+
+                            </td>
+                            <td>1</td>
+                            <td>$20</td>
+                        </tr>
                         </tbody></table>
-                    <input type="hidden" value="0" id="paypalOff">
+                    <input type="hidden" value="1" id="paypalOff">
                     <script type="text/javascript">
                         $(function(){
                             var paypalOff = parseInt($.trim($("#paypalOff").val()));
@@ -267,7 +262,7 @@ $this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\A
                         <div class="clear mar15">
                             <div class="clear ove payborder sumone">
                                 <div class="flo sumoneL">Items subtotal:</div>
-                                <span class="floR sumoneR">$<strong id="subtotal">134.60</strong></span>
+                                <span class="floR sumoneR">$<strong id="subtotal">33.97</strong></span>
                             </div>
                             <div class="clear ove payborder sumone padb15">
                                 <div class="flo sumoneL">coupons:</div>
@@ -281,12 +276,12 @@ $this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\A
                             </div>
                         </div>
                     </div>
-                    <p class="clear ove font18 centers mar20"><strong>Total Amount: &nbsp;<span class="redtips">$<b id="ShouldPay">134.6</b></span></strong></p>
+                    <p class="clear ove font18 centers mar20"><strong>Total Amount: &nbsp;<span class="redtips">$<b id="ShouldPay">33.97</b></span></strong></p>
                     <a class="clear ove marauto mar20 yellowbut" style="width: 255px; height: 42px; line-height: 42px; border-radius: 4px; background-color: rgb(204, 204, 204);" id="gotoPay">Pay</a>
                 </div>
                 <p class="clear ove centers gray mar12">Every order you place with us is safe and secure.</p>
                 <p class="clear ove mar5">
-                    <img src="./ pay_order_files/versign.png" width="63" height="33" class="floR marr5">
+                    <img src="http://img.yoybuy.com/v6/BuyForMe/versign.png" width="63" height="33" class="floR marr5">
                 </p>
             </div>
         </div>
