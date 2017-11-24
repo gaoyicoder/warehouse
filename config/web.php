@@ -9,6 +9,7 @@ $config = [
     'defaultRoute' => 'index',
     'layout' => 'main',
     'on beforeRequest' => ['app\components\SiteInit', 'beforeRequest'],
+    'timeZone' => 'Asia/Shanghai',
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Admin',

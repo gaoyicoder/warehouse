@@ -390,7 +390,7 @@ $this->registerJsFile('@web/js/jquery.imagezoom.min.js', ['depends'=>['app\asset
             for (var k = 0; k < skus.length; k++) {
                 var sku = skus[k];
                 if (GoodsInfoManager._isContains(GoodsInfoManager._userselect, sku.properties) == true) {
-                    if (sku.quantity > 0 && sku.price < maxPrice) {
+                    if (sku.quantity > 0 && parseFloat(sku.price) < parseFloat(maxPrice)) {
                         maxPrice = sku.price;
                     }
                 }

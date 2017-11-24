@@ -686,10 +686,16 @@ $this->registerCssFile('@web/css/cart/shoppingCart.css', ['depends'=>['app\asset
                         if (data.result == true) {
                             window.location.href = data.returnUrl;
                         } else {
-                            MessageBox.showAlertMessageBoxWarn(630, 260, data.msg, '<?=Yii::t('app','OK')?>',
-                                function(){
-                                    window.location.href = '<?=BaseUrl::to("user/login", true)?>';
-                                });
+                            //not loggin.
+                            if (data.status == "NOT_LOGIN") {
+                                MessageBox.showAlertMessageBoxWarn(630, 260, data.msg, '<?=Yii::t('app','OK')?>',
+                                    function(){
+                                        window.location.href = '<?=BaseUrl::to("user/login", true)?>';
+                                    });
+                            } else {
+                                MessageBox.showAlertMessageBoxWarn(630, 260, data.msg, '<?=Yii::t('app','OK')?>','');
+                            }
+
                             //显示登录框
 //                            暂时注释,等实现CartLogin.js
 //                            CartLogin.ClearLogOrRegInput();

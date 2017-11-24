@@ -10,6 +10,7 @@ namespace app\models;
 
 
 use yii\base\Exception;
+use yii\bootstrap\Html;
 use yii\db\ActiveRecord;
 use Yii;
 use yii\db\Transaction;
@@ -359,7 +360,7 @@ class Cart extends ActiveRecord
                 $this->postFeeTypeDesc = Yii::t('app/cart','Fastest delivery');
             }
             if ($this->validate()) {
-
+                $this->name = Html::encode($this->name);
                 $cartCookieIdentity = Yii::$app->params['userCartCookieIdentity'];
                 $cartCookieId = self::getCartCookieId($cartCookieIdentity);
                 if(Yii::$app->user->isGuest) {

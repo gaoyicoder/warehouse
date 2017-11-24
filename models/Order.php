@@ -34,13 +34,13 @@ class Order extends ActiveRecord
 {
     public function rules() {
         return [
-            [['userId', 'subtotal', 'createTime', 'status', 'statusDesc'], 'required'],
+            [['id','userId', 'subtotal', 'createTime', 'status', 'statusDesc'], 'required'],
         ];
     }
 
     public function scenarios(){
         return [
-            'create' => ['userId', 'subtotal', 'createTime', 'status', 'statusDesc'],
+            'create' => ['id','userId', 'subtotal', 'createTime', 'status', 'statusDesc'],
         ];
     }
 
@@ -48,6 +48,7 @@ class Order extends ActiveRecord
         if ($userId && $subtotal) {
             $order = new Order();
             $order->setScenario("create");
+            $order->id = $order->generateOrderId($userId);
             $order->userId = $userId;
             $order->subtotal = $subtotal;
             $order->subtotalUsd = Yii::$app->securityTools->cnyToUsd($subtotal);
@@ -67,5 +68,23 @@ class Order extends ActiveRecord
 
     public function setCreateTime() {
         $this->createTime = Yii::$app->securityTools->getCurrentTime("Y-m-d H:i:s");
+    }
+
+    private function generateOrderId($userId){
+
+        if (is_int($userId)) {
+            $userIdLen = strlen($userId);
+            if($userIdLen >4) {
+                $userCode = substr($userIdLen, -4);
+            } else {
+                $userCode = $userId;
+            }
+            $orderId = time()*10000+$userCode;
+            $orderId = rand(10, 99).$orderId;
+
+            return $orderId;
+        } else {
+            throw new ModelException("User id error.");
+        }
     }
 }

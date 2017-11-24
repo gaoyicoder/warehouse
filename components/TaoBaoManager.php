@@ -30,7 +30,7 @@ class TaoBaoManager extends Component
                     'propContents' => '/<dl class="J_Prop.+?">([\s\S]+?)<\/dl>/',
                     'valItemInfo' => '/valItemInfo\s+:\s(\{[\s\S]+?\})\n\s+?\}\)/',
                     'goodsPropName' => '/<dt class="tb-property-type">(.+?)<\/dt>/',
-                    'goodsPropAliasList' => '/<li data-value="(\d+):(\d+)"\s?>\n\s+<a .*?>\n\s+<span>(.+?)<\/span>\n\s+<\/a>[\s\S]+?<\/li>/',
+                    'goodsPropAliasList' => '/<li data-value="(\d+):(\d+)".*?>\n\s+<a .*?>\n\s+<span>(.+?)<\/span>\n\s+<\/a>[\s\S]+?<\/li>/',
                     'goodsDetailsContents' => '/<ul class="attributes-list">([\s\S]+?)<\/ul>/',
                     'goodsDetailsList' => '/<li title=".+?">(.+?):&nbsp;(.+?)<\/li>/',
                     'descUrl' => '/descUrl\s+:\slocation.protocol===\'http:\'\s\?\s\'.+?\s:\s\'(.+?)\',/',
@@ -80,12 +80,12 @@ class TaoBaoManager extends Component
                 $data['picUrl'] = isset($data['goodsImage'][0]) ? $data['goodsImage'][0] : "";
 
                 $propContents = $this->collectAll($goodSource, $rules['propContents']);
+
                 $tempPropList = [];
                 foreach($propContents as $content) {
                     $item = [];
                     $item['propName'] = $this->collectOne($content, $rules['goodsPropName']);
                     $list = $this->collectAllArray($content, $rules['goodsPropAliasList']);
-
                     for($i=0; $i<count($list[0]); $i++) {
                         $propList = [];
                         $propList['propId'] = $list[1][$i];
@@ -119,6 +119,7 @@ class TaoBaoManager extends Component
                     $descUrl = "https:".$descUrl;
                 }
                 $desc = $this->getURLContent($descUrl, null, $url);
+                $desc = mb_convert_encoding($desc, 'UTF-8', 'GBK');
                 $data['desc'] = $this->collectOne($desc, $rules['desc']);
 
                 $sibUrl = $this->collectOne($goodSource, $rules['sibUrl']);
@@ -128,6 +129,7 @@ class TaoBaoManager extends Component
                 $valItemInfo = $this->collectOne($goodSource, $rules['valItemInfo']);
                 $valItemInfo = str_replace(['defSelected', 'skuMap', 'propertyMemoMap'], ['"defSelected"', '"skuMap"', '"propertyMemoMap"'], $valItemInfo);
                 $valItemInfo = json_decode($valItemInfo, true);
+
                 foreach($valItemInfo['skuMap'] as $key => $sku) {
                     $itemSku = [];
                     $properties = substr(substr($key,1), 0, strlen(substr($key,1))-1);

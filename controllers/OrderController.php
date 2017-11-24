@@ -22,11 +22,6 @@ class OrderController extends Controller
                 'rules' => [
                     [
                         'allow' => 'true',
-                        'actions' => ['index'],
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'allow' => 'true',
                         'actions' => ['pay-order'],
                         'roles' => ['@'],
                     ],
@@ -35,6 +30,7 @@ class OrderController extends Controller
         ];
     }
     public function actionPayOrder($id) {
+        echo Yii::$app->getTimeZone();
         return $this->render("payOrder", []);
     }
 }

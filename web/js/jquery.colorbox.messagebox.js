@@ -25,13 +25,13 @@ var MessageBox = {
         msgHtml += '<div class="clear ove mailtip">';
         switch (msgType) {
             case MessageBox.messageType.OK:
-                msgHtml += '<img src="http://img.yoybuy.com/v6/Common/check2.png" width="32" height="32" class="flo marr10 mar12">';
+                msgHtml += '<img src="../images/main/check2.png" width="32" height="32" class="flo marr10 mar12">';
                 break;
             case MessageBox.messageType.WARN:
-                msgHtml += '<img src="http://img.yoybuy.com/v6/Common/warn2.png" width="32" height="32" class="flo marr10 mar12">';
+                msgHtml += '<img src="../images/main/warn2.png" width="32" height="32" class="flo marr10 mar12">';
                 break;
             case MessageBox.messageType.remove:
-                msgHtml += '<img src="http://img.yoybuy.com/v6/Common/deletes.png" width="32" height="32" class="flo marr10 mar12">';
+                msgHtml += '<img src="../images/main/deletes.png" width="32" height="32" class="flo marr10 mar12">';
                 break;
             default:
         }

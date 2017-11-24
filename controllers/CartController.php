@@ -164,6 +164,7 @@ class CartController extends Controller
         $result = false;
         $msg = "";
         $returnUrl = "";
+        $status = "";
 
         if(!Yii::$app->user->isGuest) {
             $request = \Yii::$app->getRequest();
@@ -182,8 +183,9 @@ class CartController extends Controller
         } else {
             BaseUrl::remember("/cart/shopping-cart");
             $msg = Yii::t("app/cart","Sorry, you need login first.");
+            $status = "NOT_LOGIN";
         }
-        return $this->asJson(array('result'=> $result, 'msg'=> $msg, 'returnUrl' => $returnUrl));
+        return $this->asJson(array('result'=> $result, 'msg'=> $msg, 'status' => $status, 'returnUrl' => $returnUrl));
     }
 
     private function getCartView() {
