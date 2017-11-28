@@ -30,7 +30,6 @@ class OrderController extends Controller
         ];
     }
     public function actionPayOrder($id) {
-        echo Yii::$app->getTimeZone();
         return $this->render("payOrder", []);
     }
 }
