@@ -16,6 +16,7 @@ use yii\db\ActiveRecord;
  * Class OrderItem
  * @package app\models
  * @property integer $id
+ * @property string $orderId
  * @property string $name
  * @property float $price
  * @property float $priceUsd
@@ -71,5 +72,9 @@ class OrderItem extends ActiveRecord
         } else {
             throw new ModelException("Empty cart or order id error.");
         }
+    }
+
+    public static function getItemsByOrderId($orderId) {
+        return self::find()->where(["orderId" => $orderId])->orderBy('id ASC')->all();
     }
 }

@@ -20,7 +20,7 @@ use yii\web\IdentityInterface;
  * @property string $emailActivate
  * @property string $status
  * @property string $authKey;
- *
+ * @property float $balance;
  */
 
 class User extends ActiveRecord implements IdentityInterface
@@ -34,7 +34,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function scenarios()
     {
         return [
-            self::SCENARIO_REGISTER => ['userName', 'email', 'password', 'countryID', 'countryName', 'invitationCode', 'registerTime', 'emailActivate', 'status', 'authKey'],
+            self::SCENARIO_REGISTER => ['userName', 'email', 'password', 'countryID', 'countryName', 'invitationCode', 'registerTime', 'emailActivate', 'status', 'authKey', 'balance'],
             self::SCENARIO_LOGIN => ['loginTime', 'loginIP'],
         ];
     }
@@ -94,6 +94,8 @@ class User extends ActiveRecord implements IdentityInterface
                 $this->setAuthKey();
                 $this->emailActivate = 0;
                 $this->status = 1;
+                $this->balance = 0;
+
             } else {
                 $this->setLoginTime();
                 $this->setLoginIP();

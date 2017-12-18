@@ -17,7 +17,7 @@ $config = [
         ],
     ],
     'aliases' => [
-        '@imagePath' => 'http://www.warehouse.com/images',
+        '@imagePath' => 'http://www.zhongguocangku.com/images',
     ],
     'components' => [
         'assetManager'=>[
@@ -43,6 +43,7 @@ $config = [
                         'app/user' => 'user.php',
                         'app/member' => 'member.php',
                         'app/cart' => 'cart.php',
+                        'app/order' => 'order.php',
                     ],
                 ],
             ],

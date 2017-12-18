@@ -15,10 +15,8 @@ use Yii;
 /**
  * Class Order
  * @package app\models
- * @property integer $id
+ * @property string $id
  * @property integer $userId
- * @property integer $couponId
- * @property float $couponDiscount
  * @property float $subtotal
  * @property float $subtotalUsd
  * @property integer $transactionId
@@ -68,6 +66,11 @@ class Order extends ActiveRecord
 
     public function setCreateTime() {
         $this->createTime = Yii::$app->securityTools->getCurrentTime("Y-m-d H:i:s");
+    }
+
+    public static function getOrderById($id = '') {
+        $order = self::findOne(['id' => $id]);
+        return $order;
     }
 
     private function generateOrderId($userId){
