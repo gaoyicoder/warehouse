@@ -87,13 +87,13 @@ $this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\A
 
                     <div class="clear ove shipone">
                         <label class="flo shipinput mar8 marr5" for="">
-                            <input type="radio" class="norinput" name="rdoThirdPay" value="Alipay" data-payvalue="1.06" data-value="1.06" data-feerate="0.01" style="cursor:pointer">
+                            <input type="radio" class="norinput" name="rdoThirdPay" value="aliPay" style="cursor:pointer">
                             <span></span>
                         </label>
                         <p class="flo shipp marr10"><img src="<?=Yii::getAlias('@imagePath'); ?>/order/alipay.jpg" width="84" height="30" class="marauto"></p>
                         <dl class="flo paymentdl">
                             <dt>
-                                <span class="flo col666"><?=Yii::t('app/order', 'Pay On-line by Alipay Online, the handling fee is <strong>1%</strong>.')?></span>
+                                <span class="flo col666"><?=Yii::t('app/order', 'Pay On-line by Alipay Online, the handling fee is <strong>{handingFee}</strong>.', ['handingFee' => Yii::$app->params['paymentType']['aliPay']['handingFeeText']])?></span>
                             </dt>
                         </dl>
                     </div>
@@ -101,13 +101,13 @@ $this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\A
 
                     <div class="clear ove shipone" id="deletePay">
                         <label class="flo shipinput mar8 marr5" for="">
-                            <input type="radio" class="norinput" name="rdoThirdPay" value="PayPal" data-payvalue="1.86" data-value="1.86" data-feerate="0.035" style="cursor:pointer" data-payoff="payoff">
+                            <input type="radio" class="norinput" name="rdoThirdPay" value="payPal" style="cursor:pointer" data-payoff="payoff">
                             <span></span>
                         </label>
                         <p class="flo shipp marr10"><img src="<?=Yii::getAlias('@imagePath'); ?>/order/paypal.png" width="84" height="30" class="marauto"></p>
                         <dl class="flo paymentdl col666">
                             <dt>
-                                <span class="flo col666"><?=Yii::t('app/order', 'Pay On-line by Paypal, the handling fee is <strong>3.5% + $0.300</strong>, for one transaction there is a limit for 2000USD.')?></span>
+                                <span class="flo col666"><?=Yii::t('app/order', 'Pay On-line by Paypal, the handling fee is <strong>{handingFee}</strong>, for one transaction there is a limit for 2000USD.', ['handingFee' => Yii::$app->params['paymentType']['payPal']['handingFeeText']])?></span>
                             </dt>
                         </dl>
                     </div>
@@ -282,7 +282,7 @@ $this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\A
             });
 
             //ThirdPay
-            $(":radio[name='rdoThirdPay']").removeAttr("checked");
+            $(":radio[name='rdoThirdPay']").prop("checked", false);
             $(":radio[name='rdoThirdPay']").unbind("change").bind("change", function () {
                 PayManager.onlinePayRemoveClass();
                 if ($(this).is(":checked")) {
@@ -333,15 +333,15 @@ $this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\A
             }
 
             var thirdPayType = $("input[name='rdoThirdPay']:checked").val();
-            if (thirdPayType == "Alipay") {
-                this.onlinePrice = Tools.formatNum(PayManager.thirdPayAmount * 0.01, 2);
+            if (thirdPayType == "aliPay") {
+                this.onlinePrice = Tools.formatNum(PayManager.thirdPayAmount * <?=Yii::$app->params['paymentType']['aliPay']['handingFee']?>, 2);
                 $("#PayMethodName").text("Alipay");
-                $("#PayMethodNameFee").text("(1%)");
+                $("#PayMethodNameFee").text("(<?=Yii::$app->params['paymentType']['aliPay']['handingFeeText']?>)");
                 $("#PayMethodNamePrice").text(this.onlinePrice);
-            } else if (thirdPayType == "PayPal") {
-                this.onlinePrice = Tools.formatNum(PayManager.thirdPayAmount * 0.035 + 0.300, 2);
+            } else if (thirdPayType == "payPal") {
+                this.onlinePrice = Tools.formatNum(PayManager.thirdPayAmount * <?=Yii::$app->params['paymentType']['payPal']['handingFee']?>, 2);
                 $("#PayMethodName").text("PayPal");
-                $("#PayMethodNameFee").text("(3.5%)+$0.300");
+                $("#PayMethodNameFee").text("(<?=Yii::$app->params['paymentType']['payPal']['handingFeeText']?>)");
                 $("#PayMethodNamePrice").text(this.onlinePrice);
             } else {
                 this.onlinePrice = 0;
@@ -414,83 +414,35 @@ $this->registerCssFile('@web/css/order/payOrder.css', ['depends'=>['app\assets\A
             $("#gotoPay").css("background-color", "#f60").unbind("click").bind("click", function () {
                 var orderId = PayManager.orderId;
                 var payType = PayManager.thirdPayment;
-                var userBalance = $("#chkVirtualAccount").is(":checked");
+                var useBalance = $("#chkVirtualAccount").is(":checked");
                 if (payType == "") {
-                    userBalance = "true";
+                    useBalance = "true";
                 }
                 PayManager.unbindSubmit();
-                $.ajax({
-                    type: "post",
-                    url: "<?= BaseUrl::to(array('payment/pay-order'), true);?>",
-                    data: { orderId: orderId, payType: payType, bResult: userBalance},
-                    async: false,
-                    success: function (data) {
-                        if (data.result) {
-                            if (data.url != null && data.type == 1) {
-                                var src = data.url;
-                                if (payType == "AliPayVisa" || payType == "AliPayMasterCard") {
-                                }
-                                var myForm = document.createElement("form");
-                                myForm.method = "post";
-                                myForm.action = src;
-                                document.body.appendChild(myForm);
-                                myForm.submit();
-                                document.body.removeChild(myForm);
-                            } else if (data.url != null && data.type == 2) {
-                                if (payType == "AliPayVisa" || payType == "AliPayMasterCard") {
-                                    window.location.href = data.url;
-                                } else {
-                                    window.location.href = data.url;
-                                }
-                            } else {
-                                //GA商务代码
-                                try {
-                                    ga('require', 'ecommerce');
-                                    var gapid = $("#gaProcureId").val();
-                                    ga('ecommerce:addTransaction', {
-                                        'id': gapid, // 订单id
-                                        'affiliation': 'balance', // 支付方式
-                                        'revenue': $("#gatotalamount").val() // Total Amount.
-                                    });
-                                    eval(" var gagoods = " + $("#gagoods").val() + ";");
-                                    for (var i = 0; i < gagoods.length; i++) {
-                                        var gagood = gagoods[i];
-                                        ga('ecommerce:addItem', {
-                                            'id': gapid, // Transaction ID. Required.
-                                            'name': gagood.Name, // Product name. Required.
-                                            'sku': gagood.GoodsId,
-                                            'price': gagood.SubTotal, // Unit price.
-                                            'quantity': gagood.Quantity // Quantity.
-                                        });
-                                    }
-                                    ga('ecommerce:send');
-                                } catch (e) {
-                                }
-                                var shareasaleTotleAmount = payManager.payTotal;
-                                var shareasaleTracking = $("#gaProcureId").val();
-                                var form = $("<form></form>");
-                                form.attr('action', "/en/Purchase/paySuccessful");
-                                form.attr('method', 'post');
-                                var inputAmount = $("<input type='text' name='returnUrl' value='http://order.yoybuy.com/en/myorder' />");
-                                var inputPayType = $("<input type='text' name='goodsBelongsType' value='order' />");
-                                var inputPayTotleAmount = $("<input type='text' name='totleAmount' />");
-                                inputPayTotleAmount.attr("value", shareasaleTotleAmount);
-                                var inputTracking = $("<input type='text' name='tracking' />");
-                                inputTracking.attr("value", shareasaleTracking);
-                                form.append(inputAmount);
-                                form.append(inputPayType);
-                                form.append(inputPayTotleAmount);
-                                form.append(inputTracking);
-                                form.appendTo("body");
-                                form.css('display', 'none');
-                                form.submit();
-                                return;
-                            }
-                        }
-                    }
+
+                var body = $(document.body),
+                    form = $("<form method='post'></form>"),
+                    input;
+
+                form.attr({"action":"<?= BaseUrl::to(array('payment/pay-order'), true);?>"});
+
+                var args = [
+                    ['orderId',orderId],
+                    ['payType',payType],
+                    ['useBalance',useBalance],
+                    ['<?=Yii::$app->request->csrfParam?>', '<?=Yii::$app->request->getCsrfToken()?>']
+                ];
+                $.each(args,function(key,value){
+                    input = $("<input type='hidden'>");
+                    input.attr({"name":value[0]});
+                    input.val(value[1]);
+                    form.append(input);
                 });
+                form.appendTo(body);
+                form.submit();
+
             });
-        },
+        }
 
     }
 </script>

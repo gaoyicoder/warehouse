@@ -17,7 +17,8 @@ $config = [
         ],
     ],
     'aliases' => [
-        '@imagePath' => 'http://www.zhongguocangku.com/images',
+        '@baseDomain' => 'http://www.zhongguocangku.com',
+        '@imagePath' => '@baseDomain/images',
     ],
     'components' => [
         'assetManager'=>[

@@ -13,7 +13,6 @@ use yii\base\Exception;
 use yii\bootstrap\Html;
 use yii\db\ActiveRecord;
 use Yii;
-use yii\db\Transaction;
 use yii\web\Cookie;
 
 /**

@@ -44,8 +44,4 @@ class OrderController extends Controller
             throw new NotFoundHttpException(Yii::t('app/order','Can\'t found the order.'));
         }
     }
-
-    public function actionPayByAliPay() {
-
-    }
 }

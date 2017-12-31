@@ -226,7 +226,7 @@ class TaoBaoManager extends Component
 
     public function collectOne($source, $preg, $part = 1) {
         if (preg_match($preg, $source, $matches)) {
-            return $matches[$part] ? trim($matches[$part]) : "";
+            return isset($matches[$part]) ? trim($matches[$part]) : "";
         }
         return false;
     }

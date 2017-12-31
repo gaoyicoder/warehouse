@@ -68,6 +68,10 @@ class Order extends ActiveRecord
         $this->createTime = Yii::$app->securityTools->getCurrentTime("Y-m-d H:i:s");
     }
 
+    /**
+     * @param string $id
+     * @return Order
+     */
     public static function getOrderById($id = '') {
         $order = self::findOne(['id' => $id]);
         return $order;
