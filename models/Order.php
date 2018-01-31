@@ -17,9 +17,9 @@ use Yii;
  * @package app\models
  * @property string $id
  * @property integer $userId
+ * @property integer $paymentId
  * @property float $subtotal
  * @property float $subtotalUsd
- * @property integer $transactionId
  * @property string $paymentType
  * @property string $createTime
  * @property string $payTime
@@ -39,6 +39,7 @@ class Order extends ActiveRecord
     public function scenarios(){
         return [
             'create' => ['id','userId', 'subtotal', 'createTime', 'status', 'statusDesc'],
+            'paid' => ['paymentId', 'paymentType', 'payTime', 'status', 'statusDesc'],
         ];
     }
 
@@ -66,6 +67,22 @@ class Order extends ActiveRecord
 
     public function setCreateTime() {
         $this->createTime = Yii::$app->securityTools->getCurrentTime("Y-m-d H:i:s");
+    }
+
+    public function setPayTime() {
+        $this->payTime = Yii::$app->securityTools->getCurrentTime("Y-m-d H:i:s");
+    }
+
+    public function makeOrderPaid($paymentId, $paymentType) {
+        if($this->id) {
+            $this->setScenario("paid");
+            $this->paymentId = $paymentId;
+            $this->paymentType = $paymentType;
+            $this->setPayTime();
+            $this->status = 1;
+            $this->statusDesc = 'paid';
+            $this->save();
+        }
     }
 
     /**

@@ -44,14 +44,14 @@ class PaymentController extends Controller
             if ($orderId != "") {
                 $orderModel = Order::getOrderById($orderId);
                 if ($orderModel) {
-                    $oldPayment = Payment::getLastPaymentByOrderId($orderModel->id);
-                    if ($oldPayment && $oldPayment->status == 1) {
+                    if ($orderModel->status != 0 && $orderModel->paymentId != "") {
                         throw new BadRequestHttpException(Yii::t('app/payment','You already paid the order.'));
                     } else {
                         $paymentType = $post['payType'];
                         if(array_key_exists($paymentType, Yii::$app->params['paymentType'])){
                             try{
-                                $paymentModel = Payment::createNewPayment($orderModel, $paymentType);
+                                $userId = Yii::$app->user->id;
+                                $paymentModel = Payment::createNewPayment($orderModel, $paymentType, $userId);
 
                             }catch (Exception $e) {
                                 throw new BadRequestHttpException($e);
@@ -61,7 +61,7 @@ class PaymentController extends Controller
                                 if ($paymentModel->paymentTypeName == "aliPay") {
 
                                     $totalAmount = Yii::$app->securityTools->formatNum(($paymentModel->subtotalUsd + $paymentModel->handingFee), 2);
-                                    $this->payByAliPay($orderId, $totalAmount, Yii::$app->params['paymentType']['aliPay']['subject']);
+                                    $this->payByAliPay($paymentModel->id, $totalAmount, Yii::$app->params['paymentType']['aliPay']['subject']);
                                 }
                             }
 
@@ -82,12 +82,49 @@ class PaymentController extends Controller
 
     }
 
-    private function payByAliPay($orderNumber, $totalAmount, $subject) {
+    public function actionAliReturn() {
+        try {
+            $this->returnByAliPay();
+            return $this->render("paySuccess", []);
+        }catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function actionAliNotify() {
+        try {
+            $this->returnByAliPay();
+        }catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    private function payByAliPay($paymentNumber, $totalAmount, $subject) {
 
         $config = Yii::$app->params['aliPayApi'];
-        $config['returnUrl'] = BaseUrl::to('payment/ali-return-url',true);
-        $config['notifyUrl'] = BaseUrl::to('payment/ali-notify-url',true);
+        $config['returnUrl'] = BaseUrl::to('payment/ali-return',true);
+        $config['notifyUrl'] = BaseUrl::to('payment/ali-notify',true);
         $paymentManager = new AliPaymentManager($config);
-        $paymentManager->doPayment($orderNumber, $totalAmount, $subject);
+        $totalAmount = Yii::$app->securityTools->usdToCny($totalAmount);
+        $paymentManager->doPayment($paymentNumber, $totalAmount, $subject);
+    }
+
+    private function returnByAliPay() {
+        $paymentId = $_REQUEST['out_trade_no'];
+        $tradeNo = $_REQUEST['trade_no'];
+        $paymentModel = Payment::getPaymentById($paymentId);
+        if($paymentModel) {
+            $config = Yii::$app->params['aliPayApi'];
+            $paymentManager = new AliPaymentManager($config);
+            $result = $paymentManager->analyzeNotify();
+            if ($result) {
+                $paymentModel->makePaymentSuccess($tradeNo, 'aliPay');
+            } else {
+                $paymentModel->makePaymentFailure($tradeNo);
+                throw new BadRequestHttpException(Yii::t('app/payment','Payment failure.'));
+            }
+        } else {
+            throw new BadRequestHttpException(Yii::t('app/payment','Can\'t the payment.'));
+        }
     }
 }

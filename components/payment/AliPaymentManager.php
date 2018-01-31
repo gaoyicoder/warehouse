@@ -12,6 +12,7 @@ namespace app\components\payment;
 use yii\base\Component;
 use Omnipay\Omnipay;
 use Yii;
+use yii\web\BadRequestHttpException;
 
 class AliPaymentManager extends Component
 {
@@ -47,12 +48,31 @@ class AliPaymentManager extends Component
             'out_trade_no' => $orderNumber,
             'total_amount' => $totalAmount,
             'subject'      => $subject,
+            'currency' => 'usd',
             'product_code' => 'FAST_INSTANT_TRADE_PAY',
         ]);
 
-        /* @var $response \Omnipay\Common\Message\RedirectResponseInterface */
+        /* @var $response \Omnipay\Alipay\Responses\AopTradePagePayResponse */
         $response = $request->send();
-
         $response->redirect();
+    }
+
+    public function analyzeNotify() {
+        $request = $this->_gateway->completePurchase();
+        $request->setParams(array_merge($_POST, $_GET));
+        /**
+         * @var $response \Omnipay\Alipay\Responses\AopCompletePurchaseResponse
+         */
+        try {
+            $response = $request->send();
+
+            if($response->isPaid()){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (\Exception $e) {
+            throw new BadRequestHttpException(Yii::t('app/payment','Payment failure.'));
+        }
     }
 }

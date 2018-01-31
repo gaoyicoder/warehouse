@@ -56,6 +56,15 @@ class SecurityTools
         }
     }
 
+    public function usdToCny($usd) {
+        $usdRate = Yii::$app->params['usdRate'];
+        if(is_numeric($usdRate)) {
+            return $this->formatNum($usd*$usdRate, 2);
+        } else {
+            return $this->formatNum($usd*6.10, 2);
+        }
+    }
+
     public function formatNum($num1, $num2) {
         if (is_null($num1) || is_null($num2)) {
             return 0;
