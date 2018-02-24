@@ -23,11 +23,6 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="language" content="en">
     <meta http-equiv="language" content="en">
-    <!-- Need To be Modified Start-->
-    <link rel="canonical" href="http://www.yoybuy.com/en/">
-    <link rel="alternate" hreflang="en" href="http://www.yoybuy.com/en/">
-    <link rel="alternate" hreflang="zh-cn" href="http://www.yoybuy.com/cn/">
-    <!-- Need To be Modified End-->
 
     <link rel="shortcut icon" href="<?=Yii::getAlias('@imagePath'); ?>/main/favicon.ico" type="image/x-icon">
     <title><?= Html::encode($this->title) ?></title>
@@ -44,9 +39,18 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
         Head.languageFun();
         Head.submitUrlFun();
         Head.cartMoveFun();
+        Head.hoveringFun();
     });
 
     var Head = {
+        hoveringFun: function() {
+            //顶部栏
+            if ($(document).width() > 1230) {
+                $(window).scroll(function () {
+                    $(window).scrollTop() > 230 ? $(".hovering").css('display', '') : $(".hovering").css('display', 'none');
+                });
+            }
+        },
         languageFun: function() {
             $("#langSelectedItem").click(function (e) {
                 e ? e.stopPropagation() : event.cancelBubble = true;
@@ -100,6 +104,22 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
                     MessageBox.showAlertMessageBoxWarn(630, 260, '<?=Yii::t('app','* Error website address, please check it!')?>', '<?=Yii::t('app','OK')?>', "");
                 }
             });
+
+            $("#sumbiturl1").click(function () {
+                var verified = false;
+                var itemUrl = $("#taobaourl1").val();
+                $(".main_url_rules").each(function() {
+                    var rule = new RegExp($(this).val(),'i');
+                    if(rule.test(itemUrl)) {
+                        verified = true;
+                    }
+                });
+                if (verified) {
+                    jump($('#MainAddItemUrl').val()+"?url="+encodeURIComponent(itemUrl));
+                } else {
+                    MessageBox.showAlertMessageBoxWarn(630, 260, '<?=Yii::t('app','* Error website address, please check it!')?>', '<?=Yii::t('app','OK')?>', "");
+                }
+            });
         },
 
         cartMoveFun: function() {
@@ -128,7 +148,7 @@ $this->registerJsFile('@web/js/main.js',['depends'=>['app\assets\AppAsset']]);
                                     $("#ShopingCart").next().show();
                                     break;
                                 }
-                                htmlValue += "<div class='clear ove shopcone'><a href='" + data.data[i].url + "' target='_blank' class='flo product50'><img src='https:" + data.data[i].photoUrl + "' width='50' height='50' /></a><dl class='floR'><dt class='clear ove'><a href='" + data.data[i].url + "' target='_blank' class='norcol' title='" + data.data[i].name + "'>" + data.data[i].name + "</a></dt><dd class='clear ove mar2'><em class='flo'>US<span class='orangetip'>$" + Tools.CNYToUSD(data.data[i].price) + "</span> X " + data.data[i].amount + "</em><a class='floR centers norcol noline' onclick=\"Head.deleteCart(" + data.data[i].id + ",this)\" ><div class='mailtip'><img src='http://img.yoybuy.com/V6/Common/newdelete.png' width='14' height='15' class='flo mar5 marr4' /><span class='flo'>Delete</span></div></a></dd></dl></div>";
+                                htmlValue += "<div class='clear ove shopcone'><a href='" + data.data[i].url + "' target='_blank' class='flo product50'><img src='https:" + data.data[i].photoUrl + "' width='50' height='50' /></a><dl class='floR'><dt class='clear ove'><a href='" + data.data[i].url + "' target='_blank' class='norcol' title='" + data.data[i].name + "'>" + data.data[i].name + "</a></dt><dd class='clear ove mar2'><em class='flo'>US<span class='orangetip'>$" + Tools.CNYToUSD(data.data[i].price) + "</span> X " + data.data[i].amount + "</em><a class='floR centers norcol noline' onclick=\"Head.deleteCart(" + data.data[i].id + ",this)\" ><div class='mailtip'><img src='<?=Yii::getAlias('@imagePath'); ?>/main/newdelete.png' width='14' height='15' class='flo mar5 marr4' /><span class='flo'>Delete</span></div></a></dd></dl></div>";
                             }
                             $("#ShopingCart").html(htmlValue);
                             $("#totalMoney").html("$"+Tools.CNYToUSD(totalMoney));
@@ -306,18 +326,6 @@ yellowbut" style="width:130px;height:24px;line-height:24px;font-size:12px;font-w
                         <a onclick="redirectStoreUrl(&#39;http://www.taobao.com/&#39;, &#39;Taobao&#39;)" class="noline norcol orangea marr5">Taobao</a>
                         <span class="marr5">|</span>
                         <a onclick="redirectStoreUrl(&#39;http://www.tmall.com/&#39;, &#39;Tmall&#39;)" class="noline norcol orangea marr5">Tmall</a>
-                        <span class="marr5">|</span>
-                        <a onclick="redirectStoreUrl(&#39;http://www.1688.com/&#39;, &#39;1688&#39;)" class="noline norcol orangea marr5">1688</a>
-                        <span class="marr5">|</span>
-                        <a onclick="redirectStoreUrl(&#39;http://www.mi.com/&#39;, &#39;Mi&#39;)" class="noline norcol orangea marr5">Mi</a>
-                        <span class="marr5">|</span>
-                        <a onclick="redirectStoreUrl(&#39;http://www.jd.com/&#39;, &#39;JD&#39;)" class="noline norcol orangea marr5">JD</a>
-                        <span class="marr5">|</span>
-                        <a onclick="redirectStoreUrl(&#39;http://www.meilishuo.com/?frm=baidupz_shouye&#39;, &#39;Meilishuo&#39;)" class="noline norcol orangea marr5">Meilishuo</a>
-                        <span class="marr5">|</span>
-                        <a onclick="redirectStoreUrl(&#39;http://www.yoybuy.com/en/BestSelling.html&#39;, &#39;YOYBUY&#39;)" class="noline norcol orangea marr5">YOYBUY</a>
-                        <span class="marr5">|</span>
-                        <a onclick="redirectStoreUrl(&#39;http://www.moonbasa.com/?cn=83318&amp;type=0&amp;adsiteid=10000007&#39;, &#39;Moonbasa&#39;)" class="noline norcol orangea marr5">Moonbasa</a>
                     </p>
                 </div>
             </div>
@@ -325,69 +333,42 @@ yellowbut" style="width:130px;height:24px;line-height:24px;font-size:12px;font-w
         <div class="clear mar30 headerB">
             <div class="clear minwidth">
                 <div class="flo navlink">
-                    <a href="http://www.yoybuy.com/en/addurl.html" rel="nofollow" target="_blank" class="centers noline inlinka">
+                    <a href="<?=BaseUrl::to(array('cart/add-url'), true)?>" rel="nofollow" target="_blank" class="centers noline inlinka">
                         <div class="mailtip">
-                            <span class="flo marr7">BuyForMe</span>
+                            <span class="flo marr7"><?=Yii::t('app','BuyForMe')?></span>
                             <img src="<?=Yii::getAlias('@imagePath'); ?>/main/navlink.png" width="9" height="5" class="flo mar28">
                         </div>
                     </a>
                     <div class="clear ove font14 navmenu">
                         <ul>
                             <li>
-                                <a href="http://www.yoybuy.com/en/BuyForMe.html" target="_blank" class="noline norcol orangea">How It Works</a>
+                                <a href="<?=BaseUrl::to(array('index/bfm-introduce'), true)?>" target="_blank" class="noline norcol orangea"><?=Yii::t('app','How It Works')?></a>
                             </li>
                             <li>
-                                <a href="<?=BaseUrl::to(array('cart/add-url'), true)?>" rel="nofollow" target="_blank" class="noline norcol orangea"><?=Yii::t("app/cart", 'Add URL')?></a>
+                                <a href="<?=BaseUrl::to(array('cart/add-url'), true)?>" rel="nofollow" target="_blank" class="noline norcol orangea"><?=Yii::t("app", 'Add URL')?></a>
                             </li>
                             <li>
-                                <a href="http://order.yoybuy.com/en/myorder" target="_blank" class="noline norcol orangea" rel="nofollow">My Items</a>
+                                <a href="<?=BaseUrl::to(array('member/my-items'), true) ?>" target="_blank" class="noline norcol orangea" rel="nofollow"><?=Yii::t("app", 'My Items')?></a>
                             </li>
                             <li>
-                                <a href="http://order.yoybuy.com/en/myparcels" target="_blank" class="noline norcol orangea" rel="nofollow">My Parcels</a>
+                                <a href="<?=BaseUrl::to(array('member/my-parcels'), true) ?>" target="_blank" class="noline norcol orangea" rel="nofollow"><?=Yii::t("app", 'My Parcels')?></a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="flo navlink">
-                    <a href="http://www.yoybuy.com/en/Forwarding.html" target="_blank" class="centers noline inlinka">
-                        <div class="mailtip">
-                            <span class="flo marr7">ShipForMe</span>
-                            <img src="<?=Yii::getAlias('@imagePath'); ?>/main/navlink.png" width="9" height="5" class="flo mar28">
-                        </div>
-                    </a>
-                    <div class="clear ove font14 navmenu">
-                        <ul>
-                            <li>
-                                <a href="http://www.yoybuy.com/en/Forwarding.html" target="_blank" class="noline norcol orangea">How It Works</a>
-                            </li>
-                            <li>
-                                <a href="http://order.yoybuy.com/en/chineseaddress.html" target="_blank" class="noline norcol orangea" rel="nofollow">My Warehouse</a>
-                            </li>
-                            <li>
-                                <a href="http://order.yoybuy.com/en/myforwardingparcels" target="_blank" class="noline norcol orangea" rel="nofollow">My Parcels</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <a href="http://customercenter.yoybuy.com/en/userindex.html" target="_blank" class="flo noline inlinka" rel="nofollow">
-                    My YOYBUY
+                <a href="<?=BaseUrl::to(array('member/index'), true) ?>" target="_blank" class="flo noline inlinka" rel="nofollow">
+                    <?=Yii::t("app", 'My ChinaInAir')?>
                 </a>
                 <style>
                     .bstsell{ position:relative;}
                     .bstsell em{ position:absolute; left:55%; top:-8px; width:44px; height:24px; background:url(<?=Yii::getAlias('@imagePath'); ?>/main/hoticon.gif) no-repeat;}
                 </style>
-                <a href="http://www.yoybuy.com/en/BestSelling.html" target="_blank" class="flo noline inlinka bstsell">
+                <a href="<?=BaseUrl::to(array('index/best-selling'), true) ?>" target="_blank" class="flo noline inlinka bstsell">
                     Best Selling<em></em>
                 </a>
-                <a href="http://www.yoybuy.com/en/salespromotion.html" target="_blank" class="flo noline inlinka" style="display:none;">
-                    Sales Promotion
-                </a>
-                <a href="http://www.yoybuy.com/en/service/tools/costestimation.html" target="_blank" class="flo noline inlinka">Cost Calculator</a>
+                <a href="<?=BaseUrl::to(array('index/cost-calculator'), true) ?>" target="_blank" class="flo noline inlinka">Cost Calculator</a>
             </div>
         </div>
-        <form id="AddUrl" action="http://www.yoybuy.com/en/addurl.html" rel="nofollow" method="POST">
-            <input type="hidden" name="url">
-        </form>
 
         <!--过渡页-->
         <form id="storeFormSubmit" action="http://www.yoybuy.com/en/RedictionStore" style="display: none;" method="POST" target="_blank">
@@ -553,7 +534,7 @@ radius: 0;">
             <div class="clear minwidth hotips centers">
                 <div class="mailtip">
                     <div class="flo marr50" id="addItemUrlDiv">
-                        <input type="text" placeholder="Please enter item URL here..." class="flo font14 arial" style="width: 600px; height: 30px; line-height: 30px; border: 3px solid #FF6C10; border-right: none; border-radius: 0;" id="taobaourl1">
+                        <input type="text" placeholder="<?=Yii::t('app', 'Please enter Taobao URL here')?>" class="flo font14 arial" style="width: 600px; height: 30px; line-height: 30px; border: 3px solid #FF6C10; border-right: none; border-radius: 0;" id="taobaourl1">
                         <a class="flo yellowbut" style="width: 127px; height: 42px; line-height: 42px; font-size: 20px; border-radius: 0; font-weight: normal;" id="sumbiturl1">Buy Now</a>
                     </div>
                     <div id="logOrRegBtn" class="flo">

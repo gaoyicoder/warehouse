@@ -53,7 +53,7 @@ class Order extends ActiveRecord
             $order->subtotalUsd = Yii::$app->securityTools->cnyToUsd($subtotal);
             $order->setCreateTime();
             $order->status = 0;
-            $order->statusDesc = "new";
+            $order->statusDesc = "Pending";
             if($order->save()) {
                 return $order;
             } else {
@@ -80,7 +80,7 @@ class Order extends ActiveRecord
             $this->paymentType = $paymentType;
             $this->setPayTime();
             $this->status = 1;
-            $this->statusDesc = 'paid';
+            $this->statusDesc = 'Processing';
             $this->save();
         }
     }

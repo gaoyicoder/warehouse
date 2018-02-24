@@ -58,7 +58,7 @@ class Payment extends ActiveRecord
             $handingFeeRate = Yii::$app->params['paymentType'][$paymentTypeName]['handingFee'] ? Yii::$app->params['paymentType'][$paymentTypeName]['handingFee'] : 0;
             $payment->handingFee = $order->subtotalUsd * $handingFeeRate;
             $payment->status = 0;
-            $payment->statusDesc = 'new';
+            $payment->statusDesc = 'New';
             $payment->setCreateTime();
 
             if($payment->save()) {
@@ -90,7 +90,7 @@ class Payment extends ActiveRecord
             try {
                 $this->setScenario('pay');
                 $this->status = 1;
-                $this->statusDesc = 'success';
+                $this->statusDesc = 'Success';
                 $this->tradeNo = $tradeNo;
                 $this->setPayTime();
                 $this->save();
@@ -110,7 +110,7 @@ class Payment extends ActiveRecord
         if ($this->id) {
             $this->setScenario('pay');
             $this->status = 2;
-            $this->statusDesc = 'failure';
+            $this->statusDesc = 'Failure';
             $this->tradeNo = $tradeNo;
             $this->setPayTime();
             $this->save();

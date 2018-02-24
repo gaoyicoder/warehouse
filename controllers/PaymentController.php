@@ -9,6 +9,7 @@
 namespace app\controllers;
 
 use app\components\payment\AliPaymentManager;
+use app\components\payment\PayPalPaymentManager;
 use yii\web\Controller;
 use yii\helpers\BaseUrl;
 use yii;
@@ -17,6 +18,7 @@ use yii\web\NotFoundHttpException;
 use app\models\Order;
 use app\models\Payment;
 use yii\base\Exception;
+
 
 class PaymentController extends Controller
 {
@@ -62,6 +64,10 @@ class PaymentController extends Controller
 
                                     $totalAmount = Yii::$app->securityTools->formatNum(($paymentModel->subtotalUsd + $paymentModel->handingFee), 2);
                                     $this->payByAliPay($paymentModel->id, $totalAmount, Yii::$app->params['paymentType']['aliPay']['subject']);
+                                } else if ($paymentModel->paymentTypeName == "payPal") {
+
+                                    $totalAmount = Yii::$app->securityTools->formatNum(($paymentModel->subtotalUsd + $paymentModel->handingFee), 2);
+                                    $this->payByPayPal($paymentModel->id, $totalAmount, Yii::$app->params['paymentType']['aliPay']['subject']);
                                 }
                             }
 
@@ -84,8 +90,8 @@ class PaymentController extends Controller
 
     public function actionAliReturn() {
         try {
-            $this->returnByAliPay();
-            return $this->render("paySuccess", []);
+            $paymentModel = $this->returnByAliPay();
+            return $this->render("paySuccess", ['payment' => $paymentModel]);
         }catch (\Exception $e) {
             throw $e;
         }
@@ -98,6 +104,7 @@ class PaymentController extends Controller
             throw $e;
         }
     }
+
 
     private function payByAliPay($paymentNumber, $totalAmount, $subject) {
 
@@ -119,12 +126,53 @@ class PaymentController extends Controller
             $result = $paymentManager->analyzeNotify();
             if ($result) {
                 $paymentModel->makePaymentSuccess($tradeNo, 'aliPay');
+                return $paymentModel;
             } else {
                 $paymentModel->makePaymentFailure($tradeNo);
                 throw new BadRequestHttpException(Yii::t('app/payment','Payment failure.'));
             }
         } else {
-            throw new BadRequestHttpException(Yii::t('app/payment','Can\'t the payment.'));
+            throw new BadRequestHttpException(Yii::t('app/payment','Can\'t find the payment.'));
         }
+    }
+
+    public function actionPayPalReturn() {
+        try {
+            $paymentModel = $this->returnByPayPal();
+            return $this->render("paySuccess", ['payment' => $paymentModel]);
+        }catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    private function payByPayPal($paymentNumber, $totalAmount, $subject) {
+
+        $config = Yii::$app->params['payPalApi'];
+        $config['returnUrl'] = BaseUrl::to(['payment/pay-pal-return', 'id'=>$paymentNumber],true);
+        $config['cancelUrl'] = BaseUrl::to(['payment/pay-pal-cancel', 'id'=>$paymentNumber],true);
+        $paymentManager = new PayPalPaymentManager($config);
+        $paymentManager->doPayment($totalAmount, $subject);
+
+    }
+
+    private function returnByPayPal() {
+        $paymentId = $_REQUEST['id'];
+
+        $paymentModel = Payment::getPaymentById($paymentId);
+        if($paymentModel) {
+            $config = Yii::$app->params['payPalApi'];
+            $paymentManager = new PayPalPaymentManager($config);
+            $tradeNo = $paymentManager->analyzeNotify();
+            if ($tradeNo) {
+                $paymentModel->makePaymentSuccess($tradeNo, 'payPal');
+                return $paymentModel;
+            } else {
+                $paymentModel->makePaymentFailure($tradeNo);
+                throw new BadRequestHttpException(Yii::t('app/payment','Payment failure.'));
+            }
+        } else {
+            throw new BadRequestHttpException(Yii::t('app/payment','Can\'t find the payment.'));
+        }
+
     }
 }

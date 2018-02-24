@@ -45,6 +45,7 @@ $config = [
                         'app/member' => 'member.php',
                         'app/cart' => 'cart.php',
                         'app/order' => 'order.php',
+                        'app/payment' => 'payment.php',
                     ],
                 ],
             ],

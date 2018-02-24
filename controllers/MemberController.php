@@ -26,6 +26,22 @@ class MemberController extends Controller
         }
     }
 
+    public function behaviors() {
+        return [
+            'access' => [
+                'class' => yii\filters\AccessControl::className(),
+                'only' => ['index'],
+                'rules' => [
+                    [
+                        'allow' => 'true',
+                        'actions' => ['index'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ]
+        ];
+    }
+
     public function actionIndex() {
 //        $this->addNav([Yii::t('app/cart', 'My ChinaInAir1') => BaseUrl::to("member/index")]);
         return $this->render('index',[]);

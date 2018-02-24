@@ -24,4 +24,11 @@ return [
     'Please enter Taobao URL here' => '请在这里输入淘宝商品的地址',
     '* Error website address, please check it!' => '* 错误网址, 请核实并再次输入!',
     'OK' => '确定',
+
+    'BuyForMe' => '代购服务',
+    'How It Works' => '如何代购',
+    'Add URL' => '添加链接',
+    'My Items' => '我的商品',
+    'My Parcels' => '我的包裹',
+    'My ChinaInAir' => '我的ChinaInAir',
 ];

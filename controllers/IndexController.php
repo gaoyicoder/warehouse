@@ -28,4 +28,8 @@ class IndexController extends Controller
         return $this->render('index');
     }
 
+    public function actionBfmIntroduce() {
+        return $this->render('bfmIntroduce');
+    }
+
 }

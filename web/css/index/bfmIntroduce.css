@@ -1,0 +1,257 @@
+@charset "utf-8";
+/* CSS Document */
+.ordercon{width:730px;}
+.ordertip{border:1px dashed #D9D9D9;width:432px;padding:0 0 16px 175px;background-color:#F5F5F5;margin:0 auto;margin-top:40px;}
+.ordertips{border-top:2px dashed #E2E2E2;padding-left:180px;}
+.ordertips li{height:20px;line-height:20px;background:url(http://img.yoybuy.com/V6/BuyForMe/listbg.png) no-repeat left center;padding-left:10px;}
+.recomcon{margin-top:80px;}
+.recomcont{border:1px solid #DDD;padding:0 14px;width:1200px;}
+.recomone{padding:20px 0;}
+.recomone dl{width:1133px;}
+.ordera{display:block;width:100px;padding-left:15px;height:27px;line-height:27px;border:1px solid #E5E5E5;border-radius:4px;background:url(http://img.yoybuy.com/V6/BuyForMe/facebookbg.png) repeat-x;}
+.ordera:hover{background:url(../Images/facebookbgho.png) repeat-x;}
+.ordera em{display:block;width:21px;height:21px;margin-top:3px;}
+.ordera1{background:url(http://img.yoybuy.com/V6/Common/sharebg.png) no-repeat -42px 0;}
+.ordera2{background:url(http://img.yoybuy.com/V6/Common/sharebg.png) no-repeat -63px 0;}
+.bordertop{border-top:1px dashed #D9D9D9;}
+/*Order successful.html end*/
+.step{height:43px;background-color:#F5F5F5;}
+.stepone{width:204px;height:43px;padding-left:46px;position:relative;}
+.stepone dd{width:25px;height:43px;background:url(http://img.yoybuy.com/V6/BuyForMe/stepbg.png) no-repeat;position:absolute;top:0;right:-25px;z-index:10;}
+.recentstep{background-color:#FD852A;}
+.recentstep.stepone dd{background:url(http://img.yoybuy.com/V6/BuyForMe/currentbg.png) no-repeat;}
+.recentstep.stepone em,.recentstep.stepones em{color:#ff6d36;}
+.recentstep.stepone strong,.recentstep.stepones strong{color:#fff;}
+.passtep{background-color:#fff1e0;}
+.passtep.stepone dd{background:url(http://img.yoybuy.com/V6/BuyForMe/passedbg.png) no-repeat;}
+.passtep.stepone em,.passtep.stepone strong,.passtep.stepones em,.passtep.stepones strong{color:#f60;}
+.stepone em{display:block;width:28px;height:28px;line-height:28px;text-align:center;background-color:#fff;border-radius:50%;font-weight:bold;margin-top:7px;}
+.stepone strong{display:block;height:43px;line-height:43px;}
+.marr25{margin-right:25px;}
+.marr15{margin-right:15px;}
+.stepL{width:905px;}
+.methodtip{background-color:#F9F9F9;height:27px;border:1px solid #F0F0F0;padding:18px 22px 10px 18px;}
+.shipcon{border-bottom:1px dashed #E0E0E0;}
+.shipone{padding:15px 15px 15px 24px;border:1px solid #fff;width:864px;position:relative;}
+.newbg{border:1px solid #FF6D36;}
+.shipico{width:36px;height:36px;position:absolute;bottom:0;right:0;z-index:10;}
+.shipinput{width:16px;height:16px;border:1px solid #C1C1C1;border-radius:50%;display:inline-block;position:relative;}
+.shipinput input{position:absolute;top:0;left:0;z-index:10;margin:1.5px;/*:rgba(0,0,0,0);*/opacity:0;filter:alpha(opacity=0);-moz-opacity:0;}
+.shipinput span{background-color:#fff;border-radius:50%;display:inline-block;width:10px;height:10px;margin:3px;}
+.shipp{width:97px;height:34px;}
+.paymentdl{width:734px;}
+.paymentdl dt{height:34px;line-height:34px;padding-left:5px;}
+.paymentdl strong{color:#333;}
+.paymentdl dd{border-top:1px dashed #C9C9C9;padding:10px 5px 0 5px;}
+.paydd span{display:block;width:45px;height:27px;border:1px solid #CBCBCB;margin-right:6px;background-color:#fff;}
+.weightab{border:1px solid #E1E1E1;border-top:none;border-collapse:collapse;}
+.weightab td{border-top:1px solid #e1e1e1;}
+.weighthead td{height:35px;}
+.weightitem{text-align:left;padding:16px 24px 13px 24px;line-height:130%;}
+.weightitem p{width:72px;height:72px;}
+.weightitem ul{width:302px;}
+.stepR{width:298px;}
+.summery{border:1px solid #E0E0E0;width:286px;background-color:#F5F5F5;padding:10px 5px 20px 5px;border-radius:4px;}
+.sumcont{background-color:#fff;width:260px;border-radius:8px;padding:15px 13px;}
+.payborder{border-bottom:1px dashed #E0E0E0;}
+.sumone{height:26px;padding:2px;}
+.sumoneL{width:190px;line-height:26px;}
+.sumoneR{display:block;width:66px;line-height:26px;text-align:right;}
+.sumlast{padding:8px 2px 8px 2px;}
+.padb35{padding-bottom:35px;}
+/*1 Checkout my order.html end*/
+.myyoybuy{width:232px;padding-bottom:50px;background-color:#FAFAFA;}
+.myyoybuy h2{width:232px;height:50px;line-height:50px;text-align:center;background-color:#FF850E;color:#fff;font-size:18px;border-radius:4px 4px 0 0;}
+.yoybuylist dt{padding:10px 28px 0 28px;}
+.yoybuylist dt strong{display:block;border-bottom:1px solid #DFDFDF;font-size:16px;padding-left:1px;padding-bottom:10px;}
+.qutonew{display:block;width:18px;height:7px;}
+.yoybuylist dd a{display:block;width:204px;border-left:3px solid #FAFAFA;padding:7px 0 7px 25px;font-size:13px;}
+.yoybuylist dd a.current{border-left:3px solid #FD8529;color:#f60;}
+.status{width:980px;}
+/*ucenter left common*/
+.steps{height:37px;background-color:#F5F5F5;}
+.stepones{width:160px;height:37px;padding-left:40px;position:relative;}
+.stepones dd{width:25px;height:37px;background:url(http://img.yoybuy.com/V6/BuyForMe/stepbgs.png) no-repeat;position:absolute;top:0;right:-25px;z-index:10;}
+.stepones em{display:block;width:28px;height:28px;line-height:28px;text-align:center;background-color:#fff;border-radius:50%;font-weight:bold;margin-top:5px;}
+.stepones strong{display:block;height:37px;line-height:37px;}
+.recentstep.stepones dd{background:url(http://img.yoybuy.com/V6/BuyForMe/currentbgs.png) no-repeat;}
+.passtep.stepones dd{background:url(http://img.yoybuy.com/V6/BuyForMe/passedbgs.png) no-repeat;}
+.statuslistL{width:491px;height:32px;border-radius:2px;}
+.statuslistL a{display:block;width:97px;height:30px;line-height:30px;border:1px solid #CDCDCD;border-left:none;text-align:center;font-weight:bold;background:url(http://img.yoybuy.com/V6/BuyForMe/statusbg.png) repeat-x;}
+.statuslistL a.firbor{border-left:1px solid #CDCDCD;}
+.statuslistL a:hover{background:url(http://img.yoybuy.com/V6/BuyForMe/statusbgho.png) repeat-x;}
+.statuslistL a.current{background:none;background-color:#FF850E;border:1px solid #FF850E;border-left:none;font-size:14px;color:#fff;}
+.statuslistL a.firbor.current{border-left:1px solid #FF850E;}
+.ordertab{border-collapse:collapse;}
+.ordertit td{border-top:1px solid #E1E1E1;border-bottom:1px solid #E1E1E1;height:35px;}
+.newborder{background:url(http://img.yoybuy.com/V6/BuyForMe/borderbg.png) no-repeat right center;}
+.newbor{border:1px solid #E1E1E1;border-bottom:none;}
+.newbors{border-top:1px solid #E1E1E1;}
+.orderone{width:247px;padding:20px 0 0 9px;height:99px;}
+.onecont{width:224px;}
+.onecont dl{line-height:130%;}
+.newbort{border-bottom:1px solid #E1E1E1;}
+.orderlast{width:60px;text-align:right;}
+.orderL{width:760px;height:46px;line-height:46px;padding:0 40px 0 9px;border:1px solid #E1E1E1;border-right:none;background-color:#F5F5F5;}
+/*2 My order.html end*/
+.parcelbor{border-top:1px solid #DFDFDF;}
+.parcelway{width:470px;}
+.shipnm{display:block;width:130px;}
+.methodetail{width:599px;}
+.methodetail dt{height:34px;line-height:34px;padding-left:17px;}
+.methodetail dt span{display:block;width:200px;}
+.methodetail dd{border-top:1px dashed #C9C9C9;padding:10px 17px 0 17px;}
+.subtotal{border-left:1px solid #E1E1E1;vertical-align:top;padding-top:42px;}
+.mar7{margin-top:7px;}
+.marl7{margin-left:7px;}
+/*3 My parcel.html end*/
+.partab{border:1px solid #E1E1E1;}
+.partab tr{border:1px solid #E1E1E1;}
+/*Order details cancel.html end*/
+.detailul{width:680px;}
+.detdate{border-top:1px dashed #DFDFDF;padding-top:20px;}
+.detailp{width:170px;padding-right:36px;}
+.graybuts{display:block;height:29px;line-height:29px;border:1px solid #DADADA;background-color:#F0F0F0;}
+.graybuts:hover{background-color:#eaeaea;}
+.orderstatus{background-color:#fff;padding:25px 0 20px 0;position:relative;}
+.orderstatus dl{width:185px;}
+.orderstatus p{height:16px;position:absolute;top:45px;left:80px;z-index:10;}
+.marr8{margin-right:8px;}
+.ordertit{height:37px;border-bottom:1px solid #E1E1E1;position:relative;}
+.ordertit p{height:38px;position:absolute;top:0;left:20px;z-index:10;}
+.ordertit p a{display:block;border:1px solid #E1E1E1;background-color:#EFEFEF;width:160px;height:36px;line-height:36px;text-align:center;font-weight:bold;border-radius:4px 4px 0 0;}
+.ordertit p a.current{background-color:#fff;border-bottom:1px solid #fff;}
+.orderconts{padding:0 20px;}
+.orderinfo{background-color:#F9F9F9;padding:10px 20px 40px 20px;}
+.orderinfo dl{width:250px;}
+.orderjl{display:block;width:270px;}
+.ordernm{display:block;width:75px;text-align:right;}
+.orderul{width:250px;}
+.ordersub{border-top:1px dashed #D2D2D2;padding-top:12px;}
+.marl15{margin-left:15px;}
+/*Order details.html end*/
+.detailcon{border:1px solid #EFEFEF;background-color:#F9F9F9;padding:26px 20px 20px 20px;}
+.trackcon{border-top:1px solid #E1E1E1;border-bottom:1px solid #E1E1E1;padding:5px 15px 25px 15px;}
+.trackcon ul{width:700px;}
+/*Order tracking.html end*/
+.parcelbot{height:37px;line-height:37px;background-color:#F5F5F5;}
+/*Order status.html end*/
+.parwrite{background:url(http://img.yoybuy.com/V6/BuyForMe/write.png) no-repeat left center;padding-left:19px;height:16px;line-height:16px;}
+/*Parcel details2.html end*/
+.trasearch{position:absolute;top:0;right:0;z-index:10;}
+.evalucons{width:964px;padding:10px 7px;border:1px solid #D9F1FD;background-color:#EEF9FD;margin-top:36px;position:relative;}
+.trackno{width:255px;height:21px;padding:15px 0 0 12px;border:1px solid #DAF1FF;border-bottom:none;background-color:#EEF9FD;position:absolute;top:-37px;left:0;z-index:10;}
+.trackul{background-color:#fff;padding:5px 30px 20px 30px;}
+.trackul ul{width:700px;}
+.trackdl dl{width:108px;}
+.trackdl dt{width:72px;height:72px;margin:0 auto;}
+.trackadd{background-color:#F9F9F9;padding:18px 15px;}
+.parbor{border-bottom:1px solid #E1E1E1;padding-bottom:10px;}
+/*Tracking No.html end*/
+.directop{width:100%;height:82px;padding-top:10px;}
+.directopcon{height:80px;border-bottom:2px solid #333;width:1130px;margin:0 auto;}
+.directopcon h1{width:193px;height:69px;text-indent:-9999px;}
+.directopcon h1 a{display:block;width:193px;height:69px;background:url(http://img.yoybuy.com/V6/Common/logo.gif) no-repeat;}
+.directcon{width:1130px;margin:0 auto;}
+.shipment{border-top:1px solid #E7E7E7;border-bottom:1px solid #E7E7E7;padding-bottom:10px;}
+.paymentR{width:460px;text-align:right;}
+.paymentul{width:275px;border-bottom:1px dashed #D2D2D2;padding:12px 0 8px 0;}
+.payem{display:block;width:75px;}
+.paymentul li{height:22px;}
+.paymentul li input{height:18px;line-height:18px;}
+.totalnm{height:55px;line-height:55px;}
+.partab{border:1px solid #E1E1E1;}
+.partab tr{border:1px solid #E1E1E1;}
+.methodtip{background-color:#F9F9F9;height:27px;border:1px solid #F0F0F0;padding:18px 22px 10px 18px;}
+.shipones{padding:15px 15px 15px 24px;border:1px solid #fff;position:relative;}
+.shipones{width:1089px;}
+.shipinput{width:16px;height:16px;border:1px solid #C1C1C1;border-radius:50%;display:inline-block;position:relative;}
+.shipinput input{position:absolute;top:0;left:0;z-index:10;margin:1.5px;/*:rgba(0,0,0,0);*/opacity:0;filter:alpha(opacity=0);-moz-opacity:0;}
+.shipinput span{background-color:#fff;border-radius:50%;display:inline-block;width:10px;height:10px;margin:3px;}
+.shipp{width:97px;height:34px;}
+.paymentdls dt{height:34px;line-height:34px;padding-left:5px;}
+.paymentdls strong{color:#333;}
+.paymentdls dd{border-top:1px dashed #C9C9C9;padding:10px 5px 0 5px;}
+.paymentdls{width:959px;}
+.paydd span{display:block;width:45px;height:27px;border:1px solid #CBCBCB;margin-right:6px;background-color:#fff;}
+.newbg{border:1px solid #FF6D36;}
+.shipico{width:36px;height:36px;position:absolute;bottom:0;right:0;z-index:10;}
+.addpro{width:380px;}
+.addpro dt{width:72px;height:72px;}
+.addpro dd{width:287px;line-height:130%;}
+/*Add product.html end*/
+.partime{height:29px;}
+.parsearch{display:block;height:27px;line-height:27px;background:url(http://img.yoybuy.com/V6/BuyForMe/searchbg.png) repeat-x;border:1px solid #C8C8C8;border-radius:4px;text-align:center;}
+.parsearch:hover{background:url(http://img.yoybuy.com/V6/BuyForMe/searchbgho.png) repeat-x;}
+.parico{width:103px;height:28px;}
+.paricon{width:17px;height:17px;position:absolute;top:5px;right:6px;z-index:10;}
+/*My parcels.html end*/
+.padl19{padding-left:19px;}
+.newcoptit{height:20px;line-height:20px;}
+.newcopcon{border:1px solid #E8E8E8;}
+.newcoptits{height:40px;line-height:40px;padding:0 20px;background-color:#F9F9F9;}
+.couponone{height:30px;padding:15px 20px 15px 20px;}
+.coupononep{width:53px;height:30px;background:url(http://img.yoybuy.com/V6/Common/couponbg.png) no-repeat;color:#fff;}
+.marr70{margin-right:70px;}
+.timeone{height:30px;line-height:30px;}
+.coupbg{background-color:#EAF8FF;}
+.marr60{margin-right:60px;}
+.spepay{border:1px solid #E3E3E3;padding:20px 20px 30px 20px;}
+.marr100{margin-right:100px;}
+/*1 Checkout my order coupon end*/
+.evaludl{width:980px;height:145px;background-color:#F9F9F9;padding-top:75px;position:relative;}
+.evaluico{width:130px;height:125px;position:absolute;top:40px;left:215px;z-index:10;}
+.evalcon span{display:block;width:170px;}
+.evaluly{border-top:1px solid #E1E1E1;padding-top:20px;}
+.evalp{width:652px;height:20px;line-height:20px;}
+/*Evaluate.html end*/
+.yoyreply{border-top:1px dashed #E1E1E1;padding-top:5px;}
+/*Evaluate2.html end*/
+.guidecon{width:1200px;margin:0 auto;}
+.faqtit{height:25px;border-bottom:1px solid #DFDFDF;}
+.faqtit p{width:280px;height:50px;line-height:50px;background-color:#fff;font-size:32px;text-align:center;position:absolute;top:0;left:460px;z-index:10;}
+.mar50{margin-top:50px;}
+.guideico{height:55px;background-color:#fff;}
+.guideone{display:block;width:237px;height:53px;border:1px solid #eee;text-align:center;color:#c5c5c5;font-size:14px;position:relative;}
+.guideone:hover{background-color:#FAFAFA;color:#999;text-decoration:none;}
+.guideone.current{background-color:#FF6C10;border:1px solid #FF6C10;color:#fff;font-size:16px;}
+.guiico1,.guiico2,.guiico3,.guiico4,.guiico5{display:block;height:30px;margin-top:11px;}
+.guiico1{width:22px;background:url(http://img.yoybuy.com/V6/BuyForMe/guideico.png) no-repeat 0 0;}
+.guideone:hover .guiico1{background:url(http://img.yoybuy.com/V6/BuyForMe/guideico.png) no-repeat 0 -30px;}
+.guideone.current .guiico1{background:url(http://img.yoybuy.com/V6/BuyForMe/guideico.png) no-repeat 0 -60px;}
+.guiico2{width:32px;background:url(http://img.yoybuy.com/V6/BuyForMe/guideico.png) no-repeat -22px 0;}
+.guideone:hover .guiico2{background:url(http://img.yoybuy.com/V6/BuyForMe/guideico.png) no-repeat -22px -30px;}
+.guideone.current .guiico2{background:url(http://img.yoybuy.com/V6/BuyForMe/guideico.png) no-repeat -22px -60px;}
+.guiico3{width:34px;background:url(http://img.yoybuy.com/V6/BuyForMe/guideico.png) no-repeat -56px 0;}
+.guideone:hover .guiico3{background:url(http://img.yoybuy.com/V6/BuyForMe/guideico.png) no-repeat -56px -30px;}
+.guideone.current .guiico3{background:url(http://img.yoybuy.com/V6/BuyForMe/guideico.png) no-repeat -56px -60px;}
+.guiico4{width:34px;background:url(http://img.yoybuy.com/V6/BuyForMe/guideico.png) no-repeat -91px 0;}
+.guideone:hover .guiico4{background:url(http://img.yoybuy.com/V6/BuyForMe/guideico.png) no-repeat -91px -30px;}
+.guideone.current .guiico4{background:url(http://img.yoybuy.com/V6/BuyForMe/guideico.png) no-repeat -91px -60px;}
+.guiico5{width:31px;background:url(http://img.yoybuy.com/V6/BuyForMe/guideico.png) no-repeat -126px 0;}
+.guideone:hover .guiico5{background:url(http://img.yoybuy.com/V6/BuyForMe/guideico.png) no-repeat -126px -30px;}
+.guideone.current .guiico5{background:url(http://img.yoybuy.com/V6/BuyForMe/guideico.png) no-repeat -126px -60px;}
+.mar18{margin-top:18px;}
+.guidearrow{display:block;width:7px;height:17px;background:url(http://img.yoybuy.com/V6/BuyForMe/arrowico.png) no-repeat 0 0;position:absolute;top:17px;right:-7px;z-index:10;}
+.guideone:hover .guidearrow{background:url(http://img.yoybuy.com/V6/BuyForMe/arrowico.png) no-repeat -7px 0;}
+.guideone.current .guidearrow{background:url(http://img.yoybuy.com/V6/BuyForMe/arrowico.png) no-repeat -14px 0;}
+.faqslide{width:1200px;height:600px;background-color:#fff;position:relative;}
+.faqslide + .faqslide{display:none;}
+.faqimg{position:absolute;}
+.faqimg img{width:1200px;height:600px;}
+.faqnum{width:1200px;height:90px;position:absolute;bottom:30px;left:0;z-index:10;}
+.faqnum a{display:block;width:90px;height:90px;background:url(http://img.yoybuy.com/V6/BuyForMe/turnbg.png) no-repeat 0 0;border-radius:50%;color:#333;}
+.faqnum a:hover{background:url(http://img.yoybuy.com/V6/BuyForMe/turnbg.png) no-repeat -90px 0;text-decoration:none;}
+.faqnum a.current{background:url(http://img.yoybuy.com/V6/BuyForMe/turnbg.png) no-repeat -180px 0;color:#fff;}
+.marr30{margin-right:30px;}
+.mar35{margin-top:35px;}
+.faqnum a span{display:block;line-height:140%;}
+.turnleft,.turnright{display:block;width:42px;height:78px;position:absolute;top:261px;z-index:10;}
+.turnleft{background:url(http://img.yoybuy.com/V6/BuyForMe/totalturn.png) no-repeat 0 0;left:10px;display:none;}
+.turnright{background:url(http://img.yoybuy.com/V6/BuyForMe/totalturn.png) no-repeat -42px 0;right:10px;}
+#featured-area{width:1200px;height:695px;margin:0 auto;margin-top:65px;}
+.roundabout-holder{width:695px;height:695px;margin:0 auto;}
+.topstores img{width:100%;height:100%;}
+.topstores li{box-shadow:0 5px 5px -1px #999;width:765px;height:695px;position:absolute;}
+
+/*Guide.html end*/

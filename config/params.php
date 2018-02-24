@@ -11,7 +11,7 @@ return [
 //        "^http(s){0,1}://.+/.+",
     ],
     'urlExamples' => [
-        'https://item.taobao.com/item.htm?spm=a230r.1.14.328.QUFKSj&id=535608330129&ns=1&abbucket=8',
+        'https://item.taobao.com/item.htm?spm=a230r.1.14.38.2181532100PDqC&id=554883381444&ns=1&abbucket=17#detail',
     ],
 
     'usdRate' => '6.5',
@@ -25,8 +25,9 @@ return [
             'subject' => 'ChinaInAir Payment'
         ],
         'payPal' => [
-            'handingFeeText' => '3.5% + $0.30',
-            'handingFee' => '0.035 + 0.3'
+            'handingFeeText' => '3.5%',
+            'handingFee' => '0.035',
+            'subject' => 'ChinaInAir Payment'
         ]
     ],
 
@@ -40,4 +41,10 @@ return [
         'appId' => '2016081900287418',
 
     ],
+
+    'payPalApi' => [
+        'clientId' => 'AW_XPN5ngkY6NM0TUpaGmwamZ2iJaf-0A__hb-4nizQy4kwdSumsP7nTJYxH6p0sIV_nk7Yx3PzFda4a',
+        'secret' => 'ECTnVmhrf6s7YXwb1P3UQFp0BxQUgYvtDfdyxmjfXHCnWpVXPoQjExVPInX_8FTdkhoLK29Z1beGiyey',
+        'testMode' => true,
+    ]
 ];
