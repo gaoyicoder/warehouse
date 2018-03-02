@@ -301,7 +301,7 @@ yellowbut" style="width:130px;height:24px;line-height:24px;font-size:12px;font-w
                 <? if(Yii::$app->user->isGuest) {?>
                     <a href="<?=BaseUrl::to(array('user/login'), true) ?>" class="floR noline norcol height30 marl5" rel="nofollow"><?=Yii::t('app', 'Sign In') ?></a>
                 <? } else {?>
-                    <a href="<?=BaseUrl::to(array('member/index'), true) ?>" class="floR noline norcol height30 marl5" rel="nofollow"><?=Yii::t('app', 'Welcome, ') ?></a>
+                    <a href="<?=BaseUrl::to(array('member/index'), true) ?>" class="floR noline norcol height30 marl5" rel="nofollow"><?=Yii::t('app', 'Welcome, ') ?><?=Yii::$app->user->identity->userName ?></a>
                 <? } ?>
             </div>
             <p class="floR height30" id="username"></p>
