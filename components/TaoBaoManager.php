@@ -123,6 +123,7 @@ class TaoBaoManager extends Component
                 $data['desc'] = $this->collectOne($desc, $rules['desc']);
 
                 $sibUrl = $this->collectOne($goodSource, $rules['sibUrl']);
+                echo $sibUrl;
                 $sibSource = $this->getURLContent("https:".$sibUrl."", null, $url);
                 echo $sibSource;exit;
                 $sibContent = json_decode($sibSource, true);
