@@ -123,9 +123,7 @@ class TaoBaoManager extends Component
                 $data['desc'] = $this->collectOne($desc, $rules['desc']);
 
                 $sibUrl = $this->collectOne($goodSource, $rules['sibUrl']);
-                echo $sibUrl;
                 $sibSource = $this->getURLContent("https:".$sibUrl."", null, $url);
-                echo $sibSource;exit;
                 $sibContent = json_decode($sibSource, true);
 
                 $valItemInfo = $this->collectOne($goodSource, $rules['valItemInfo']);
@@ -202,7 +200,9 @@ class TaoBaoManager extends Component
             curl_setopt ($curl, CURLOPT_PROXY, $proxy);
         }
         curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_USERAGENT, 'Googlebot/2.1 (+http://www.google.com/bot.html)');
+
+        $userAgent = "Mozilla/5.0 (Windows; U; Windows NT 5.2) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.2.149.27 Safari/525.13";
+        curl_setopt($curl, CURLOPT_USERAGENT, $userAgent);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
         curl_setopt($curl, CURLOPT_REFERER, $refer);
         curl_setopt($curl, CURLOPT_ENCODING, 'gzip,deflate');
