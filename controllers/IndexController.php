@@ -59,7 +59,7 @@ class IndexController extends Controller
     }
 
     public function actionTest1() {
-        $requestUrl = 'http://www.gaoyicoder.com';
+        $requestUrl = 'https://detailskip.taobao.com/service/getData/1/p1/item/detail/sib.htm?itemId=528465917423&sellerId=2594360131&modules=dynStock,qrcode,viewer,price,duty,xmpPromotion,delivery,upp,activity,fqg,zjys,couponActivity,soldQuantity,originalPrice,tradeContract&callback=onSibRequestSuccess';
         $ch = curl_init();
         $timeout = 5;
         curl_setopt($ch, CURLOPT_URL, $requestUrl);
