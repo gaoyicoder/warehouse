@@ -123,7 +123,7 @@ class TaoBaoManager extends Component
                 $data['desc'] = $this->collectOne($desc, $rules['desc']);
 
                 $sibUrl = $this->collectOne($goodSource, $rules['sibUrl']);
-                $sibSource = $this->getURLContent("https:".$sibUrl."", "114.238.130.33:42200", $url);
+                $sibSource = $this->getURLContent("https:".$sibUrl."", "123.162.75.25:25726", $url);
                 $sibContent = json_decode($sibSource, true);
 
                 $valItemInfo = $this->collectOne($goodSource, $rules['valItemInfo']);
@@ -196,7 +196,7 @@ class TaoBaoManager extends Component
         $header[] = "Cookie: cna=l+pgC/cDdWcCAWVF+/5q+UVs; miid=3317872020099775032; __utma=6906807.434603219.1390489590.139048";
         $header[] = "Pragma: ";
 
-        if(is_null($proxy)) {
+        if(!is_null($proxy)) {
             $proxy = explode(":", $proxy);
             $ip = $proxy[0];
             $port = $proxy[1];
@@ -204,8 +204,6 @@ class TaoBaoManager extends Component
             curl_setopt($curl, CURLOPT_PROXY, $ip);
             curl_setopt($curl, CURLOPT_PROXYPORT, $port);
             curl_setopt($curl, CURLOPT_PROXYTYPE, CURLPROXY_HTTP);
-
-            curl_setopt ($curl, CURLOPT_PROXY, $proxy);
         }
         curl_setopt($curl, CURLOPT_URL, $url);
 

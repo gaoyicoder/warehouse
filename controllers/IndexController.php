@@ -33,29 +33,7 @@ class IndexController extends Controller
     }
 
     public function actionTest() {
-        $ch = curl_init();
-        curl_setopt ($ch, CURLOPT_URL, 'https://www.gaoyicoder.com');
-        $opt[CURLOPT_HEADER]=false;
-        $opt[CURLOPT_CONNECTTIMEOUT]=15;
-        $opt[CURLOPT_TIMEOUT]=300;
-        $opt[CURLOPT_AUTOREFERER]=true;
-        $opt[CURLOPT_USERAGENT]='Mozilla/5.0 (Windows NT 6.1) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.47 Safari/536.11';
-        curl_setopt ($ch, CURLOPT_PROXY, '114.238.130.33');
-        curl_setopt($ch, CURLOPT_PROXYPORT, '42200');
-
-        curl_setopt_array($ch,$opt);
-        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt ($ch,CURLOPT_REFERER,"https://item.taobao.com/item.htm?spm=a230r.1.14.68.ebb2eb2azTb8s&id=528465917423&ns=1&abbucket=8#detail");
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        $out_put=curl_exec ($ch);
-        curl_close ($ch);
-        echo $out_put;
-//        $res=str_replace('onSibRequestSuccess(',"",$out_put);
-//        $res=rtrim($res,');1');
-//        $result=json_decode($res,true);
-//        echo 111;
-//        echo print_r($result);
-//        exit;
+        print_r(explode(":", "123.162.75.25:25726"));
     }
 
     public function actionTest1() {
@@ -66,8 +44,8 @@ class IndexController extends Controller
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
         curl_setopt($ch, CURLOPT_PROXYAUTH, CURLAUTH_BASIC);
-        curl_setopt($ch, CURLOPT_PROXY, "123.169.39.138");
-        curl_setopt($ch, CURLOPT_PROXYPORT, '40760');
+        curl_setopt($ch, CURLOPT_PROXY, "123.162.75.25");
+        curl_setopt($ch, CURLOPT_PROXYPORT, '25726');
         curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_HTTP);
         curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.47 Safari/536.11");
         curl_setopt ($ch,CURLOPT_REFERER,"https://item.taobao.com/item.htm?spm=a230r.1.14.68.ebb2eb2azTb8s&id=528465917423&ns=1&abbucket=8#detail");
