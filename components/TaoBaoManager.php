@@ -123,7 +123,7 @@ class TaoBaoManager extends Component
                 $data['desc'] = $this->collectOne($desc, $rules['desc']);
 
                 $sibUrl = $this->collectOne($goodSource, $rules['sibUrl']);
-                $sibSource = $this->getURLContent("https:".$sibUrl."", null, $url);
+                $sibSource = $this->getURLContent("https:".$sibUrl."", "114.238.130.33:42200", $url);
                 $sibContent = json_decode($sibSource, true);
 
                 $valItemInfo = $this->collectOne($goodSource, $rules['valItemInfo']);
@@ -197,6 +197,14 @@ class TaoBaoManager extends Component
         $header[] = "Pragma: ";
 
         if(is_null($proxy)) {
+            $proxy = explode(":", $proxy);
+            $ip = $proxy[0];
+            $port = $proxy[1];
+            curl_setopt($curl, CURLOPT_PROXYAUTH, CURLAUTH_BASIC);
+            curl_setopt($curl, CURLOPT_PROXY, $ip);
+            curl_setopt($curl, CURLOPT_PROXYPORT, $port);
+            curl_setopt($curl, CURLOPT_PROXYTYPE, CURLPROXY_HTTP);
+
             curl_setopt ($curl, CURLOPT_PROXY, $proxy);
         }
         curl_setopt($curl, CURLOPT_URL, $url);

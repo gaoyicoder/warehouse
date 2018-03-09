@@ -40,8 +40,8 @@ class IndexController extends Controller
         $opt[CURLOPT_TIMEOUT]=300;
         $opt[CURLOPT_AUTOREFERER]=true;
         $opt[CURLOPT_USERAGENT]='Mozilla/5.0 (Windows NT 6.1) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.47 Safari/536.11';
-        curl_setopt ($ch, CURLOPT_PROXY, '121.232.65.36');
-        curl_setopt($ch, CURLOPT_PROXYPORT, '27991');
+        curl_setopt ($ch, CURLOPT_PROXY, '114.238.130.33');
+        curl_setopt($ch, CURLOPT_PROXYPORT, '42200');
 
         curl_setopt_array($ch,$opt);
         curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
