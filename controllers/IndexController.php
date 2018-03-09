@@ -66,8 +66,8 @@ class IndexController extends Controller
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
         curl_setopt($ch, CURLOPT_PROXYAUTH, CURLAUTH_BASIC);
-        curl_setopt($ch, CURLOPT_PROXY, "1.199.194.173");
-        curl_setopt($ch, CURLOPT_PROXYPORT, '25929');
+        curl_setopt($ch, CURLOPT_PROXY, "123.169.39.138");
+        curl_setopt($ch, CURLOPT_PROXYPORT, '40760');
         curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_HTTP);
         curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.47 Safari/536.11");
         curl_setopt ($ch,CURLOPT_REFERER,"https://item.taobao.com/item.htm?spm=a230r.1.14.68.ebb2eb2azTb8s&id=528465917423&ns=1&abbucket=8#detail");
